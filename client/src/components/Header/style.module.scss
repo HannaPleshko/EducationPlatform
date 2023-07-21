@@ -1,3 +1,5 @@
+@import '../../styles/variables.scss';
+
 %display-flex {
   display: flex;
   justify-content: space-between;
@@ -5,7 +7,7 @@
 }
 
 .wrapper {
-  background: var(--primaty-grey-light, #f6f5f4);
+  background: var(--primary-grey-light, #f6f5f4);
   box-shadow: 0px -1px 0px 0px #e0e0e0 inset;
   padding: 24px 0;
 
@@ -20,17 +22,27 @@
     width: 200px;
 
     .login {
-      color: #000;
+      color: $primary-black;
       font: 700 16px "Montserrat";
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.1);
+      }
     }
 
     .sign {
       border-radius: 14.188px;
-      background: #2b788b;
+      background: $primary-cyan-dark;
       width: 106px;
       text-align: center;
       padding: 13px 0;
-      color: #ffff;
+      color: $primary-white;
+      transition: background 0.3s ease, color 0.3s ease;
+
+      &:hover {
+        background: $primary-golden-yellow;
+      }
     }
   }
 }

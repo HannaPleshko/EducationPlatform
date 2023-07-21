@@ -1,27 +1,23 @@
-*{
+* {
   margin: 0;
   padding: 0;
   font-family: 'Dela Gothic One';
   font-style: normal;
-  box-sizing: content-box;
+  box-sizing: border-box;
 }
 
-
-body{
-
+body {
   margin: 0 auto;
   background-color: rgba(246, 245, 244, 1);
 
-
-  a{
+  a {
     text-decoration: none;
     color: #000;
   }
 
-  input{
-    
-outline: none;
- border: none;
+  input {
+
+    outline: none;
+    border: none;
   }
 }
-
