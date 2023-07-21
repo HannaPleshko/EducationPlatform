@@ -1,0 +1,36 @@
+%display-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.wrapper {
+  background: var(--primaty-grey-light, #f6f5f4);
+  box-shadow: 0px -1px 0px 0px #e0e0e0 inset;
+  padding: 24px 0;
+
+  .content {
+    width: 1200px;
+    @extend %display-flex;
+    margin: 0 auto;
+  }
+
+  nav {
+    @extend %display-flex;
+    width: 200px;
+
+    .login {
+      color: #000;
+      font: 700 16px "Montserrat";
+    }
+
+    .sign {
+      border-radius: 14.188px;
+      background: #2b788b;
+      width: 106px;
+      text-align: center;
+      padding: 13px 0;
+      color: #ffff;
+    }
+  }
+}

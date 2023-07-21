@@ -1,0 +1,72 @@
+%display-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+%logos-params {
+  width: 30px;
+  height: 24px;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.wrapper {
+  background:#f6f5f4;
+  padding: 24px 0;
+  margin-top: 2%;
+
+  .content {
+    width: 1200px;
+    margin: 0 auto;
+
+
+  .line {
+    height: 2px;
+    background-color: rgb(184, 184, 184);
+    margin: 2% 0;
+  }
+
+  nav {
+
+    @extend %display-flex;
+
+    .navigation,
+    .developers {
+      @extend %display-flex;
+    }
+
+
+
+    p {
+      color: var(--primaty-grey-dark, #757575);
+      font: 600 12px Montserrat;
+    }
+
+    .navigation p:not(:last-child),
+    .developers p:not(:last-child) {
+      margin-right: 30px;
+    }
+
+    .logoImgs {
+      @extend %display-flex;
+
+      .logoGit {
+        background-image: url(./assets/git.svg);
+        @extend %logos-params;
+        margin-right: 30px;
+      }
+
+      .logoGT {
+        background-image: url(./assets/GT.svg);
+        @extend %logos-params;
+        margin-right: 30px;
+      }
+
+      .logoYouTube {
+        background-image: url(./assets/yt.svg);
+        @extend %logos-params;
+      }
+    }
+  }
+}
+}

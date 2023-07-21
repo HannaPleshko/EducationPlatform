@@ -1,0 +1,201 @@
+%image-params {
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+%button-params {
+  padding: 14px 0;
+  text-align: center;
+  color: #2b788b;
+  background: var(--primaty-cyan-light, #c3dce3);
+  border-radius: 100px;
+}
+
+.preview {
+  display: flex;
+  justify-content: space-between;
+  width: 1200px;
+  margin: 7% auto 0;
+  position: relative;
+
+  .previewContent {
+    width: 510px;
+    height: 470px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
+
+.textPlatform {
+  color: var(--primaty-cyan-dark, #2b788b);
+  font: 700 16px "Montserrat";
+}
+
+.preview h1 {
+  color: var(--primaty-black, #000);
+  font-size: 600 56px "Dela Gothic One";
+}
+
+.textAdditional {
+  color: var(--primaty-grey-dark, #757575);
+  font: 600 18px "Montserrat";
+}
+
+.btn {
+  @extend %button-params;
+  width: 165px;
+}
+
+.statictics {
+  display: flex;
+  width: 175px;
+  flex-direction: column;
+}
+
+.lightning {
+  background-image: url(./assets/lightning.svg);
+  width: 24px;
+  height: 30px;
+  @extend %image-params;
+  display: inline-block;
+}
+
+.statictics .studentsCount {
+  color: #000;
+  font: 600 40px "Dela Gothic One";
+  text-align: center;
+}
+
+.statictics p span {
+  color: rgba(43, 120, 139, 1);
+}
+
+.students {
+  color: #585858;
+  font: 600 16px "Montserrat";
+  text-align: center;
+}
+
+.preview .manImg {
+  background-image: url(./assets/man.svg);
+  width: 933px;
+  height: 601px;
+  @extend %image-params;
+  position: absolute;
+  left: 50%;
+}
+
+.learnBlock {
+  width: 100%;
+  background: #fff;
+}
+.learnBlockWidth {
+  width: 1200px;
+  margin: 7% auto 0;
+  padding: 3%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.learnImg {
+  background-image: url(./assets/learn.svg);
+  width: 933px;
+  height: 601px;
+  @extend %image-params;
+}
+
+.learnBlockContent {
+  margin-top: 2%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 430px;
+  width: 700px;
+}
+
+.learnBlockContent h2 {
+  color: var(--primaty-black, #000);
+  font: 600 48px "Dela Gothic One";
+}
+
+.learnBlockContent p {
+  color: var(--primaty-grey-dark, #757575);
+  font-family: 600 18px "Montserrat";
+}
+.wrapperIcons {
+  display: flex;
+}
+
+.sprint {
+  background-image: url(./assets/img11.svg);
+  width: 172px;
+  height: 145px;
+  @extend %image-params;
+}
+
+.tasks {
+  background-image: url(./assets/ing10.svg);
+  width: 172px;
+  height: 145px;
+  @extend %image-params;
+}
+
+.knowledgeBlock {
+  display: flex;
+  justify-content: space-between;
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.knowledgeBlockContent,
+.watchStatisticsBlockContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 9%;
+  width: 470px;
+  height: 330px;
+}
+
+h2 {
+  color: var(--primaty-black, #000);
+  font: 600 48px "Dela Gothic One";
+}
+
+.knowledgeBlockContent p,
+.watchStatisticsBlockContent p {
+  color: var(--primaty-grey-dark, #757575);
+  font-family: 600 18px "Montserrat";
+}
+
+.bookBtn {
+  width: 131px;
+  @extend %button-params;
+}
+
+.knowledgeImg {
+  background-image: url(./assets/book.svg);
+  width: 650px;
+  height: 601px;
+  @extend %image-params;
+}
+
+.watchStatisticsBlock {
+
+  background: #FFF;
+}
+
+.watchStatisticsWidth{
+  width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 14px 0;
+}
+
+.staticticsImg {
+  background-image: url(./assets/manaNDGIRL.svg);
+  width: 680px;
+  height: 409px;
+  @extend %image-params;
+}
