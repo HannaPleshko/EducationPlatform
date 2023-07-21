@@ -1,24 +1,4 @@
-@import '../../styles/variables.scss';
-
-%image-params {
-  background-repeat: no-repeat;
-  background-size: contain;
-}
-
-%button-params {
-  padding: 14px 17px;
-  text-align: center;
-  color: $primary-cyan-dark;
-  background: var(--primaty-cyan-light, $primary-cyan-light);
-  border-radius: 100px;
-
-  transition: background 0.3s ease, color 0.3s ease;
-
-  &:hover {
-    background: $primary-golden-yellow;
-    color: $primary-white;
-  }
-}
+@import '../../styles/index.scss';
 
 .preview {
   display: flex;
@@ -30,9 +10,7 @@
   .previewContent {
     width: 600px;
     height: 500px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    @extend %display-flex-column;
   }
 
   .textPlatform {
@@ -58,9 +36,7 @@
   }
 
   .statictics {
-    display: flex;
     width: 175px;
-    flex-direction: column;
 
     .studentsCount {
       color: $primary-black;
@@ -80,10 +56,10 @@
   }
 
   .manImg {
-    background-image: url(./assets/man.svg);
+    background: url(./assets/man.svg) no-repeat;
     width: 750px;
     height: 490px;
-    @extend %image-params;
+    // @extend %image-params;
     position: absolute;
     left: 50%;
   }
@@ -108,9 +84,7 @@
     }
 
     .learnBlockContent {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      @extend %display-flex-column;
       height: 430px;
       width: 500px;
 
@@ -155,9 +129,7 @@
   margin: 7% auto;
 
   .knowledgeBlockContent {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    @extend %display-flex-column;
     width: 470px;
     height: 330px;
 
@@ -206,9 +178,7 @@
     }
 
     .watchStatisticsBlockContent {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      @extend %display-flex-column;
       width: 470px;
       height: 410px;
 
@@ -219,9 +189,7 @@
 
       p {
         color: $primary-grey-dark;
-        font-family: "Montserrat";
-        font-weight: 600;
-        font-size: 18px;
+        font: 600 18px "Montserrat";
       }
 
       .bookBtn {

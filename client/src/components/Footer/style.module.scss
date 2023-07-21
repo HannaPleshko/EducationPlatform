@@ -4,11 +4,19 @@
   align-items: center;
 }
 
-%logos-params {
-  width: 30px;
-  height: 24px;
-  background-repeat: no-repeat;
-  background-size: contain;
+@mixin icon-decorator ($path, $width, $height, $color, $hover-color) {
+  width: $width;
+  height: $height;
+  -webkit-mask: $path no-repeat 50% 50%;
+  mask: $path no-repeat 50% 50%;
+  mask-size: cover;
+  -webkit-mask-size: cover;
+  background-color: $color;
+
+  &:hover {
+    background-color: $hover-color;
+    cursor: pointer;
+  }
 }
 
 .wrapper {
@@ -26,7 +34,7 @@
 
       &:first-child {
         border-bottom: 1px solid #b8b8b8;
-      } 
+      }
 
       .navigation,
       .developers {
@@ -45,22 +53,18 @@
 
       .logoImgs {
         @extend %display-flex;
+        gap: 10px;
 
         .logoGit {
-          background-image: url(./assets/git.svg);
-          @extend %logos-params;
-          margin-right: 30px;
+          @include icon-decorator (url(./assets/git.svg), 28px, 24px, #bababa, #24292f);
         }
 
         .logoGT {
-          background-image: url(./assets/GT.svg);
-          @extend %logos-params;
-          margin-right: 30px;
+          @include icon-decorator (url(./assets/GT.svg), 28px, 24px, #bababa, #f6ab01);
         }
 
         .logoYouTube {
-          background-image: url(./assets/yt.svg);
-          @extend %logos-params;
+          @include icon-decorator (url(./assets/yt.svg), 28px, 24px, #bababa, #ec1b1b);
         }
       }
     }

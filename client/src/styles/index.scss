@@ -1,0 +1,33 @@
+@import './variables.scss';
+
+%display-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+%display-flex-column {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+%image-params {
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+%button-params {
+    padding: 14px 17px;
+    text-align: center;
+    color: $primary-cyan-dark;
+    background: var(--primaty-cyan-light, $primary-cyan-light);
+    border-radius: 100px;
+
+    transition: background 0.3s ease, color 0.3s ease;
+
+    &:hover {
+        background: $primary-golden-yellow;
+        color: $primary-white;
+    }
+}
