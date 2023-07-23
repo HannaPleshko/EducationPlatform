@@ -1,33 +1,48 @@
 @import './variables.scss';
 
-%display-flex {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+@mixin icon-decorator($path, $width, $height, $color, $hover-color) {
+  width: $width;
+  height: $height;
+  -webkit-mask: $path no-repeat 50% 50%;
+  mask: $path no-repeat 50% 50%;
+  mask-size: cover;
+  -webkit-mask-size: cover;
+  background-color: $color;
+
+  &:hover {
+    background-color: $hover-color;
+    cursor: pointer;
+  }
 }
 
-%display-flex-column {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
+@mixin preview-img($path, $width, $height) {
+  width: $width;
+  height: $height;
+  background-size: contain;
+  background-image: $path ;
+  background-repeat: no-repeat;
 }
 
-%image-params {
-    background-repeat: no-repeat;
-    background-size: contain;
+@mixin flexbox($horizontal, $vertical, $direction) {
+  display: flex;
+  justify-content: $horizontal;
+  align-items: $vertical;
+  flex-direction: $direction;
 }
 
-%button-params {
-    padding: 14px 17px;
-    text-align: center;
-    color: $primary-cyan-dark;
-    background: var(--primaty-cyan-light, $primary-cyan-light);
-    border-radius: 100px;
+@mixin primary-button($width, $paddingSize,  $radius, $defaultColor, $defaultBckgColor, $hoverColor, $hoverBckgColor) {
+  width: $width;
+  padding: $paddingSize;
+  border-radius: $radius;
+  text-align: center;
+  color: $defaultColor;
+  background: $defaultBckgColor;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
 
-    transition: background 0.3s ease, color 0.3s ease;
-
-    &:hover {
-        background: $primary-golden-yellow;
-        color: $primary-white;
-    }
+  &:hover {
+    background: $hoverBckgColor;
+    color: $hoverColor;
+  }
 }

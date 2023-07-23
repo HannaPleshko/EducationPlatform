@@ -38,9 +38,16 @@ function AuthPage() {
             <input name="email" onChange={changeInputValue} placeholder="Placeholder email" />
           </div>
           <div>
-            <input name="pwd" type="password" onChange={changeInputValue} placeholder="Placeholder pwd" />
+            <input
+              name="pwd"
+              type="password"
+              onChange={changeInputValue}
+              placeholder="Placeholder pwd"
+            />
           </div>
-          <div onClick={sendRequest} className={style.btn}>Login</div>
+          <div onClick={sendRequest} className={style.btn}>
+            Login
+          </div>
         </div>
         <div className={style.image}></div>
       </div>

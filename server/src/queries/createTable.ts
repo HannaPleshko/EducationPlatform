@@ -1,10 +1,9 @@
 import pool from '../DB';
 
 export const createTables = async (): Promise<void> => {
-    const client = await pool.connect();
-    await client
-        .query(
-            `
+  const client = await pool.connect();
+  await client.query(
+    `
         CREATE TABLE IF NOT EXISTS users (
           id                    UUID DEFAULT MD5(RANDOM()::TEXT || CLOCK_TIMESTAMP()::TEXT)::UUID,
           name                  VARCHAR(20) NOT NULL, 
@@ -21,5 +20,6 @@ export const createTables = async (): Promise<void> => {
           
           PRIMARY KEY(id)
         );
-    `)
+    `,
+  );
 };

@@ -1,10 +1,4 @@
-import {
-  getUserDB,
-  getUserByIdDB,
-  createUserDB,
-  updateUserDB,
-  deleteUserDB,
-} from "../repository/user.repository";
+import { getUserDB, getUserByIdDB, createUserDB, updateUserDB, deleteUserDB } from '../repository/user.repository';
 
 async function getUser() {
   return await getUserDB();

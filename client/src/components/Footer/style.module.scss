@@ -1,49 +1,30 @@
-%display-flex {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-@mixin icon-decorator ($path, $width, $height, $color, $hover-color) {
-  width: $width;
-  height: $height;
-  -webkit-mask: $path no-repeat 50% 50%;
-  mask: $path no-repeat 50% 50%;
-  mask-size: cover;
-  -webkit-mask-size: cover;
-  background-color: $color;
-
-  &:hover {
-    background-color: $hover-color;
-    cursor: pointer;
-  }
-}
+@import '../../styles/index.scss';
 
 .wrapper {
-  background: #f6f5f4;
-  padding: 24px 0;
   margin-top: 2%;
+  padding: 24px 0;
+  background: #f6f5f4;
 
   .content {
     width: 1200px;
     margin: 0 auto;
 
     nav {
-      @extend %display-flex;
+      @include flexbox(space-between, center, row);
       padding: 20px 0;
 
       &:first-child {
-        border-bottom: 1px solid #b8b8b8;
+        border-bottom: 1px solid $primary-grey-light;
       }
 
       .navigation,
       .developers {
-        @extend %display-flex;
+        @include flexbox(space-between, center, row);
       }
 
       p {
-        color: var(--primaty-grey-dark, #757575);
         font: 600 12px Montserrat;
+        color: $primary-grey-dark;
       }
 
       .navigation p:not(:last-child),
@@ -52,19 +33,19 @@
       }
 
       .logoImgs {
-        @extend %display-flex;
+        @include flexbox(space-between, center, row);
         gap: 10px;
 
         .logoGit {
-          @include icon-decorator (url(./assets/git.svg), 28px, 24px, #bababa, #24292f);
+          @include icon-decorator(url(./assets/git.svg), 28px, 24px, $primary-grey-light, #24292fcf);
         }
 
         .logoGT {
-          @include icon-decorator (url(./assets/GT.svg), 28px, 24px, #bababa, #f6ab01);
+          @include icon-decorator(url(./assets/GT.svg), 28px, 24px, $primary-grey-light, #f6ad0189);
         }
 
         .logoYouTube {
-          @include icon-decorator (url(./assets/yt.svg), 28px, 24px, #bababa, #ec1b1b);
+          @include icon-decorator(url(./assets/yt.svg), 28px, 24px, $primary-grey-light, #ec1b1b9c);
         }
       }
     }

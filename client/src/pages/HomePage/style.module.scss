@@ -1,46 +1,42 @@
 @import '../../styles/index.scss';
 
 .preview {
-  display: flex;
-  justify-content: space-between;
+  @include flexbox(space-between, start, row);
   width: 1200px;
   margin: 7% auto;
   position: relative;
 
   .previewContent {
+    @include flexbox(space-between, start, column);
     width: 600px;
     height: 500px;
-    @extend %display-flex-column;
   }
 
   .textPlatform {
+    font: 700 16px 'Montserrat';
     color: $primary-cyan-dark;
-    font: 700 16px "Montserrat";
   }
 
   h1 {
+    font: 600 56px 'Dela Gothic One';
     color: $primary-black;
-    font-size: 56px;
-    font-family: "Dela Gothic One";
-    font-weight: 600;
   }
 
   .textAdditional {
+    font: 600 18px 'Montserrat';
     color: $primary-grey-dark;
-    font: 600 18px "Montserrat";
   }
 
   .btn {
-    @extend %button-params;
-    width: max-content;
+    @include primary-button(max-content, 14px 17px, 100px, $primary-cyan-dark, $primary-cyan-light, $primary-white, $primary-golden-yellow);
   }
 
   .statictics {
     width: 175px;
 
     .studentsCount {
+      font: 600 40px 'Dela Gothic One';
       color: $primary-black;
-      font: 600 40px "Dela Gothic One";
       text-align: center;
     }
 
@@ -49,17 +45,14 @@
     }
 
     .students {
+      font: 600 16px 'Montserrat';
       color: #585858;
-      font: 600 16px "Montserrat";
       text-align: center;
     }
   }
 
   .manImg {
-    background: url(./assets/man.svg) no-repeat;
-    width: 750px;
-    height: 490px;
-    // @extend %image-params;
+    @include preview-img(url(./assets/man.svg), 750px, 490px);
     position: absolute;
     left: 50%;
   }
@@ -70,52 +63,40 @@
   background: $primary-white;
 
   .learnBlockWidth {
+    @include flexbox(space-between, start, row);
     width: 1200px;
     margin: 0 auto;
     padding: 7% 0;
-    display: flex;
-    justify-content: space-between;
 
     .learnImg {
-      background-image: url(./assets/learn.svg);
-      width: 680px;
-      height: 430px;
-      @extend %image-params;
+      @include preview-img(url(./assets/learn.svg), 680px, 430px);
     }
 
     .learnBlockContent {
-      @extend %display-flex-column;
+      @include flexbox(space-between, start, column);
       height: 430px;
       width: 500px;
 
       h2 {
+        font: 600 48px 'Dela Gothic One';
         color: $primary-black;
-        font: 600 48px "Dela Gothic One";
       }
 
       p {
+        font: 600 18px 'Montserrat';
         color: $primary-grey-dark;
-        font-family: "Montserrat";
-        font-weight: 600;
-        font-size: 18px;
       }
 
       .wrapperIcons {
         display: flex;
+        gap: 5%;
 
         .sprint {
-          background-image: url(./assets/img11.svg);
-          width: 130px;
-          height: 145px;
-          @extend %image-params;
-          margin-right: 5%;
+          @include preview-img(url(./assets/img11.svg), 130px, 145px);
         }
 
         .tasks {
-          background-image: url(./assets/ing10.svg);
-          width: 172px;
-          height: 145px;
-          @extend %image-params;
+          @include preview-img(url(./assets/ing10.svg), 172px, 145px);
         }
       }
     }
@@ -123,39 +104,32 @@
 }
 
 .knowledgeBlock {
-  display: flex;
-  justify-content: space-between;
+  @include flexbox(space-between, start, row);
   width: 1200px;
   margin: 7% auto;
 
   .knowledgeBlockContent {
-    @extend %display-flex-column;
+    @include flexbox(space-between, start, column);
     width: 470px;
     height: 330px;
 
     h2 {
+      font: 600 48px 'Dela Gothic One';
       color: $primary-black;
-      font: 600 48px "Dela Gothic One";
     }
 
     p {
+      font: 600 18px 'Montserrat';
       color: $primary-grey-dark;
-      font-family: "Montserrat";
-      font-weight: 600;
-      font-size: 18px;
     }
 
     .bookBtn {
-      width: max-content;
-      @extend %button-params;
+      @include primary-button(max-content, 14px 17px, 100px, $primary-cyan-dark, $primary-cyan-light, $primary-white, $primary-golden-yellow);
     }
   }
 
   .knowledgeImg {
-    background-image: url(./assets/book.svg);
-    width: 580px;
-    height: 480px;
-    @extend %image-params;
+    @include preview-img(url(./assets/book.svg), 580px, 480px);
   }
 }
 
@@ -164,37 +138,32 @@
   background: $primary-white;
 
   .watchStatisticsWidth {
+    @include flexbox(space-between, start, row);
     width: 1200px;
     margin: 0 auto;
     padding: 7% 0;
-    display: flex;
-    justify-content: space-between;
 
     .staticticsImg {
-      background-image: url(./assets/manaNDGIRL.svg);
-      width: 680px;
-      height: 410px;
-      @extend %image-params;
+      @include preview-img(url(./assets/manaNDGIRL.svg), 580px, 410px);
     }
 
     .watchStatisticsBlockContent {
-      @extend %display-flex-column;
+      @include flexbox(space-between, start, column);
       width: 470px;
       height: 410px;
 
       h2 {
+        font: 600 48px 'Dela Gothic One';
         color: $primary-black;
-        font: 600 48px "Dela Gothic One";
       }
 
       p {
+        font: 600 18px 'Montserrat';
         color: $primary-grey-dark;
-        font: 600 18px "Montserrat";
       }
 
       .bookBtn {
-        width: max-content;
-        @extend %button-params;
+        @include primary-button(max-content, 14px 17px, 100px, $primary-cyan-dark, $primary-cyan-light, $primary-white, $primary-golden-yellow);
       }
     }
   }

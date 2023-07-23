@@ -7,14 +7,13 @@ import CoursesPage from './pages/CoursesPage/CoursesPage';
 function App() {
   return (
     <Routes>
-      <Route path='/' element={<HomePage />} />
+      <Route path="/" element={<HomePage />} />
 
-      <Route path='/auth' element={<AuthPage />} />
+      <Route path="/auth" element={<AuthPage />} />
 
-      <Route path='/reg' element={<RegistrationPage />} />
+      <Route path="/reg" element={<RegistrationPage />} />
 
-      <Route path='/course' element={<CoursesPage />} />
-
+      <Route path="/course" element={<CoursesPage />} />
     </Routes>
   );
 }

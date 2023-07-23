@@ -1,9 +1,9 @@
-function CoursesPage(){
-    return(
-        <>
-        <h1>hello</h1>
-        </>
-    )
+function CoursesPage() {
+  return (
+    <>
+      <h1>hello</h1>
+    </>
+  );
 }
 
-export default CoursesPage
+export default CoursesPage;

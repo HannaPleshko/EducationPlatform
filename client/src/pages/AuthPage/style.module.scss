@@ -13,7 +13,7 @@
 
     h1 {
       color: var(--primaty-black, #000);
-      font: 400 56px "Dela Gothic One";
+      font: 400 56px 'Dela Gothic One';
     }
 
     input {
@@ -28,7 +28,7 @@
 
     input::placeholder {
       color: var(--gray-gray-5, #adb5bd);
-      font: 400 20px "Open Sans";
+      font: 400 20px 'Open Sans';
     }
   }
 
@@ -38,8 +38,8 @@
     width: 110px;
     padding: 15px 0;
     text-align: center;
-    color: #FFF;
-    font-family: 700 16px "Montserrat";
+    color: #fff;
+    font-family: 700 16px 'Montserrat';
     cursor: pointer;
   }
 

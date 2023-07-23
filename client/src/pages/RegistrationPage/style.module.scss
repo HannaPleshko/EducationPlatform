@@ -1,54 +1,53 @@
 .wrapper {
-    width: 1200px;
-    margin: 3% auto;
+  width: 1200px;
+  margin: 3% auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .loginForm {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    align-items: center;
-  
-    .loginForm {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      height: 500px;
-  
-      h1 {
-        color: var(--primaty-black, #000);
-        font: 400 56px "Dela Gothic One";
-      }
-  
-      input {
-        background: var(--primaty-grey-light, #f6f5f4);
-        border: 1px solid #d1d1d1;
-        border-radius: 0 12px 12px 0;
-        border-radius: 2px;
-        border: 1px solid var(--gray-gray-4, #ced4da);
-        width: 520px;
-        padding: 12px 20px;
-      }
-  
-      input::placeholder {
-        color: var(--gray-gray-5, #adb5bd);
-        font: 400 20px "Open Sans";
-        }
+    height: 500px;
+
+    h1 {
+      color: var(--primaty-black, #000);
+      font: 400 56px 'Dela Gothic One';
     }
-  
-    .btn {
-      border-radius: 100px;
-      background: var(--primaty-cyan-dark, #2b788b);
-      width: 110px;
-      padding: 15px 0;
-      text-align: center;
-      color: #FFF;
-      font-family: 700 16px "Montserrat";
-      cursor: pointer;
+
+    input {
+      background: var(--primaty-grey-light, #f6f5f4);
+      border: 1px solid #d1d1d1;
+      border-radius: 0 12px 12px 0;
+      border-radius: 2px;
+      border: 1px solid var(--gray-gray-4, #ced4da);
+      width: 520px;
+      padding: 12px 20px;
     }
-  
-    .image {
-      background-image: url(./assets/imgmanwithbook.svg);
-      width: 480px;
-      height: 320px;
-      background-repeat: no-repeat;
-      background-size: contain;
+
+    input::placeholder {
+      color: var(--gray-gray-5, #adb5bd);
+      font: 400 20px 'Open Sans';
     }
   }
-  
+
+  .btn {
+    border-radius: 100px;
+    background: var(--primaty-cyan-dark, #2b788b);
+    width: 110px;
+    padding: 15px 0;
+    text-align: center;
+    color: #fff;
+    font-family: 700 16px 'Montserrat';
+    cursor: pointer;
+  }
+
+  .image {
+    background-image: url(./assets/imgmanwithbook.svg);
+    width: 480px;
+    height: 320px;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+}
