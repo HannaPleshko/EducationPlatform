@@ -6,19 +6,28 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function RegistrationPage() {
-  const [createUser] = useCreateUserMutation();
-  const [value, setValue] = useState({ name: '', surname: '', email: '', pwd: '', role: '' });
+  const [createUser, { data, isLoading, isSuccess }] = useCreateUserMutation();
+  const [value, setValue] = useState({});
   const navigate = useNavigate();
 
-  function sendRequest() {
-    createUser(value).then(() => {
-      navigate('/course');
-    });
+
+  async function sendRequest() {
+    try {
+      const res=await createUser(value)
+      console.log(res);
+      if (res.data) {
+        navigate('/auth');
+      }
+
+    } catch (error) {
+
+    }
   }
 
   function changeInputValue(event) {
-    setValue({ ...value, [event.target.name]: event.target.value });
+    setValue({ ...value, [event.target.name]: event.target.name === 'role' ? +event.target.value : event.target.value });
   }
+
   return (
     <>
       <Header />
@@ -47,7 +56,7 @@ function RegistrationPage() {
           </div>
 
           <div>
-            <input name="role" onChange={changeInputValue} placeholder="Placeholder role // " />
+            <input name="role" onChange={changeInputValue} placeholder="Placeholder role" />
           </div>
 
           <div onClick={sendRequest} className={style.btn}>

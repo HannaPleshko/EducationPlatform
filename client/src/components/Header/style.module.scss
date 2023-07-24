@@ -7,12 +7,13 @@
 
   .content {
     @include flexbox(space-between, center, row);
-    width: 1200px;
+    max-width: 1200px;
     margin: 0 auto;
 
     nav {
       @include flexbox(space-between, center, row);
       width: 200px;
+      max-width: 100%;
 
       .login {
         font: 700 16px 'Montserrat';

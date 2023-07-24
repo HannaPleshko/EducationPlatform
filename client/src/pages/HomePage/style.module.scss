@@ -1,14 +1,13 @@
 @import '../../styles/index.scss';
 
 .preview {
-  @include flexbox(space-between, start, row);
-  width: 1200px;
+  @include flexbox(space-between, center, row);
+  max-width: 1200px;
   margin: 7% auto;
-  position: relative;
 
   .previewContent {
     @include flexbox(space-between, start, column);
-    width: 600px;
+    max-width: 600px;
     height: 500px;
   }
 
@@ -32,7 +31,7 @@
   }
 
   .statictics {
-    width: 175px;
+    max-width: 175px;
 
     .studentsCount {
       font: 600 40px 'Dela Gothic One';
@@ -52,9 +51,7 @@
   }
 
   .manImg {
-    @include preview-img(url(./assets/man.svg), 750px, 490px);
-    position: absolute;
-    left: 50%;
+    @include preview-img(url(./assets/man.png), 550px, 400px);
   }
 }
 
@@ -64,7 +61,7 @@
 
   .learnBlockWidth {
     @include flexbox(space-between, start, row);
-    width: 1200px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 7% 0;
 
@@ -75,7 +72,7 @@
     .learnBlockContent {
       @include flexbox(space-between, start, column);
       height: 430px;
-      width: 500px;
+      max-width: 500px;
 
       h2 {
         font: 600 48px 'Dela Gothic One';
@@ -105,12 +102,12 @@
 
 .knowledgeBlock {
   @include flexbox(space-between, start, row);
-  width: 1200px;
+  max-width: 1200px;
   margin: 7% auto;
 
   .knowledgeBlockContent {
     @include flexbox(space-between, start, column);
-    width: 470px;
+    max-width: 470px;
     height: 330px;
 
     h2 {
@@ -139,7 +136,7 @@
 
   .watchStatisticsWidth {
     @include flexbox(space-between, start, row);
-    width: 1200px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 7% 0;
 
@@ -149,7 +146,7 @@
 
     .watchStatisticsBlockContent {
       @include flexbox(space-between, start, column);
-      width: 470px;
+      max-width: 470px;
       height: 410px;
 
       h2 {

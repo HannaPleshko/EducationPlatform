@@ -1,5 +1,6 @@
 import app from './src/app';
 import { createTables } from './src/queries/createTable';
+import { dropTables } from './src/queries/dropTable';
 
 createTables();
 

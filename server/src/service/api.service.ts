@@ -2,21 +2,19 @@ import bcrypt from 'bcrypt';
 import { registrationUserDB, getUserByEmailDB } from '../repository/api.repository';
 import { iUser } from '../interfaces/interfaces';
 
-async function registrationUser(name: string, surname: string, email: string, pwd: string, role: number): Promise<iUser[]> {
-  const foundUser = await getUserByEmailDB(email);
-  if (foundUser.length) throw new Error('there is already a user with this email.');
-  const salt = await bcrypt.genSaltSync(10);
-  const hashPwd = await bcrypt.hashSync(pwd, salt);
-  return await registrationUserDB(name, surname, email, hashPwd, role);
+async function registrationUser(user: iUser): Promise<void> {
+  const foundUser = await getUserByEmailDB(user.email);
+  if (foundUser?.id) throw new Error('there is already a user with this email.');
+
+  const createdUser = await registrationUserDB({ ...user, pwd: await bcrypt.hash(user.pwd, 10) });
+  if (!createdUser.length) throw new Error('User does not create')
 }
 
-async function authorizationUser(email: string, pwd: string): Promise<iUser[]> {
-  const foundUser = await getUserByEmailDB(email);
-  if (!foundUser.length) throw new Error('user with this email does not exist.');
-
-  if (!(await bcrypt.compare(pwd, foundUser[0].pwd))) throw new Error(' wrong password');
-
-  return foundUser;
+async function authorizationUser(user: iUser): Promise<iUser> {
+  const foundUser = await getUserByEmailDB(user.email);
+  if (!foundUser?.id) throw new Error('user with this email does not exist.');
+  if (!(await bcrypt.compare(user.pwd, foundUser.pwd))) throw new Error('wrong password');
+  return foundUser
 }
 
 export { registrationUser, authorizationUser };

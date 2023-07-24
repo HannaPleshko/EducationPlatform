@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthContext';
 import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Header/Header';
 import style from './style.module.scss';
@@ -7,21 +8,25 @@ import { useGetUserMutation } from '../../services/user';
 
 function AuthPage() {
   const navigate = useNavigate();
-  const [getUser] = useGetUserMutation();
-  const [value, setValue] = useState({ email: '', pwd: '' });
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const auth = useContext(AuthContext);
+  const [getUser, { data, isLoading, isSuccess, isError }] = useGetUserMutation();
+  const [value, setValue] = useState({ });
 
-  function sendRequest() {
-    getUser(value)
-      .then(() => {
-        // Успешная авторизация
-        setIsAuthenticated(true);
-        navigate('/course');
-      })
-      .catch((error) => {
-        // Обработка ошибки авторизации
-        setIsAuthenticated(false);
-      });
+  if (isSuccess) {
+    auth.login(data.token);
+  }
+
+  async function sendRequest() {
+    try {
+      const res = await getUser(value);
+      console.log(data);
+      if (res.data) {
+        navigate('/');
+      }
+
+    } catch (err) {
+
+    }
   }
 
   function changeInputValue(event) {

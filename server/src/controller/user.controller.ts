@@ -1,5 +1,5 @@
 import express, { Request, Response } from 'express';
-import { getUser, getUserById, createUser, updateUser, deleteUser } from '../service/user.service';
+import { getUser, getUserById, updateUser, deleteUser } from '../service/user.service';
 const route = express.Router();
 
 route.get('/', async function (req, res) {
@@ -21,15 +21,6 @@ route.get('/:id', async function (req, res) {
   }
 });
 
-route.post('/', async function (req, res) {
-  try {
-    const { name, surname, email, pwd, role } = req.body;
-    const user = await createUser(name, surname, email, pwd, role);
-    res.status(200).send(user);
-  } catch (error: any) {
-    res.status(404).send(error.message);
-  }
-});
 route.put('/:id', async function (req, res) {
   try {
     const { id } = req.params;

@@ -14,21 +14,6 @@ async function getUserByIdDB(id) {
   return result;
 }
 
-async function createUserDB(name, surname, email, pwd, role) {
-  const client = await pool.connect();
-  try {
-    await client.query('BEGIN');
-    const sql = 'INSERT INTO users( name, surname, email, pwd, role) VALUES($1,$2,$3,$4,$5) RETURNING*';
-    const result = (await client.query(sql, [name, surname, email, pwd, role])).rows;
-    await client.query('COMMIT');
-    return result;
-  } catch (error) {
-    await client.query('ROLLBACK');
-    console.log(`createUserDB: error`);
-    return [];
-  }
-}
-
 async function updateUserDB(id, name, surname, email, pwd, role) {
   const client = await pool.connect();
   try {
@@ -58,4 +43,4 @@ async function deleteUserDB(id) {
   }
 }
 
-export { getUserDB, getUserByIdDB, createUserDB, updateUserDB, deleteUserDB };
+export { getUserDB, getUserByIdDB, updateUserDB, deleteUserDB };

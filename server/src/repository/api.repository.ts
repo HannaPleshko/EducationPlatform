@@ -1,25 +1,27 @@
 import pool from '../DB';
-import { iUser } from '../interfaces/interfaces';
+import { iRole, iUser } from '../interfaces/interfaces';
 
-async function getUserByEmailDB(email: string): Promise<iUser[]> {
+async function getUserByEmailDB(email): Promise<iUser> {
   const client = await pool.connect();
-  const sql = `SELECT * FROM users WHERE email=$1`;
-  return (await client.query(sql, [email])).rows;
+  const sql = `SELECT * FROM USERS WHERE email = $1`;
+  return (await client.query(sql, [email])).rows[0];
 }
 
-async function registrationUserDB(name: string, surname: string, email: string, pwd: string, role: number): Promise<iUser[]> {
+async function registrationUserDB(user: iUser): Promise<iUser[]> {
   const client = await pool.connect();
   try {
+    const { name, surname, email, pwd, role } = user;
     await client.query('BEGIN');
-    const sql = `INSERT INTO users( name, surname, email, pwd, role) 
-        VALUES($1,$2,$3,$4,$5)`;
+    const sql = `INSERT INTO USERS (name, surname, email, pwd, role) VALUES ($1, $2, $3, $4, $5) RETURNING *`;
     const data: iUser[] = (await client.query(sql, [name, surname, email, pwd, role])).rows;
     await client.query('COMMIT');
     return data;
-  } catch (error) {
+  } catch (error: any) {
     await client.query('ROLLBACK');
-    return [];
+    console.log(error.message);
+
+    return []
   }
 }
 
-export { getUserByEmailDB, registrationUserDB };
+export { getUserByEmailDB, registrationUserDB }

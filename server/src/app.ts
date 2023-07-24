@@ -3,13 +3,11 @@ import user from './controller/user.controller';
 import course from './controller/course.controller';
 import api from './controller/api.controller';
 import bodyParser from 'body-parser';
+import cors from 'cors';
 
 const app = express();
 
-app.use(function (req, res, next) {
-  res.header('Access-Control-Allow-Origin', '*');
-  next();
-});
+app.use(cors());
 app.use(bodyParser.json());
 
 app.use('/user', user);

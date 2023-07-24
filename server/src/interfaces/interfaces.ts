@@ -1,3 +1,8 @@
+interface iRole {
+  id?: number;
+  role?: string ;
+}
+
 interface iCourse {
   id?: number;
   title?: string;
@@ -14,4 +19,4 @@ interface iUser {
   role?: number;
 }
 
-export { iCourse, iUser };
+export { iCourse, iUser, iRole };
