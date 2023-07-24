@@ -10,22 +10,21 @@ function RegistrationPage() {
   const [value, setValue] = useState({});
   const navigate = useNavigate();
 
-
   async function sendRequest() {
     try {
-      const res=await createUser(value)
+      const res = await createUser(value);
       console.log(res);
       if (res.data) {
         navigate('/auth');
       }
-
-    } catch (error) {
-
-    }
+    } catch (error) {}
   }
 
   function changeInputValue(event) {
-    setValue({ ...value, [event.target.name]: event.target.name === 'role' ? +event.target.value : event.target.value });
+    setValue({
+      ...value,
+      [event.target.name]: event.target.name === 'role' ? +event.target.value : event.target.value,
+    });
   }
 
   return (

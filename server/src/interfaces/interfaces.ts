@@ -1,6 +1,6 @@
 interface iRole {
   id?: number;
-  role?: string ;
+  role?: string;
 }
 
 interface iCourse {

@@ -19,7 +19,7 @@
   width: $width;
   height: $height;
   background-size: contain;
-  background-image: $path ;
+  background-image: $path;
   background-repeat: no-repeat;
 }
 
@@ -30,7 +30,15 @@
   flex-direction: $direction;
 }
 
-@mixin primary-button($width, $paddingSize,  $radius, $defaultColor, $defaultBckgColor, $hoverColor, $hoverBckgColor) {
+@mixin primary-button(
+  $width,
+  $paddingSize,
+  $radius,
+  $defaultColor,
+  $defaultBckgColor,
+  $hoverColor,
+  $hoverBckgColor
+) {
   width: $width;
   padding: $paddingSize;
   border-radius: $radius;

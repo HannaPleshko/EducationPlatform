@@ -4,10 +4,18 @@ import course from './controller/course.controller';
 import api from './controller/api.controller';
 import bodyParser from 'body-parser';
 import cors from 'cors';
+import cookieParser from 'cookie-parser';
 
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: 'http://localhost:3001',
+    credentials: true,
+  }),
+);
+
+app.use(cookieParser());
 app.use(bodyParser.json());
 
 app.use('/user', user);

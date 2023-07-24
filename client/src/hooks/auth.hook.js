@@ -1,31 +1,28 @@
 import { useState, useCallback, useEffect } from 'react';
+import Cookies from 'js-cookie';
 
 const storageName = 'userData';
-
 export const useAuth = () => {
-    const [token, setToken] = useState(null);
+  const [token, setToken] = useState(null);
 
-    const login = useCallback((jwtToken) => {
-        setToken(jwtToken);
-        localStorage.setItem(
-            storageName,
-            JSON.stringify({
-                token: jwtToken,
-            })
-        );
-    }, []);
+  const login = useCallback(() => {
+    setToken(Cookies.get('access_token'));
+  }, []);
 
-    const logout = useCallback(() => {
-        setToken(null);
-        localStorage.removeItem(storageName);
-    }, []);
+  const logout = useCallback(() => {
+    setToken(null);
+    Cookies.remove('access_token');
+  }, []);
 
-    useEffect(() => {
-        const data = JSON.parse(localStorage.getItem(storageName));
-        if (data && data.token) {
-            login(data.token);
-        }
-    }, [login]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = JSON.parse(localStorage.getItem(storageName));
+      if (data && data.token) {
+        login(data.token);
+      }
+    };
+    fetchData();
+  }, [login]);
 
-    return { login, logout, token };
+  return { login, logout, token };
 };

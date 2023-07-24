@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 import Footer from '../../components/Footer/Footer';
@@ -8,24 +8,22 @@ import { useGetUserMutation } from '../../services/user';
 
 function AuthPage() {
   const navigate = useNavigate();
-  const auth = useContext(AuthContext);
-  const [getUser, { data, isLoading, isSuccess, isError }] = useGetUserMutation();
-  const [value, setValue] = useState({ });
+  const { login } = useContext(AuthContext);
+  const [getUser, { isSuccess }] = useGetUserMutation();
+  const [value, setValue] = useState({});
 
-  if (isSuccess) {
-    auth.login(data.token);
-  }
+  useEffect(() => {
+    if (isSuccess) {
+      login();
+      navigate('/');
+    }
+  }, [isSuccess, login, navigate]);
 
   async function sendRequest() {
     try {
-      const res = await getUser(value);
-      console.log(data);
-      if (res.data) {
-        navigate('/');
-      }
-
+      await getUser(value);
     } catch (err) {
-
+      console.error(err);
     }
   }
 

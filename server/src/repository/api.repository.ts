@@ -20,8 +20,8 @@ async function registrationUserDB(user: iUser): Promise<iUser[]> {
     await client.query('ROLLBACK');
     console.log(error.message);
 
-    return []
+    return [];
   }
 }
 
-export { getUserByEmailDB, registrationUserDB }
+export { getUserByEmailDB, registrationUserDB };

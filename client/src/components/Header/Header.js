@@ -1,11 +1,11 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../../hooks/auth.hook';
 import style from './style.module.scss';
+import { AuthContext } from '../../context/AuthContext';
+import { useContext } from 'react';
 
 function Header() {
   const navigate = useNavigate();
-  const { token, logout } = useAuth();
-  const isAuthenticated = !!token;
+  const { isAuthenticated, logout } = useContext(AuthContext);
 
   return (
     <div className={style.wrapper}>
@@ -13,7 +13,7 @@ function Header() {
         <h1>Hschool</h1>
 
         <nav>
-          {!isAuthenticated ?
+          {!isAuthenticated ? (
             <>
               <Link to="/auth">
                 <div className={style.login}>Login →</div>
@@ -22,13 +22,17 @@ function Header() {
               <Link to="/reg">
                 <div className={style.sign}>Sign Up</div>
               </Link>
-            </> :
-            <div onClick={() => {
-              logout();
-              navigate('/');
-            }}>
+            </>
+          ) : (
+            <div
+              onClick={() => {
+                logout();
+                navigate('/');
+              }}
+            >
               <div className={style.sign}>Sign Out</div>
-            </div>}
+            </div>
+          )}
         </nav>
       </div>
     </div>

@@ -27,7 +27,15 @@
   }
 
   .btn {
-    @include primary-button(max-content, 14px 17px, 100px, $primary-cyan-dark, $primary-cyan-light, $primary-white, $primary-golden-yellow);
+    @include primary-button(
+      max-content,
+      14px 17px,
+      100px,
+      $primary-cyan-dark,
+      $primary-cyan-light,
+      $primary-white,
+      $primary-golden-yellow
+    );
   }
 
   .statictics {
@@ -121,7 +129,15 @@
     }
 
     .bookBtn {
-      @include primary-button(max-content, 14px 17px, 100px, $primary-cyan-dark, $primary-cyan-light, $primary-white, $primary-golden-yellow);
+      @include primary-button(
+        max-content,
+        14px 17px,
+        100px,
+        $primary-cyan-dark,
+        $primary-cyan-light,
+        $primary-white,
+        $primary-golden-yellow
+      );
     }
   }
 
@@ -160,7 +176,15 @@
       }
 
       .bookBtn {
-        @include primary-button(max-content, 14px 17px, 100px, $primary-cyan-dark, $primary-cyan-light, $primary-white, $primary-golden-yellow);
+        @include primary-button(
+          max-content,
+          14px 17px,
+          100px,
+          $primary-cyan-dark,
+          $primary-cyan-light,
+          $primary-white,
+          $primary-golden-yellow
+        );
       }
     }
   }

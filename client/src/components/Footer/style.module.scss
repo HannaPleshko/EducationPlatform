@@ -37,7 +37,13 @@
         gap: 10px;
 
         .logoGit {
-          @include icon-decorator(url(./assets/git.svg), 28px, 24px, $primary-grey-light, #24292fcf);
+          @include icon-decorator(
+            url(./assets/git.svg),
+            28px,
+            24px,
+            $primary-grey-light,
+            #24292fcf
+          );
         }
 
         .logoGT {

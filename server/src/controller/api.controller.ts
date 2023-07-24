@@ -8,7 +8,7 @@ const route = express.Router();
 
 route.post('/reg', async function (req: Request, res: Response) {
   try {
-    const user = req.body
+    const user = req.body;
     await registrationUser(user);
     buildResponse(res, 200, { mess: 'SUCCESS' });
   } catch (error: any) {
@@ -18,9 +18,16 @@ route.post('/reg', async function (req: Request, res: Response) {
 
 route.post('/auth', async function (req: Request, res: Response) {
   try {
-    const user = req.body
+    const user = req.body;
     const data = await authorizationUser(user);
-    buildResponse(res, 200, createToken(data))
+
+    const tokenData = createToken(data);
+    res.cookie('access_token', tokenData.token, {
+      httpOnly: false,
+      secure: true,
+    });
+
+    buildResponse(res, 200, { mess: 'Authorization successful.' });
   } catch (error: any) {
     handleError(res, 404, error.message);
   }

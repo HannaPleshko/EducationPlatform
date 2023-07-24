@@ -1,10 +1,4 @@
-import {
-  getCourseDB,
-  getCourseByIdDB,
-  createCourseDB,
-  updateCourseDB,
-  deleteCourseDB,
-} from "../repository/course.repository";
+import { getCourseDB, getCourseByIdDB, createCourseDB, updateCourseDB, deleteCourseDB } from '../repository/course.repository';
 
 async function getCourse() {
   return await getCourseDB();

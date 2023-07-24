@@ -26,7 +26,15 @@
       }
 
       .sign {
-        @include primary-button(110px, 14px 0px, 14px, $primary-white, $primary-cyan-dark, $primary-white, $primary-golden-yellow);
+        @include primary-button(
+          110px,
+          14px 0px,
+          14px,
+          $primary-white,
+          $primary-cyan-dark,
+          $primary-white,
+          $primary-golden-yellow
+        );
       }
     }
   }
