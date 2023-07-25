@@ -9,10 +9,17 @@
   .loginForm {
     @include flexbox(space-between, start, column);
     height: 300px;
+    width: 600px;
 
     h1 {
       font: 400 56px 'Dela Gothic One';
       color: var(--primaty-black, #000);
+    }
+
+    .inps {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
     }
 
     input {
