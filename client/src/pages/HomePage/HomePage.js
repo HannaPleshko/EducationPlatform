@@ -2,20 +2,46 @@ import React from 'react';
 import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Header/Header';
 import style from './style.module.scss';
+import { motion } from "framer-motion"
+
+const textAnimation = {
+  hiddenHorizontal: {
+    x: 100,
+    opacity: 0,
+  },
+  visibleHorizontal: custom => ({
+    x: 0,
+    opacity: 1,
+    transition: { delay: custom * 0.2 }
+  }),
+  hiddenVertical: {
+    y: -100,
+    opacity: 0,
+  },
+  visibleVertical: custom => ({
+    y: 0,
+    opacity: 1,
+    transition: { delay: custom * 0.2 }
+  })
+}
 
 function HomePage() {
   return (
     <>
       <Header />
 
-      <div className={style.preview}>
+      <motion.div
+        initial='hiddenHorizontal'
+        whileInView='visibleHorizontal'
+        viewport={{ once: true }}
+        className={style.preview}>
         <div className={style.previewContent}>
-          <p className={style.textPlatform}>E-COURSE PLATFORM</p>
-          <h1>Learning and teaching online, made easy.</h1>
-          <p className={style.textAdditional}>
+          <motion.p custom={1} variants={textAnimation} className={style.textPlatform}>E-COURSE PLATFORM</motion.p>
+          <motion.h1 custom={2} variants={textAnimation}>Learning and teaching online, made easy.</motion.h1>
+          <motion.p custom={3} variants={textAnimation} className={style.textAdditional}>
             Any subject, in any language, on any device, for all ages!
-          </p>
-          <div className={`${style.btn} ${style.button}`}>About platform</div>
+          </motion.p>
+          <motion.div custom={4} variants={textAnimation} className={`${style.btn} ${style.button}`}>About platform</motion.div>
           <div className={style.statictics}>
             <p className={style.studentsCount}>
               <span className={style.lightning}></span>600 <span>+</span>
@@ -24,41 +50,53 @@ function HomePage() {
           </div>
         </div>
         <div className={style.manImg}></div>
-      </div>
+      </motion.div>
 
-      <div className={style.learnBlock}>
+      <motion.div
+        initial='hiddenVertical'
+        whileInView='visibleVertical'
+        viewport={{ amount: 0.2, once: true }}
+        className={style.learnBlock}>
         <div className={style.learnBlockWidth}>
-          <div className={style.learnImg}></div>
+          <motion.div custom={1} variants={textAnimation} className={style.learnImg}></motion.div>
           <div className={style.learnBlockContent}>
-            <h2>Learn a language in a playful way</h2>
-            <p>Make learning programming languages more fun with mini-games</p>
+            <motion.h2 custom={2} variants={textAnimation}>Learn a language in a playful way</motion.h2>
+            <motion.p custom={3} variants={textAnimation}>Make learning programming languages more fun with mini-games</motion.p>
             <div className={style.wrapperIcons}>
-              <div className={style.sprint}></div>
-              <div className={style.tasks}></div>
+              <motion.div custom={4} variants={textAnimation} className={style.sprint}></motion.div>
+              <motion.div custom={5} variants={textAnimation} className={style.tasks}></motion.div>
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
 
-      <div className={style.knowledgeBlock}>
+      <motion.div
+        initial='hiddenVertical'
+        whileInView='visibleVertical'
+        viewport={{ amount: 0.2, once: true }}
+        className={style.knowledgeBlock}>
         <div className={style.knowledgeBlockContent}>
-          <h2>Increase your knowledge</h2>
-          <p>Traditional and new effective approaches to learning languages</p>
-          <div className={`${style.bookBtn} ${style.button}`}>Textbook →</div>
+          <motion.h2 custom={2} variants={textAnimation}>Increase your knowledge</motion.h2>
+          <motion.p custom={3} variants={textAnimation}>Traditional and new effective approaches to learning languages</motion.p>
+          <motion.div custom={4} variants={textAnimation} className={`${style.bookBtn} ${style.button}`}>Textbook →</motion.div>
         </div>
-        <div className={style.knowledgeImg}></div>
-      </div>
+        <motion.div  custom={1} variants={textAnimation} className={style.knowledgeImg}></motion.div>
+      </motion.div>
 
-      <div className={style.watchStatisticsBlock}>
+      <motion.div
+        initial='hiddenVertical'
+        whileInView='visibleVertical'
+        viewport={{ amount: 0.2, once: true }}
+        className={style.watchStatisticsBlock}>
         <div className={style.watchStatisticsWidth}>
-          <div className={style.staticticsImg}></div>
+          <motion.div  custom={1} variants={textAnimation} className={style.staticticsImg}></motion.div>
           <div className={style.watchStatisticsBlockContent}>
-            <h2>Watch your progress every day</h2>
-            <p>Save statistics on your achievements and mistakes</p>
-            <div className={`${style.bookBtn} ${style.button}`}>Statistics →</div>
+            <motion.h2 custom={2} variants={textAnimation}>Watch your progress every day</motion.h2>
+            <motion.p custom={3} variants={textAnimation}>Save statistics on your achievements and mistakes</motion.p>
+            <motion.div custom={4} variants={textAnimation} className={`${style.bookBtn} ${style.button}`}>Statistics →</motion.div>
           </div>
         </div>
-      </div>
+      </motion.div>
 
       <Footer />
     </>

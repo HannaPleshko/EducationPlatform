@@ -17,19 +17,15 @@ function AuthForm({ isRegistration }) {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (isAuthSuccess) {
-            login();
-        }
-    }, [isAuthSuccess]);
-
+        if (isAuthSuccess) login();
+        
+    }, [isAuthSuccess, isRegistrationSuccess]);
+    
     async function sendRequest() {
         try {
-            console.log(value);
-            let response = isRegistration ? await createUser(value) : await getUser(value);
-
-            if (response.data) {
-                navigate(isRegistration ? '/auth' : '/');
-            }
+            isRegistration ? await createUser(value) : await getUser(value);
+            
+            navigate(isRegistration ? '/auth' : '/');
         } catch (error) {
             console.error(error);
         }
@@ -53,7 +49,7 @@ function AuthForm({ isRegistration }) {
 
                 <div className={style.inps}>
                     <TextField onChange={handleChange} name="email" label="Your email" variant="outlined" />
-                    <TextField onChange={handleChange} name="pwd" label="Your password" variant="outlined" />
+                    <TextField onChange={handleChange} name="pwd" label="Your password" variant="outlined" type='password' />
                     {isRegistration && (
                         <>
                             <TextField onChange={handleChange} name="name" label="Your name" variant="outlined" />

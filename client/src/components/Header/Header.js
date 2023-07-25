@@ -10,7 +10,7 @@ function Header() {
   return (
     <div className={style.wrapper}>
       <div className={style.content}>
-        <h1>Hschool</h1>
+        <Link to="/"><h1> Hschool</h1></Link>
 
         <nav>
           {!isAuthenticated ? (

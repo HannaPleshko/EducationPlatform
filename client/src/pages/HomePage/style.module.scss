@@ -27,14 +27,12 @@
   }
 
   .btn {
-    @include primary-button(
-      14px 17px,
+    @include primary-button(14px 17px,
       100px,
       $primary-cyan-dark,
       $primary-cyan-light,
       $primary-white,
-      $primary-golden-yellow
-    );
+      $primary-golden-yellow );
   }
 
   .statictics {
@@ -128,14 +126,12 @@
     }
 
     .bookBtn {
-      @include primary-button(
-        14px 17px,
+      @include primary-button(14px 17px,
         100px,
         $primary-cyan-dark,
         $primary-cyan-light,
         $primary-white,
-        $primary-golden-yellow
-      );
+        $primary-golden-yellow );
     }
   }
 
@@ -174,14 +170,12 @@
       }
 
       .bookBtn {
-        @include primary-button(
-          14px 17px,
+        @include primary-button(14px 17px,
           100px,
           $primary-cyan-dark,
           $primary-cyan-light,
           $primary-white,
-          $primary-golden-yellow
-        );
+          $primary-golden-yellow );
       }
     }
   }
