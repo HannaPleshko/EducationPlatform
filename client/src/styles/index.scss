@@ -31,7 +31,6 @@
 }
 
 @mixin primary-button(
-  $width,
   $paddingSize,
   $radius,
   $defaultColor,
@@ -39,18 +38,19 @@
   $hoverColor,
   $hoverBckgColor
 ) {
-  width: $width;
+  width: max-content;
   padding: $paddingSize;
   border-radius: $radius;
   text-align: center;
   color: $defaultColor;
   background: $defaultBckgColor;
   transition:
-    background 0.3s ease,
-    color 0.3s ease;
-
+  background 0.3s ease,
+  color 0.3s ease;
+  
   &:hover {
     background: $hoverBckgColor;
     color: $hoverColor;
+    cursor: pointer;
   }
 }

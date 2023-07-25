@@ -10,8 +10,8 @@ export const useAuth = () => {
   }, []);
 
   const logout = useCallback(() => {
-    setToken(null);
     Cookies.remove('access_token');
+    setToken(null);
   }, []);
 
   useEffect(() => {

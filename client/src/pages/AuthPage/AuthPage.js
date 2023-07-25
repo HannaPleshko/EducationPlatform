@@ -5,6 +5,7 @@ import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Header/Header';
 import style from './style.module.scss';
 import { useGetUserMutation } from '../../services/user';
+import { TextField } from '@mui/material';
 
 function AuthPage() {
   const navigate = useNavigate();
@@ -34,26 +35,20 @@ function AuthPage() {
   return (
     <>
       <Header />
+
       <div className={style.wrapper}>
         <div className={style.loginForm}>
           <h1>Login</h1>
-          <div>
-            <input name="email" onChange={changeInputValue} placeholder="Placeholder email" />
-          </div>
-          <div>
-            <input
-              name="pwd"
-              type="password"
-              onChange={changeInputValue}
-              placeholder="Placeholder pwd"
-            />
-          </div>
+          <TextField onChange={changeInputValue} name="email" label="Your email" variant="outlined" />
+          <TextField onChange={changeInputValue} name="pwd" label="Your password" variant="outlined" />
           <div onClick={sendRequest} className={style.btn}>
             Login
           </div>
         </div>
+
         <div className={style.image}></div>
       </div>
+
       <Footer />
     </>
   );

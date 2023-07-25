@@ -4,23 +4,30 @@ import style from './style.module.scss';
 import { useCreateUserMutation } from '../../services/user';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { TextField } from '@mui/material';
+import Select from '@mui/material/Select';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
 
 function RegistrationPage() {
-  const [createUser, { data, isLoading, isSuccess }] = useCreateUserMutation();
-  const [value, setValue] = useState({});
+  const [createUser, { isLoading, isSuccess }] = useCreateUserMutation();
+  const [value, setValue] = useState({role: 1});
+  const [role, setRole] = useState(1);
   const navigate = useNavigate();
 
   async function sendRequest() {
     try {
       const res = await createUser(value);
-      console.log(res);
       if (res.data) {
         navigate('/auth');
       }
-    } catch (error) {}
+    } catch (error) { }
   }
 
   function changeInputValue(event) {
+    if (event.target.name === 'role') setRole(event.target.value)
+
     setValue({
       ...value,
       [event.target.name]: event.target.name === 'role' ? +event.target.value : event.target.value,
@@ -30,36 +37,32 @@ function RegistrationPage() {
   return (
     <>
       <Header />
+
       <div className={style.wrapper}>
         <div className={style.loginForm}>
           <h1>Sign Up</h1>
-          <div>
-            <input name="name" onChange={changeInputValue} placeholder="Placeholder name" />
-          </div>
 
-          <div>
-            <input name="surname" onChange={changeInputValue} placeholder="Placeholder surname" />
-          </div>
-
-          <div>
-            <input name="email" onChange={changeInputValue} placeholder="Placeholder email" />
-          </div>
-
-          <div>
-            <input
-              name="pwd"
-              type="password"
-              onChange={changeInputValue}
-              placeholder="Placeholder pwd"
-            />
-          </div>
-
-          <div>
-            <input name="role" onChange={changeInputValue} placeholder="Placeholder role" />
+          <div className={style.inps}>
+            <TextField onChange={changeInputValue} name="name" label="Your name" variant="outlined" />
+            <TextField onChange={changeInputValue} name="surname" label="Your surname" variant="outlined" />
+            <TextField onChange={changeInputValue} name="email" label="Your email" variant="outlined" />
+            <TextField onChange={changeInputValue} name="pwd" label="Your password" variant="outlined" />
+            <FormControl>
+              <InputLabel>Role</InputLabel>
+              <Select
+                name="role"
+                value={role}
+                label="Role"
+                onChange={changeInputValue}
+              >
+                <MenuItem value={1}>Student</MenuItem>
+                <MenuItem value={2}>Teacher</MenuItem>
+              </Select>
+            </FormControl>
           </div>
 
           <div onClick={sendRequest} className={style.btn}>
-            Login
+            Create User
           </div>
         </div>
 

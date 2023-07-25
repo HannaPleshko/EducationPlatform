@@ -28,7 +28,6 @@
 
   .btn {
     @include primary-button(
-      max-content,
       14px 17px,
       100px,
       $primary-cyan-dark,
@@ -130,7 +129,6 @@
 
     .bookBtn {
       @include primary-button(
-        max-content,
         14px 17px,
         100px,
         $primary-cyan-dark,
@@ -177,7 +175,6 @@
 
       .bookBtn {
         @include primary-button(
-          max-content,
           14px 17px,
           100px,
           $primary-cyan-dark,

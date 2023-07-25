@@ -1,53 +1,35 @@
+@import '../../styles/index.scss';
+
 .wrapper {
-  width: 1200px;
-  margin: 3% auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  @include flexbox(space-between, center, row);
+  max-width: 1200px;
+  margin: 7% auto;
+
 
   .loginForm {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    @include flexbox(space-between, start, column);
     height: 300px;
 
     h1 {
-      color: var(--primaty-black, #000);
       font: 400 56px 'Dela Gothic One';
+      color: var(--primaty-black, #000);
     }
 
     input {
-      background: var(--primaty-grey-light, #f6f5f4);
-      border: 1px solid #d1d1d1;
-      border-radius: 0 12px 12px 0;
-      border-radius: 2px;
-      border: 1px solid var(--gray-gray-4, #ced4da);
-      width: 520px;
-      padding: 12px 20px;
+      width: 200px;
     }
 
-    input::placeholder {
-      color: var(--gray-gray-5, #adb5bd);
-      font: 400 20px 'Open Sans';
+    .btn {
+      @include primary-button(14px,
+        14px,
+        $primary-white,
+        $primary-cyan-dark,
+        $primary-white,
+        $primary-golden-yellow );
     }
-  }
-
-  .btn {
-    border-radius: 100px;
-    background: var(--primaty-cyan-dark, #2b788b);
-    width: 110px;
-    padding: 15px 0;
-    text-align: center;
-    color: #fff;
-    font-family: 700 16px 'Montserrat';
-    cursor: pointer;
   }
 
   .image {
-    background-image: url(./assets/imgmanwithbook.svg);
-    width: 480px;
-    height: 320px;
-    background-repeat: no-repeat;
-    background-size: contain;
+    @include preview-img(url(./assets/imgmanwithbook.png), 310px, 320px);
   }
 }
