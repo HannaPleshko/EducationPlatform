@@ -10,7 +10,7 @@
     max-width: 1200px;
     margin: 0 auto;
 
-    nav {
+    .btns {
       @include flexbox(space-between, center, row);
       width: 200px;
       max-width: 100%;

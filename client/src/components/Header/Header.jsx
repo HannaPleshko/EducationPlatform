@@ -3,7 +3,7 @@ import style from './style.module.scss';
 import { AuthContext } from '../../context/AuthContext';
 import { useContext } from 'react';
 
-function Header() {
+function Header({ nav }) {
   const navigate = useNavigate();
   const { isAuthenticated, logout } = useContext(AuthContext);
 
@@ -12,7 +12,13 @@ function Header() {
       <div className={style.content}>
         <Link to="/"><h1> Hschool</h1></Link>
 
-        <nav>
+        {nav ?
+          <nav>{nav.map((el, index) => <p key={index}>{el}</p>)}</nav>
+          : null
+        }
+
+
+        <div className={style.btns}>
           {!isAuthenticated ? (
             <>
               <Link to="/auth">
@@ -33,7 +39,7 @@ function Header() {
               <div className={style.sign}>Sign Out</div>
             </div>
           )}
-        </nav>
+        </div>
       </div>
     </div>
   );

@@ -3,11 +3,11 @@ import crypto from 'crypto';
 // import jwt_decode from 'jwt-decode';
 
 function createToken(user) {
-  const { id, name, surname, email } = user;
+  const { id, name, surname, email, role } = user;
   const jwtSecret: string = crypto.randomBytes(32).toString('hex');
 
   // const token = jwt.sign({ id, name, surname, email }, jwtSecret, { expiresIn: '1h' });
-  const token = jwt.sign({ id, name, surname, email }, jwtSecret);
+  const token = jwt.sign({ id, name, surname, email, role }, jwtSecret);
   return { token };
 }
 

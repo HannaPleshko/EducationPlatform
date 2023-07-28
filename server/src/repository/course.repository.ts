@@ -60,5 +60,3 @@ async function deleteCourseDB(id) {
 }
 
 export { getCourseDB, getCourseByIdDB, createCourseDB, updateCourseDB, deleteCourseDB };
-
-const repository = { getCourseDB: function () {}, getCourseByIdDB: function () {}, createCourseDB, updateCourseDB, deleteCourseDB };

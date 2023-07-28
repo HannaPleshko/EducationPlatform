@@ -9,6 +9,7 @@ const route = express.Router();
 route.post('/reg', async function (req: Request, res: Response) {
   try {
     const user = req.body;
+    
     await registrationUser(user);
     buildResponse(res, 200, { mess: 'SUCCESS' });
   } catch (error: any) {
@@ -19,6 +20,8 @@ route.post('/reg', async function (req: Request, res: Response) {
 route.post('/auth', async function (req: Request, res: Response) {
   try {
     const user = req.body;
+    console.log(user);
+
     const data = await authorizationUser(user);
 
     const tokenData = createToken(data);
