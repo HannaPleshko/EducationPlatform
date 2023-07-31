@@ -2,8 +2,7 @@
 
 .wrapper {
   @include flexbox(space-between, center, row);
-  max-width: 1200px;
-  margin: 7% auto;
+  @include section(7% auto, 0);
 
   .loginForm {
     @include flexbox(space-between, flex-start, column);

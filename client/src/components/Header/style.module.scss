@@ -8,10 +8,24 @@
     @include flexbox(space-between, center, row);
     @include section(auto, 2% 0);
 
+    .options {
+      @include flexbox(flex-start, center, row);
+      gap: 20px;
+
+      p {
+        @include text($primary-black, 700, 16px, Montserrat);
+        transition: transform 0.3s ease;
+
+        &:hover {
+          transform: scale(1.1);
+          cursor: pointer;
+        }
+      }
+    }
+
     .btns {
-      @include flexbox(space-between, center, row);
-      width: 200px;
-      max-width: 100%;
+      @include flexbox(flex-start, center, row);
+      gap: 20px;
 
       .login {
         @include text($primary-black, 700, 16px, Montserrat);
@@ -19,18 +33,17 @@
 
         &:hover {
           transform: scale(1.1);
+          cursor: pointer;
         }
       }
 
       .sign {
-        @include primary-button(
-          14px,
+        @include primary-button(14px,
           14px,
           $primary-white,
           $primary-cyan-dark,
           $primary-white,
-          $primary-golden-yellow
-        );
+          $primary-golden-yellow );
       }
     }
   }

@@ -3,7 +3,7 @@ import { AuthContext } from '../../context/AuthContext';
 import { useContext } from 'react';
 import style from './style.module.scss';
 
-function Header({ nav }) {
+function Header({ options, setCurrentOption }) {
   const navigate = useNavigate();
   const { isAuthenticated, logout } = useContext(AuthContext);
 
@@ -14,12 +14,12 @@ function Header({ nav }) {
           <h1> Hschool</h1>
         </Link>
 
-        {nav ? (
-          <nav>
-            {nav.map((el, index) => (
-              <p key={index}>{el}</p>
+        {options ? (
+          <div className={style.options}>
+            {options.map((el, index) => (
+              <p onClick={() => setCurrentOption(el)} key={index}>{el}</p>
             ))}
-          </nav>
+          </div>
         ) : null}
 
         <div className={style.btns}>

@@ -1,5 +1,4 @@
-import { useState, useCallback, useMemo, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState, useContext } from 'react';
 
 import { useCreateUserMutation, useGetUserMutation } from '../../services/user';
 import { AuthContext } from '../../context/AuthContext';
@@ -44,7 +43,6 @@ function AuthForm({ isRegistration }) {
   };
 
   if (isRegistered || isLoggedIn) {
-    debugger;
     login();
     redirect(isRegistration);
   }
