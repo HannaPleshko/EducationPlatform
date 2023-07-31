@@ -13,7 +13,7 @@
 
 ## Introduction
 
-Welcome to our educational platform for learning programming languages! This platform aims to provide an interactive and engaging environment for students, teachers, and administrators to enhance their programming skills and knowledge.
+Welcome to my educational platform for learning programming languages! This platform aims to provide an interactive and engaging environment for students, teachers, and administrators to enhance their programming skills and knowledge.
 
 ## Features
 
@@ -35,7 +35,7 @@ Welcome to our educational platform for learning programming languages! This pla
 
 ## Authentication
 
-Our platform employs a multi-step authentication process to ensure security:
+My platform employs a multi-step authentication process to ensure security:
 
 1. **Email Verification:** Users are required to verify their email addresses during the registration process.
 
