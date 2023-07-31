@@ -1,13 +1,11 @@
 @import '../../styles/index.scss';
 
 .wrapper {
-  margin-top: 2%;
-  padding: 24px 0;
+  width: 100%;
   background: #f6f5f4;
 
   .content {
-    max-width: 1200px;
-    margin: 0 auto;
+    @include section(2% auto, 0);
 
     nav {
       @include flexbox(space-between, center, row);
@@ -17,19 +15,13 @@
         border-bottom: 1px solid $primary-grey-light;
       }
 
-      .navigation,
-      .developers {
+      .navigation {
         @include flexbox(space-between, center, row);
+        gap: 30px;
       }
 
       p {
-        font: 600 12px Montserrat;
-        color: $primary-grey-dark;
-      }
-
-      .navigation p:not(:last-child),
-      .developers p:not(:last-child) {
-        margin-right: 30px;
+        @include text($primary-grey-dark, 600, 12px, Montserrat);
       }
 
       .logoImgs {

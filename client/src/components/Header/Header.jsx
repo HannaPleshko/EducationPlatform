@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
-import style from './style.module.scss';
 import { AuthContext } from '../../context/AuthContext';
 import { useContext } from 'react';
+import style from './style.module.scss';
 
 function Header({ nav }) {
   const navigate = useNavigate();
@@ -10,13 +10,17 @@ function Header({ nav }) {
   return (
     <div className={style.wrapper}>
       <div className={style.content}>
-        <Link to="/"><h1> Hschool</h1></Link>
+        <Link to="/">
+          <h1> Hschool</h1>
+        </Link>
 
-        {nav ?
-          <nav>{nav.map((el, index) => <p key={index}>{el}</p>)}</nav>
-          : null
-        }
-
+        {nav ? (
+          <nav>
+            {nav.map((el, index) => (
+              <p key={index}>{el}</p>
+            ))}
+          </nav>
+        ) : null}
 
         <div className={style.btns}>
           {!isAuthenticated ? (

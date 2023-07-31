@@ -5,15 +5,13 @@
   max-width: 1200px;
   margin: 7% auto;
 
-
   .loginForm {
-    @include flexbox(space-between, start, column);
+    @include flexbox(space-between, flex-start, column);
     height: 300px;
     width: 600px;
 
     h1 {
-      font: 400 56px 'Dela Gothic One';
-      color: var(--primaty-black, #000);
+      @include text($primary-black, 400, 56px, Dela Gothic One);
     }
 
     .inps {
@@ -27,12 +25,14 @@
     }
 
     .btn {
-      @include primary-button(14px,
+      @include primary-button(
+        14px,
         14px,
         $primary-white,
         $primary-cyan-dark,
         $primary-white,
-        $primary-golden-yellow );
+        $primary-golden-yellow
+      );
     }
   }
 

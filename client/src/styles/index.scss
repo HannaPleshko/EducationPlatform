@@ -1,5 +1,16 @@
 @import './variables.scss';
 
+@mixin section($margin-size, $padding-size) {
+  max-width: 1200px;
+  margin: $margin-size;
+  padding: $padding-size;
+}
+
+@mixin text($color, $weight, $size, $family) {
+  font: $weight $size $family;
+  color: $color;
+}
+
 @mixin icon-decorator($path, $width, $height, $color, $hover-color) {
   width: $width;
   height: $height;
@@ -45,9 +56,9 @@
   color: $defaultColor;
   background: $defaultBckgColor;
   transition:
-  background 0.3s ease,
-  color 0.3s ease;
-  
+    background 0.3s ease,
+    color 0.3s ease;
+
   &:hover {
     background: $hoverBckgColor;
     color: $hoverColor;

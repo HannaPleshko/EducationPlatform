@@ -1,22 +1,29 @@
+@import './styles/index.scss';
+
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
   font-family: 'Dela Gothic One';
   font-style: normal;
-  box-sizing: border-box;
 }
 
 body {
   margin: 0 auto;
   background-color: rgba(246, 245, 244, 1);
+}
 
-  a {
-    text-decoration: none;
-    color: #000;
-  }
+ol,
+ul {
+  list-style: none;
+}
 
-  input {
-    outline: none;
-    border: none;
-  }
+:any-link {
+  text-decoration: none;
+  color: $primary-black;
+}
+
+input {
+  outline: none;
+  border: none;
 }

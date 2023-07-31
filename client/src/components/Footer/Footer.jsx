@@ -12,7 +12,7 @@ function Footer() {
             <p>Sprint</p>
           </div>
 
-          <div className={style.developers}>
+          <div className={style.navigation}>
             <p>Hanna</p>
             <p>Nastya</p>
             <p>Marcus</p>

@@ -5,8 +5,8 @@ export const useAuth = () => {
   const [token, setToken] = useState(null);
 
   const login = useCallback(() => {
-    debugger
-    const token = Cookies.get('access_token')
+    debugger;
+    const token = Cookies.get('access_token');
     console.log(token);
     setToken(token);
   }, []);
@@ -17,9 +17,9 @@ export const useAuth = () => {
   }, []);
 
   useEffect(() => {
-    debugger
+    debugger;
     console.log(token);
-  }, [token])
+  }, [token]);
 
   return { login, logout, token };
 };
