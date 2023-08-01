@@ -1,8 +1,7 @@
-import app from './src/app';
-import { createTables } from './src/queries/createTable';
-import { dropTables } from './src/queries/dropTable';
+import App from '@app';
+import UserRoute from '@routes/user.route';
+import CourseRoute from '@routes/course.route';
 
-createTables();
+const app = new App([new UserRoute(), new CourseRoute()]);
 
-const port = 3000;
-app.listen(port, () => console.log(`server is running on port ${port}`));
+app.listen();

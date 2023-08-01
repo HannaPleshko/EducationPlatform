@@ -1,29 +1,57 @@
-import express, { Request, Response, NextFunction } from 'express';
-import user from './controller/user.controller';
-import course from './controller/course.controller';
-import api from './controller/api.controller';
-import bodyParser from 'body-parser';
+import express from 'express';
+import { PORT } from '@config';
+import { Routes } from '@interfaces/routes.interface';
+import { defaultClient as client, ConnectionDB, defaultPool as pool } from '@database/connection';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 
-const app = express();
+class App {
+  public app: express.Application;
+  public env: string;
+  public port: string | number;
+  public database: ConnectionDB;
 
-app.use(
-  cors({
-    origin: 'http://localhost:3001',
-    credentials: true,
-  }),
-);
+  constructor(routes: Routes[]) {
+    this.app = express();
+    this.port = PORT;
+    this.database = new ConnectionDB(client, pool);
 
-app.use(cookieParser());
-app.use(bodyParser.json());
+    this.initializeMiddlewares();
+    this.initializeRoutes(routes);
+    this.database.initializeDB();
+  }
 
-app.use('/user', user);
-app.use('/course', course);
-app.use('/api', api);
+  public listen(): void {
+    this.app.listen(this.port, () => {
+      console.info(`╭───────────────────────────────────────────────────╮`);
+      console.info(`│                                                   │`);
+      console.info(`│            App listening at port ${this.port}!            │`);
+      console.info(`│                                                   │`);
+      console.info(`╰───────────────────────────────────────────────────╯`);
+    });
+  }
 
-app.use(function (error, req: Request, res: Response, next: NextFunction) {
-  res.status(500).send(error.message);
-});
+  public getServer(): express.Application {
+    return this.app;
+  }
 
-export default app;
+  private initializeMiddlewares(): void {
+    this.app.use(
+      cors({
+        origin: 'http://localhost:3000',
+        credentials: true,
+      }),
+    );
+    this.app.use(express.json());
+    this.app.use(express.urlencoded({ extended: true }));
+    this.app.use(cookieParser());
+  }
+
+  private initializeRoutes(routes: Routes[]): void {
+    routes.forEach(route => {
+      this.app.use('/api/v1/', route.router);
+    });
+  }
+}
+
+export default App;
