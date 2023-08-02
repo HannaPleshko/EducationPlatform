@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 
 import { useCreateUserMutation, useGetUserMutation } from '../../services/user';
 import { AuthContext } from '../../context/AuthContext';
@@ -42,10 +42,12 @@ function AuthForm({ isRegistration }) {
     });
   };
 
-  if (isRegistered || isLoggedIn) {
-    login();
-    redirect(isRegistration);
-  }
+  useEffect(() => {
+    if (isRegistered || isLoggedIn) {
+      login();
+      redirect(isRegistration);
+    }
+  }, [isRegistered, isLoggedIn]);
 
   return (
     <div className={style.wrapper}>

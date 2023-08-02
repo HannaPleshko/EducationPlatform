@@ -6,7 +6,6 @@ import style from './style.module.scss';
 
 function AdminPage() {
   const [currentOption, setCurrentOption] = useState('Users');
-  console.log(currentOption);
 
   return (
     <>

@@ -5,6 +5,7 @@ import { AuthContext } from './context/AuthContext';
 function App() {
   const { token, login, logout } = useAuth();
   const isAuthenticated = !!token;
+
   const routes = RoutesProvider(isAuthenticated);
 
   return (

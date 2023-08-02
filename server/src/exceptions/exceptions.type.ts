@@ -16,7 +16,6 @@ export const ExceptionType = {
   DB_USERS_UPDATE_NOT_UPDETED: { id: 13, message: 'DB not updated user.' },
   DB_USERS_NOT_FOUND: { id: 14, message: 'DB not found user.' },
 
-
   DB_COURSE_CREATE_NOT_CREATED: { id: 15, message: 'DB not created course.' },
   DB_COURSE_GET_ALL_NOT_GOT: { id: 16, message: 'DB not got courses.' },
   DB_COURSE_GET_BY_ID_NOT_GOT: { id: 17, message: 'DB not got course.' },
