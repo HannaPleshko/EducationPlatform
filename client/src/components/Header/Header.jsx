@@ -17,7 +17,9 @@ function Header({ options, setCurrentOption }) {
         {options ? (
           <div className={style.options}>
             {options.map((el, index) => (
-              <p onClick={() => setCurrentOption(el)} key={index}>{el}</p>
+              <p onClick={() => setCurrentOption(el)} key={index}>
+                {el}
+              </p>
             ))}
           </div>
         ) : null}

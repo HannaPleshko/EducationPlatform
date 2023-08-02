@@ -6,27 +6,27 @@ export class CourseService {
   private courseDB = new CourseDB(client, pool);
 
   async getCourses(): Promise<ICourse[]> {
-    const data = await this.courseDB.getAll();
-    return data;
+    const foundCourses = await this.courseDB.getAll();
+    return foundCourses;
   }
 
-  async getCourseById(course_id: string): Promise<ICourse[]> {
-    const data = await this.courseDB.getById(course_id);
-    return data;
+  async getCourseById(course_id: string): Promise<ICourse> {
+    const foundCourse = await this.courseDB.getById(course_id);
+    return foundCourse;
   }
 
-  async createCourse(course: ICourse): Promise<void> {
-    const data = await this.courseDB.create(course);
-    return data;
+  async createCourse(course: ICourse): Promise<ICourse> {
+    const createdCourse = await this.courseDB.create(course);
+    return createdCourse;
   }
 
-  async updateCourse(course_id: string, course: ICourse): Promise<void> {
-    const data = await this.courseDB.updateById(course_id, course);
-    return data;
+  async updateCourse(course_id: string, course: ICourse): Promise<ICourse> {
+    const updatedCourse = await this.courseDB.updateById(course_id, course);
+    return updatedCourse;
   }
 
-  async deleteCourse(course_id: string): Promise<void> {
-    const data = await this.courseDB.deleteById(course_id);
-    return data;
+  async deleteCourse(course_id: string): Promise<ICourse> {
+    const deletedCourse = await this.courseDB.deleteById(course_id);
+    return deletedCourse;
   }
 }

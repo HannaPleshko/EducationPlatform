@@ -5,26 +5,29 @@ import { ExceptionType } from '@exceptions/exceptions.type';
 import { DatabaseError } from 'pg';
 
 export class CourseDB extends Database {
-  async create(data: ICourse): Promise<void> {
+  async create(data: ICourse): Promise<ICourse> {
     try {
       await this.pool.query('BEGIN');
 
       const { title } = data;
 
       const query = {
-        text: 'INSERT INTO courses (title) VALUES ($1)',
+        text: 'INSERT INTO courses (title) VALUES ($1) RETURNING *',
         values: [title],
       };
 
-      await this.pool.query(query);
+      const {
+        rows: [createdCourse],
+      } = await this.pool.query(query);
       await this.pool.query('COMMIT');
+      return createdCourse;
     } catch (err) {
       await this.pool.query('ROLLBACK');
 
       const error: DatabaseError = err;
       console.error(`Message: ${error.message}. Detail: ${error.detail}`);
 
-      throw new HttpException(500, ExceptionType.DB_USERS_CREATE_NOT_CREATED);
+      throw new HttpException(500, ExceptionType.DB_COURSE_CREATE_NOT_CREATED);
     }
   }
 
@@ -32,80 +35,89 @@ export class CourseDB extends Database {
     try {
       const query = { text: 'SELECT * FROM courses' };
 
-      const course: ICourse[] = (await this.pool.query(query)).rows;
-      if (!course.length) throw new HttpException(404, ExceptionType.DB_USERS_NOT_FOUND);
+      const { rows: foundCourses } = await this.pool.query(query);
+      if (!foundCourses.length) throw new HttpException(404, ExceptionType.DB_COURSE_NOT_FOUND);
 
-      return course;
+      return foundCourses;
     } catch (err) {
       const error: DatabaseError = err;
       console.error(`Message: ${error.message}. Detail: ${error.detail}`);
 
-      throw new HttpException(500, ExceptionType.DB_USERS_GET_ALL_NOT_GOT);
+      throw new HttpException(500, ExceptionType.DB_COURSE_GET_ALL_NOT_GOT);
     }
   }
 
-  async getById(course_id: string): Promise<ICourse[]> {
+  async getById(course_id: string): Promise<ICourse> {
     try {
       const query = {
         text: 'SELECT * FROM courses WHERE course_id = $1',
         values: [course_id],
       };
 
-      const course: ICourse[] = (await this.pool.query(query)).rows;
-      if (!course.length) throw new HttpException(404, ExceptionType.DB_USERS_NOT_FOUND);
+      const {
+        rows: [foundCourse],
+      } = await this.pool.query(query);
+      if (!foundCourse) throw new HttpException(404, ExceptionType.DB_COURSE_NOT_FOUND);
 
-      return course;
+      return foundCourse;
     } catch (err) {
       const error: DatabaseError = err;
       console.error(`Message: ${error.message}. Detail: ${error.detail}`);
 
-      throw new HttpException(500, ExceptionType.DB_USERS_GET_BY_ID_NOT_GOT);
+      throw new HttpException(500, ExceptionType.DB_COURSE_GET_BY_ID_NOT_GOT);
     }
   }
 
-  async deleteById(course_id: string): Promise<void> {
+  async deleteById(course_id: string): Promise<ICourse> {
     try {
       await this.pool.query('BEGIN');
       const query = {
-        text: 'DELETE FROM courses WHERE course_id = $1',
+        text: 'DELETE FROM courses WHERE course_id = $1 RETURNING *',
         values: [course_id],
       };
 
-      await this.pool.query(query);
+      const {
+        rows: [deletedCourse],
+      } = await this.pool.query(query);
+      if (!deletedCourse) throw new HttpException(404, ExceptionType.DB_COURSE_NOT_FOUND);
+
       await this.pool.query('COMMIT');
+      return deletedCourse;
     } catch (err) {
       await this.pool.query('ROLLBACK');
 
       const error: DatabaseError = err;
       console.error(`Message: ${error.message}. Detail: ${error.detail}`);
 
-      throw new HttpException(500, ExceptionType.DB_USERS_DELETE_NOT_DELETED);
+      throw new HttpException(500, ExceptionType.DB_COURSE_DELETE_NOT_DELETED);
     }
   }
 
-  async updateById(course_id: string, data: ICourse): Promise<void> {
+  async updateById(course_id: string, data: ICourse): Promise<ICourse> {
     try {
       await this.pool.query('BEGIN');
 
       const { title } = data;
 
       const query = {
-        text: `UPDATE courses SET
-                title = COALESCE($1, title)
-                WHERE course_id = $2`,
+        text: `UPDATE courses SET title = COALESCE($1, title) WHERE course_id = $2 RETURNING *`,
         values: [title, course_id],
       };
 
-      await this.pool.query(query);
+      const {
+        rows: [updatedCourse],
+      } = await this.pool.query(query);
+      if (!updatedCourse) throw new HttpException(404, ExceptionType.DB_COURSE_NOT_FOUND);
 
       await this.pool.query('COMMIT');
+      return updatedCourse;
     } catch (err) {
       await this.pool.query('ROLLBACK');
 
       const error: DatabaseError = err;
       console.error(`Message: ${error.message}. Detail: ${error.detail}`);
 
-      throw new HttpException(500, ExceptionType.DB_USERS_UPDATE_NOT_UPDETED);
+      throw new HttpException(500, ExceptionType.DB_COURSE_UPDATE_NOT_UPDETED);
     }
   }
 }

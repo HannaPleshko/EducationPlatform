@@ -1,7 +1,8 @@
 import express from 'express';
 import { PORT } from '@config';
-import { Routes } from '@interfaces/routes.interface';
+import { IRoutes } from '@interfaces';
 import { defaultClient as client, ConnectionDB, defaultPool as pool } from '@database/connection';
+import { errorMiddleware } from '@middlewares/error.middleware';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 
@@ -11,13 +12,14 @@ class App {
   public port: string | number;
   public database: ConnectionDB;
 
-  constructor(routes: Routes[]) {
+  constructor(routes: IRoutes[]) {
     this.app = express();
     this.port = PORT;
     this.database = new ConnectionDB(client, pool);
 
     this.initializeMiddlewares();
     this.initializeRoutes(routes);
+    this.initializeErrorHandling();
     this.database.initializeDB();
   }
 
@@ -47,10 +49,14 @@ class App {
     this.app.use(cookieParser());
   }
 
-  private initializeRoutes(routes: Routes[]): void {
+  private initializeRoutes(routes: IRoutes[]): void {
     routes.forEach(route => {
       this.app.use('/api/v1/', route.router);
     });
+  }
+
+  private initializeErrorHandling(): void {
+    this.app.use(errorMiddleware);
   }
 }
 

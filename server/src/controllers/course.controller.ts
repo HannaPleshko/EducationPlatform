@@ -1,12 +1,11 @@
 import { Request, Response, NextFunction } from 'express';
 import { CourseService } from '@services/course.service';
 import { buildResponse } from '@helper/response';
-import { SuccessfullyType } from '@exceptions/exceptions.type';
 
 class CourseController {
   private courseService = new CourseService();
 
-  getCourses = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+  getCourses = async (_req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
       buildResponse(res, 200, await this.courseService.getCourses());
     } catch (error) {
@@ -26,8 +25,7 @@ class CourseController {
   createCourse = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
       const course = req.body;
-      await this.courseService.createCourse(course);
-      buildResponse(res, 201, SuccessfullyType.DB_USER_SUCCESS_REGISTRATE);
+      buildResponse(res, 201, await this.courseService.createCourse(course));
     } catch (error) {
       next(error);
     }
@@ -37,8 +35,7 @@ class CourseController {
     try {
       const { course_id } = req.params;
       const course = req.body;
-      await this.courseService.updateCourse(course_id, course);
-      buildResponse(res, 200, SuccessfullyType.DB_USER_SUCCESS_CHANGE_CREDENTIALS);
+      buildResponse(res, 200, await this.courseService.updateCourse(course_id, course));
     } catch (error) {
       next(error);
     }
@@ -47,8 +44,7 @@ class CourseController {
   deleteCourse = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
       const { course_id } = req.params;
-      await this.courseService.deleteCourse(course_id);
-      buildResponse(res, 200, SuccessfullyType.DB_USER_SUCCESS_DELETE_USER);
+      buildResponse(res, 200, await this.courseService.deleteCourse(course_id));
     } catch (error) {
       next(error);
     }

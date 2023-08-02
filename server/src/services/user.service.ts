@@ -9,13 +9,13 @@ export class UserService {
   private userDB = new UserDB(client, pool);
 
   async getUsers(): Promise<IUser[]> {
-    const users = await this.userDB.getAll();
-    return users;
+    const foundUsers = await this.userDB.getAll();
+    return foundUsers;
   }
 
-  async getUserById(user_id: string): Promise<IUser[]> {
-    const user = await this.userDB.getById(user_id);
-    return user;
+  async getUserById(user_id: string): Promise<IUser> {
+    const foundUser = await this.userDB.getById(user_id);
+    return foundUser;
   }
 
   async createUser(user: IUser): Promise<void> {
@@ -28,20 +28,19 @@ export class UserService {
   }
 
   async updateUser(user_id: string, user: IUser): Promise<void> {
-    const foundUser = await this.userDB.getByEmail(user.email);
-    if (!foundUser) throw new HttpException(400, ExceptionType.DB_USER_GET_BY_EMAIL_NOT_FOUND);
+    const foundUser = await this.userDB.getById(user_id);
+    if (!(await bcrypt.compare(user.prevPwd, foundUser.pwd))) throw new HttpException(400, ExceptionType.DB_USER_INVALID_PWD);
 
-    if (!(await bcrypt.compare(user.pwd, foundUser.pwd))) throw new HttpException(400, ExceptionType.DB_USER_INVALID_CREDENTIALS);
+    const userWthHash: IUser = await this.generatePasswordHash(user);
 
-    const userHashed: IUser = await this.generatePasswordHash(user);
-
-    await this.userDB.updateById(user_id, userHashed);
+    await this.userDB.updateById(user_id, userWthHash);
   }
 
-  async authenticateUser(user: IUser): Promise<void> {
+  async authenticateUser(user: IUser): Promise<IUser> {
     const foundUser = await this.userDB.getByEmail(user.email);
     if (!foundUser) throw new HttpException(400, ExceptionType.DB_USER_GET_BY_EMAIL_NOT_FOUND);
-    if (!(await bcrypt.compare(user.pwd, foundUser.pwd))) throw new HttpException(400, ExceptionType.DB_USER_INVALID_CREDENTIALS);
+    if (!(await bcrypt.compare(user.pwd, foundUser.pwd))) throw new HttpException(400, ExceptionType.DB_USER_INVALID_PWD);
+    return foundUser;
   }
 
   async deleteUser(user_id: string): Promise<void> {

@@ -9,11 +9,11 @@ export class UserDB extends Database {
     try {
       await this.pool.query('BEGIN');
 
-      const { name, surname, email, pwd } = data;
+      const { name, surname, email, pwd, role } = data;
 
       const query = {
-        text: 'INSERT INTO users (name, surname, email, pwd) VALUES ($1, $2, $3, $4)',
-        values: [name, surname, email, pwd],
+        text: 'INSERT INTO users (name, surname, email, pwd, role) VALUES ($1, $2, $3, $4, $5)',
+        values: [name, surname, email, pwd, role],
       };
 
       await this.pool.query(query);
@@ -32,10 +32,10 @@ export class UserDB extends Database {
     try {
       const query = { text: 'SELECT * FROM users' };
 
-      const user: IUser[] = (await this.pool.query(query)).rows;
-      if (!user.length) throw new HttpException(404, ExceptionType.DB_USERS_NOT_FOUND);
+      const { rows: foundUsers } = await this.pool.query(query);
+      if (!foundUsers.length) throw new HttpException(404, ExceptionType.DB_USERS_NOT_FOUND);
 
-      return user;
+      return foundUsers;
     } catch (err) {
       const error: DatabaseError = err;
       console.error(`Message: ${error.message}. Detail: ${error.detail}`);
@@ -44,17 +44,19 @@ export class UserDB extends Database {
     }
   }
 
-  async getById(user_id: string): Promise<IUser[]> {
+  async getById(user_id: string): Promise<IUser> {
     try {
       const query = {
         text: 'SELECT * FROM users WHERE user_id = $1',
         values: [user_id],
       };
 
-      const user: IUser[] = (await this.pool.query(query)).rows;
-      if (!user.length) throw new HttpException(404, ExceptionType.DB_USERS_NOT_FOUND);
+      const {
+        rows: [foundUser],
+      } = await this.pool.query(query);
 
-      return user;
+      if (!foundUser) throw new HttpException(404, ExceptionType.DB_USERS_NOT_FOUND);
+      return foundUser;
     } catch (err) {
       const error: DatabaseError = err;
       console.error(`Message: ${error.message}. Detail: ${error.detail}`);
@@ -63,16 +65,18 @@ export class UserDB extends Database {
     }
   }
 
-  async getByEmail(email: string): Promise<IUser | null> {
+  async getByEmail(email: string): Promise<IUser> {
     try {
       const query = {
         text: 'SELECT * FROM users WHERE email = $1',
         values: [email],
       };
 
-      const user = (await this.pool.query(query)).rows;
+      const {
+        rows: [foundUser],
+      } = await this.pool.query(query);
 
-      return user.length ? user[0] : null;
+      return foundUser;
     } catch (err) {
       const error: DatabaseError = err;
       console.error(`Message: ${error.message}. Detail: ${error.detail}`);
@@ -85,11 +89,15 @@ export class UserDB extends Database {
     try {
       await this.pool.query('BEGIN');
       const query = {
-        text: 'DELETE FROM users WHERE user_id = $1',
+        text: 'DELETE FROM users WHERE user_id = $1 RETURNING *',
         values: [user_id],
       };
 
-      await this.pool.query(query);
+      const {
+        rows: [deletedCourse],
+      } = await this.pool.query(query);
+      if (!deletedCourse) throw new HttpException(404, ExceptionType.DB_USERS_NOT_FOUND);
+
       await this.pool.query('COMMIT');
     } catch (err) {
       await this.pool.query('ROLLBACK');
@@ -105,19 +113,23 @@ export class UserDB extends Database {
     try {
       await this.pool.query('BEGIN');
 
-      const { name, surname, email, pwd } = data;
+      const { name, surname, email, pwd, role } = data;
 
       const query = {
         text: `UPDATE users SET
         name = COALESCE($1, name),
         surname = COALESCE($2, surname),
         email = COALESCE($3, email),
-        pwd = COALESCE($4, pwd)
-        WHERE user_id = $5`,
-        values: [name, surname, email, pwd, user_id],
+        role = COALESCE($4, role),
+        pwd = COALESCE($5, pwd)
+        WHERE user_id = $6 RETURNING *`,
+        values: [name, surname, email, role, pwd, user_id],
       };
 
-      await this.pool.query(query);
+      const {
+        rows: [updatedCourse],
+      } = await this.pool.query(query);
+      if (!updatedCourse) throw new HttpException(404, ExceptionType.DB_USERS_NOT_FOUND);
 
       await this.pool.query('COMMIT');
     } catch (err) {

@@ -1,5 +1,7 @@
 import { Pool } from 'pg';
 import { defaultPool } from '../connection';
+import { ExceptionType } from '@exceptions/exceptions.type';
+import { HttpException } from '@exceptions/HttpException';
 
 export const dropTables = async (pool: Pool = defaultPool): Promise<void> => {
   try {
@@ -13,5 +15,8 @@ export const dropTables = async (pool: Pool = defaultPool): Promise<void> => {
     DROP TABLE IF EXISTS COURSES CASCADE;
     `,
     );
-  } catch (error) {}
+  } catch (error) {
+    if (error instanceof HttpException) throw error;
+    throw new HttpException(500, ExceptionType.DB_TABLES_NOT_DELETED);
+  }
 };

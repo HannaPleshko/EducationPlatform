@@ -2,11 +2,12 @@ import { Request, Response, NextFunction } from 'express';
 import { UserService } from '@services/user.service';
 import { buildResponse } from '@helper/response';
 import { SuccessfullyType } from '@exceptions/exceptions.type';
+import { createToken } from '@helper/jwt';
 
 class UserController {
   private userService = new UserService();
 
-  getUsers = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+  getUsers = async (_req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
       buildResponse(res, 200, await this.userService.getUsers());
     } catch (error) {
@@ -38,7 +39,7 @@ class UserController {
       const { user_id } = req.params;
       const user = req.body;
       await this.userService.updateUser(user_id, user);
-      buildResponse(res, 200, SuccessfullyType.DB_USER_SUCCESS_CHANGE_CREDENTIALS);
+      buildResponse(res, 200, SuccessfullyType.DB_USER_SUCCESS_UPDATE_CREDENTIALS);
     } catch (error) {
       next(error);
     }
@@ -57,7 +58,14 @@ class UserController {
   authenticateUser = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
       const user = req.body;
-      await this.userService.authenticateUser(user);
+      const foundUser = await this.userService.authenticateUser(user);
+
+      const tokenData = createToken(foundUser);
+      res.cookie('access_token', tokenData.token, {
+        httpOnly: false,
+        secure: true,
+      });
+
       buildResponse(res, 200, SuccessfullyType.DB_USER_SUCCESS_AUTHENTICATE);
     } catch (error) {
       next(error);
