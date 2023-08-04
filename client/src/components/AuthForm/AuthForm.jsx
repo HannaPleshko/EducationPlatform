@@ -27,7 +27,7 @@ function AuthForm({ isRegistration }) {
 
   const sendRequest = async () => {
     try {
-      (await isRegistration) ? await createUser(form) : await getUser(form);
+      isRegistration ? await createUser(form) : await getUser(form);
     } catch (error) {
       console.error(error);
     }
