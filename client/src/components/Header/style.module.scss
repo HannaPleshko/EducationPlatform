@@ -1,4 +1,4 @@
-@import '../../styles/index.scss';
+@import "../../styles/index.scss";
 
 .wrapper {
   background: #f6f5f4;
@@ -37,16 +37,15 @@
         }
       }
 
-      .sign {
-        @include primary-button(
-          14px,
-          14px,
-          $primary-white,
-          $primary-cyan-dark,
-          $primary-white,
-          $primary-golden-yellow
-        );
-      }
+    }
+
+    .sign {
+      @include primary-button(14px,
+        14px,
+        $primary-white,
+        $primary-cyan-dark,
+        $primary-white,
+        $primary-golden-yellow );
     }
   }
 }

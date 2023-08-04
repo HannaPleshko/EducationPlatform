@@ -1,12 +1,12 @@
-import React from 'react';
+import React from "react";
 
-import Footer from '../../components/Footer/Footer';
-import Header from '../../components/Header/Header';
+import Footer from "../../components/Footer/Footer";
+import Header from "../../components/Header/Header";
 
-import { motion } from 'framer-motion';
-import { animation } from '../../motion';
+import { motion } from "framer-motion";
+import { animation } from "../../motion";
 
-import style from './style.module.scss';
+import style from "./style.module.scss";
 
 function HomePage() {
   return (
@@ -20,13 +20,21 @@ function HomePage() {
         className={style.preview}
       >
         <div className={style.previewContent}>
-          <motion.p custom={1} variants={animation} className={style.textPlatform}>
+          <motion.p
+            custom={1}
+            variants={animation}
+            className={style.textPlatform}
+          >
             E-COURSE PLATFORM
           </motion.p>
           <motion.h1 custom={2} variants={animation}>
             Learning and teaching online, made easy.
           </motion.h1>
-          <motion.p custom={3} variants={animation} className={style.textAdditional}>
+          <motion.p
+            custom={3}
+            variants={animation}
+            className={style.textAdditional}
+          >
             Any subject, in any language, on any device, for all ages!
           </motion.p>
           <motion.div
@@ -53,7 +61,11 @@ function HomePage() {
         className={style.learnBlock}
       >
         <div className={style.learnBlockWidth}>
-          <motion.div custom={1} variants={animation} className={style.learnImg}></motion.div>
+          <motion.div
+            custom={1}
+            variants={animation}
+            className={style.learnImg}
+          ></motion.div>
           <div className={style.learnBlockContent}>
             <motion.h2 custom={2} variants={animation}>
               Learn a language in a playful way
@@ -62,8 +74,16 @@ function HomePage() {
               Make learning programming languages more fun with mini-games
             </motion.p>
             <div className={style.wrapperIcons}>
-              <motion.div custom={4} variants={animation} className={style.sprint}></motion.div>
-              <motion.div custom={5} variants={animation} className={style.tasks}></motion.div>
+              <motion.div
+                custom={4}
+                variants={animation}
+                className={style.sprint}
+              ></motion.div>
+              <motion.div
+                custom={5}
+                variants={animation}
+                className={style.tasks}
+              ></motion.div>
             </div>
           </div>
         </div>
@@ -90,7 +110,11 @@ function HomePage() {
             Textbook →
           </motion.div>
         </div>
-        <motion.div custom={1} variants={animation} className={style.knowledgeImg}></motion.div>
+        <motion.div
+          custom={1}
+          variants={animation}
+          className={style.knowledgeImg}
+        ></motion.div>
       </motion.div>
 
       <motion.div

@@ -1,6 +1,6 @@
-import RoutesProvider from './routes/Routes';
-import { useAuth } from './hooks/auth.hook';
-import { AuthContext } from './context/AuthContext';
+import RoutesProvider from "./routes/Routes";
+import { useAuth } from "./hooks/auth.hook";
+import { AuthContext } from "./context/AuthContext";
 
 function App() {
   const { token, login, logout } = useAuth();

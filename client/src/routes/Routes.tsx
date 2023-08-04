@@ -1,11 +1,11 @@
-import { Routes, Route } from 'react-router-dom';
-import AuthPage from '../pages/AuthPage/AuthPage';
-import RegistrationPage from '../pages/RegistrationPage/RegistrationPage';
-import HomePage from '../pages/HomePage/HomePage';
-import CoursesPage from '../pages/CoursesPage/CoursesPage';
-import AdminPage from '../pages/AdminPage/AdminPage';
+import { Routes, Route } from "react-router-dom";
+import AuthPage from "../pages/AuthPage/AuthPage";
+import RegistrationPage from "../pages/RegistrationPage/RegistrationPage";
+import HomePage from "../pages/HomePage/HomePage";
+import CoursesPage from "../pages/CoursesPage/CoursesPage";
+import AdminPage from "../pages/AdminPage/AdminPage";
 
-function RoutesProvider(isAuthenticated) {
+function RoutesProvider(isAuthenticated: boolean) {
   if (isAuthenticated) {
     return (
       <Routes>

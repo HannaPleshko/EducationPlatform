@@ -1,4 +1,4 @@
-@import '../../styles/index.scss';
+@import "../../styles/index.scss";
 
 .wrapper {
   width: 100%;
@@ -39,11 +39,23 @@
         }
 
         .logoGT {
-          @include icon-decorator(url(./assets/GT.svg), 28px, 24px, $primary-grey-light, #f6ad0189);
+          @include icon-decorator(
+            url(./assets/GT.svg),
+            28px,
+            24px,
+            $primary-grey-light,
+            #f6ad0189
+          );
         }
 
         .logoYouTube {
-          @include icon-decorator(url(./assets/yt.svg), 28px, 24px, $primary-grey-light, #ec1b1b9c);
+          @include icon-decorator(
+            url(./assets/yt.svg),
+            28px,
+            24px,
+            $primary-grey-light,
+            #ec1b1b9c
+          );
         }
       }
     }

@@ -1,4 +1,4 @@
-import style from './style.module.scss';
+import style from "./style.module.scss";
 
 function Footer() {
   return (
@@ -14,8 +14,7 @@ function Footer() {
 
           <div className={style.navigation}>
             <p>Hanna</p>
-            <p>Nastya</p>
-            <p>Marcus</p>
+            <p>Stas</p>
           </div>
         </nav>
 
@@ -25,7 +24,7 @@ function Footer() {
             <div className={style.logoGT}></div>
             <div className={style.logoYouTube}></div>
           </div>
-          <p>©2021 Hschool. Project for Hschool.</p>
+          <p>©2023 Hschool. Project for Hschool.</p>
         </nav>
       </div>
     </div>
