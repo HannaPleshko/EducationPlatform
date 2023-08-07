@@ -41,7 +41,7 @@ export class CourseDB extends Database {
       return {
         fields: fields.map(field => field.name),
         rows,
-      }
+      };
     } catch (err) {
       const error: DatabaseError = err;
       console.error(`Message: ${error.message}. Detail: ${error.detail}`);

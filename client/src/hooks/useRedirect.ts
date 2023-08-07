@@ -16,7 +16,6 @@ export default function useRedirect() {
   const navigate = useNavigate();
 
   return (isRegistration: boolean) => {
-    debugger
     if (isRegistration) {
       navigate("/auth");
       return;

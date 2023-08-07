@@ -19,11 +19,7 @@ const Header: React.FC<HeaderProps> = ({ options, setCurOption }) => {
         {options && setCurOption ? (
           <div className={style.options}>
             {options.map((el, index) => (
-              <Options
-                key={index}
-                option={el}
-                setCurOption={setCurOption}
-              />
+              <Options key={index} option={el} setCurOption={setCurOption} />
             ))}
           </div>
         ) : null}

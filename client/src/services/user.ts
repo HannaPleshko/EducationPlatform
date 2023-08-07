@@ -5,17 +5,16 @@ export const userApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3001/api/v1/user" }),
 
   endpoints: (builder: any) => ({
-
     getUsers: builder.query({
       query: () => ({
-        url: '/',
+        url: "/",
         method: "GET",
       }),
     }),
 
     getUserById: builder.query({
       query: (id: string) => ({
-        url: `/${id}`
+        url: `/${id}`,
       }),
     }),
 
@@ -39,18 +38,24 @@ export const userApi = createApi({
     updateUser: builder.mutation({
       query: (data: any) => ({
         url: `/${data.id}`,
-        method: 'PUT',
-        body: data
+        method: "PUT",
+        body: data,
       }),
     }),
 
     deleteUser: builder.mutation({
       query: (id: string) => ({
         url: `/${id}`,
-        method: 'DELETE'
+        method: "DELETE",
       }),
     }),
   }),
 });
 
-export const { useCreateUserMutation, useAuthenticateMutation, useGetUsersQuery, useDeleteUserMutation, useUpdateUserMutation } = userApi;
+export const {
+  useCreateUserMutation,
+  useAuthenticateMutation,
+  useGetUsersQuery,
+  useDeleteUserMutation,
+  useUpdateUserMutation,
+} = userApi;
