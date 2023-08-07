@@ -15,7 +15,7 @@ export const courseApi = createApi({
 
     createCourse: builder.mutation({
       query: (data: any) => ({
-        url: `/registrate`,
+        url: `/`,
         method: "POST",
         body: data,
       }),

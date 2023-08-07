@@ -4,9 +4,10 @@ import { useGetUsersQuery } from "../../services/user";
 import { useGetCoursesQuery } from "../../services/course";
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, IconButton } from '@mui/material';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import Navigation from './Navigation';
+import ModalTab from '../ModalTab/ModalTab';
 
 import style from "./style.module.scss";
-import Navigation from './Navigation';
 
 interface ContentProps {
     curOption: string;
@@ -85,8 +86,7 @@ const Content: React.FC<ContentProps> = ({ curOption }) => {
                 <h1>Notes</h1>
 
                 <div className={style['icon']}>
-                    <IconButton color="primary" onClick={handleOpen} aria-label="add to shopping cart" />
-                    <IconButton color="primary" aria-label="add to shopping cart">
+                    <IconButton color="primary" onClick={handleOpen} aria-label="add to shopping cart">
                         <AddShoppingCartIcon />
                     </IconButton>
                 </div>
@@ -142,7 +142,7 @@ const Content: React.FC<ContentProps> = ({ curOption }) => {
                 <p>Network error. Please refresh the page</p>
             )}
 
-            {/* {open ? <ModalTab keys={fields} content={curOption} open={open} handleClose={handleClose} /> : null} */}
+            {open ? <ModalTab fields={fields} content={curOption} open={open} handleClose={handleClose} /> : null}
         </div>
     )
 }

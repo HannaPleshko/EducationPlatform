@@ -2,6 +2,7 @@ import React from 'react';
 import { TableCell, IconButton } from '@mui/material';
 import { RestartAlt, Create, Save, Delete } from '@mui/icons-material';
 import { useDeleteUserMutation, useUpdateUserMutation } from "../../services/user";
+import { useDeleteCourseMutation, useUpdateCourseMutation } from "../../services/course";
 
 import style from './style.module.scss';
 
@@ -18,14 +19,17 @@ const Navigation: React.FC<NavigationProps> = ({ id, content, setSelectedRow, it
     const [updateUser] = useUpdateUserMutation();
     const [deleteUser] = useDeleteUserMutation();
 
+    const [updateCourse] = useUpdateCourseMutation();
+    const [deleteCourse] = useDeleteCourseMutation();
+
     const handleClick = () => {
         setSelectedRow(itemIndex);
     };
 
     const deleteSomeData = async () => {
         try {
-            // content === 'user' ? await deleteUser(id) : null;
-            await deleteUser(id)
+            if (content === 'user') await deleteUser(id)
+            else await deleteCourse(id)
 
             window.location.reload();
         } catch (error: any) {
@@ -37,9 +41,10 @@ const Navigation: React.FC<NavigationProps> = ({ id, content, setSelectedRow, it
     const updateSomeData = async () => {
         try {
             // TODO FIX UPDATE. send prevpwd ?
-            const item = rows.find((el: any) => el.user_id === id);
-            // content === 'user' ? await updateUser({id, item}) : null;
-            await updateUser({ id, ...item, prevPwd: item.pwd })
+            const item = rows.find((el: any) => el.user_id === id || el.course_id === id);
+
+            if (content === 'user') await updateUser({ id, ...item, prevPwd: item.pwd })
+            else await updateCourse({ id, ...item })
 
             window.location.reload();
             setSelectedRow(null);
