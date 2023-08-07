@@ -1,6 +1,9 @@
 import { useState, useContext, useEffect } from "react";
 
-import { useCreateUserMutation, useAuthenticateMutation } from "../../services/user";
+import {
+  useCreateUserMutation,
+  useAuthenticateMutation,
+} from "../../services/user";
 import { AuthContext } from "../../context/AuthContext";
 import useRedirect from "../../hooks/useRedirect";
 

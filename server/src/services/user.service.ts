@@ -29,7 +29,7 @@ export class UserService {
 
   async updateUser(user_id: string, user: IUser): Promise<void> {
     const foundUser = await this.userDB.getById(user_id);
-    if (!(await bcrypt.compare(user.prevPwd, foundUser.pwd))) throw new HttpException(400, ExceptionType.DB_USER_INVALID_PWD);
+    if (user?.prevPwd && !(await bcrypt.compare(user.prevPwd, foundUser.pwd))) throw new HttpException(400, ExceptionType.DB_USER_INVALID_PWD);
 
     const userWthHash: IUser = await this.generatePasswordHash(user);
 

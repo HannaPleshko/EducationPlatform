@@ -5,10 +5,9 @@ export const courseApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3001/api/v1/course" }),
 
   endpoints: (builder: any) => ({
-
     getCourses: builder.query({
       query: () => ({
-        url: '/',
+        url: "/",
         method: "GET",
       }),
     }),
@@ -24,18 +23,23 @@ export const courseApi = createApi({
     updateCourse: builder.mutation({
       query: (data: any) => ({
         url: `/${data.id}`,
-        method: 'PUT',
-        body: data
+        method: "PUT",
+        body: data,
       }),
     }),
 
     deleteCourse: builder.mutation({
       query: (id: string) => ({
         url: `/${id}`,
-        method: 'DELETE'
+        method: "DELETE",
       }),
     }),
   }),
 });
 
-export const { useCreateCourseMutation, useGetCoursesQuery, useDeleteCourseMutation, useUpdateCourseMutation } = courseApi;
+export const {
+  useCreateCourseMutation,
+  useGetCoursesQuery,
+  useDeleteCourseMutation,
+  useUpdateCourseMutation,
+} = courseApi;

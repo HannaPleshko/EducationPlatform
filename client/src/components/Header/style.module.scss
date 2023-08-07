@@ -36,16 +36,17 @@
           cursor: pointer;
         }
       }
-
     }
 
     .sign {
-      @include primary-button(14px,
+      @include primary-button(
+        14px,
         14px,
         $primary-white,
         $primary-cyan-dark,
         $primary-white,
-        $primary-golden-yellow );
+        $primary-golden-yellow
+      );
     }
   }
 }
