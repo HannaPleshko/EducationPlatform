@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { useGetUsersQuery } from "../../services/user";
+import { useGetCoursesQuery } from "../../services/course";
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, IconButton } from '@mui/material';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
@@ -32,7 +33,8 @@ interface TabPreview {
 }
 
 const Content: React.FC<ContentProps> = ({ curOption }) => {
-    const { data } = useGetUsersQuery('')
+    const { data: users } = useGetUsersQuery({})
+    const { data: courses } = useGetCoursesQuery({})
 
     const [fields, setFields] = useState<string[]>([]);
     const [rows, setRows] = useState<ICourse[] | IUser[]>([]);
@@ -44,18 +46,24 @@ const Content: React.FC<ContentProps> = ({ curOption }) => {
 
     const getSomeData = async () => {
         try {
-            console.log(data);
-            if (!data) return
-
-            const { fields, rows } = data as TabPreview;
-            setFields(fields);
-            setRows(rows as IUser[] | ICourse[]);
+            if (curOption === 'user') {
+                if (!users) return
+    
+                const { fields, rows } = users as TabPreview;
+                setFields(fields);
+                setRows(rows as IUser[]);
+            } else if (curOption === 'course') {
+                if (!courses) return
+    
+                const { fields, rows } = courses as TabPreview;
+                setFields(fields);
+                setRows(rows as ICourse[]);
+            }
         } catch (e: any) {
             alert('Network error. Please refresh the page');
             console.error(e.message);
         }
     };
-
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>, rowIndex: number) => {
         const { name, value } = e.target;
