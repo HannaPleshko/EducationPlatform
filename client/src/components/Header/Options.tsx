@@ -1,15 +1,10 @@
-interface IHeaderOptions {
-  id: number;
-  item: string;
-}
-
 interface HeaderProps {
-  option: IHeaderOptions;
-  setCurrentOption: (param: number) => void;
+  option: string;
+  setCurOption: (param: string) => void;
 }
 
-const Options: React.FC<HeaderProps> = ({ option, setCurrentOption }) => {
-  return <p onClick={() => setCurrentOption(option.id)}>{option.item}</p>;
+const Options: React.FC<HeaderProps> = ({ option, setCurOption }) => {
+  return <p onClick={() => setCurOption(option)}>{option}</p>;
 };
 
 export default Options;

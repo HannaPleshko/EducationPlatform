@@ -1,5 +1,5 @@
 import { Database } from '..';
-import { IUser } from '../Interfaces';
+import { IUser, TabPreview } from '../Interfaces';
 import { HttpException } from '@exceptions/HttpException';
 import { ExceptionType } from '@exceptions/exceptions.type';
 import { DatabaseError } from 'pg';
@@ -28,14 +28,17 @@ export class UserDB extends Database {
     }
   }
 
-  async getAll(): Promise<IUser[]> {
+  async getAll(): Promise<TabPreview> {
     try {
       const query = { text: 'SELECT * FROM users' };
 
-      const { rows: foundUsers } = await this.pool.query(query);
-      if (!foundUsers.length) throw new HttpException(404, ExceptionType.DB_USERS_NOT_FOUND);
+      const { rows, fields } = await this.pool.query(query);
+      if (!rows.length) throw new HttpException(404, ExceptionType.DB_USERS_NOT_FOUND);
 
-      return foundUsers;
+      return {
+        fields: fields.map(field => field.name),
+        rows,
+      };
     } catch (err) {
       const error: DatabaseError = err;
       console.error(`Message: ${error.message}. Detail: ${error.detail}`);

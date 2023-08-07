@@ -1,11 +1,11 @@
 import { defaultClient as client, defaultPool as pool } from '@database/connection';
 import { CourseDB } from '@database/Classes/CourseDB';
-import { ICourse } from '@database/Interfaces';
+import { ICourse, TabPreview } from '@database/Interfaces';
 
 export class CourseService {
   private courseDB = new CourseDB(client, pool);
 
-  async getCourses(): Promise<ICourse[]> {
+  async getCourses(): Promise<TabPreview> {
     const foundCourses = await this.courseDB.getAll();
     return foundCourses;
   }

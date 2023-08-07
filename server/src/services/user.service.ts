@@ -1,6 +1,6 @@
 import { defaultClient as client, defaultPool as pool } from '@database/connection';
 import { UserDB } from '@database/Classes/UserDB';
-import { IUser } from '@database/Interfaces';
+import { IUser, TabPreview } from '@database/Interfaces';
 import bcrypt from 'bcrypt';
 import { HttpException } from '@exceptions/HttpException';
 import { ExceptionType } from '@exceptions/exceptions.type';
@@ -8,7 +8,7 @@ import { ExceptionType } from '@exceptions/exceptions.type';
 export class UserService {
   private userDB = new UserDB(client, pool);
 
-  async getUsers(): Promise<IUser[]> {
+  async getUsers(): Promise<TabPreview> {
     const foundUsers = await this.userDB.getAll();
     return foundUsers;
   }

@@ -1,4 +1,75 @@
 @import "../../styles/index.scss";
 
 .wrapper {
+    @include section(7% auto, 0);
+
+    .content-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+
+        h1 {
+            font: 400 25px 'Roboto';
+            color: #1667b8;
+        }
+
+        .icon {
+            color: transparent;
+            cursor: pointer;
+            transition: all 0.2s linear;
+
+            &::before {
+                content: 'CREATE   ';
+            }
+
+            &:hover {
+                color: #6d96ba85;
+            }
+        }
+    }
+
+    .content-body {
+        max-height: 350px;
+
+        .table-row:hover {
+            background-color: #1667b806;
+        }
+
+        .table-cell {
+            background-color: #f5faff;
+        }
+
+        .off-inp {
+            padding: 5px 0;
+            background-color: transparent;
+            border-width: 0;
+            width: 100%;
+        }
+
+        .on-inp {
+            padding: 5px 0;
+            background-color: transparent;
+            outline: none;
+            border-width: 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.463);
+            width: 100%;
+        }
+
+        .navigation {
+            width: 155px;
+
+            .deletebtn:hover {
+                color: #ed3636b5;
+                background-color: #e743430a;
+                transition: all 0.2s linear;
+            }
+
+            .actionbtn:hover {
+                color: #1976d2;
+                background-color: rgba(25, 118, 210, 0.04);
+                transition: all 0.2s linear;
+            }
+        }
+    }
 }

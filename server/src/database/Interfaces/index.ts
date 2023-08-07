@@ -17,3 +17,8 @@ export interface ICourse {
   course_id?: string;
   title: string;
 }
+
+export interface TabPreview {
+  fields: string[];
+  rows: ICourse[] | IUser[]
+}

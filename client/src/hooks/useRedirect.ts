@@ -9,7 +9,7 @@ interface FormValues {
   pwd: string;
   name: string;
   surname: string;
-  role: string;
+  role: string | number;
 }
 
 export default function useRedirect() {
@@ -26,7 +26,7 @@ export default function useRedirect() {
 
     if (token) {
       const user: FormValues = jwt_decode(token);
-      if (user.role === "3") {
+      if (user.role === 3) {
         navigate("/admin");
       } else {
         navigate("/");

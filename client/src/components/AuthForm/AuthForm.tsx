@@ -1,6 +1,6 @@
 import { useState, useContext, useEffect } from "react";
 
-import { useCreateUserMutation, useGetUserMutation } from "../../services/user";
+import { useCreateUserMutation, useAuthenticateMutation } from "../../services/user";
 import { AuthContext } from "../../context/AuthContext";
 import useRedirect from "../../hooks/useRedirect";
 
@@ -35,7 +35,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ isRegistration }) => {
   const { login } = useContext(AuthContext);
 
   const [createUser, { isSuccess: isRegistered }] = useCreateUserMutation();
-  const [getUser, { isSuccess: isLoggedIn }] = useGetUserMutation();
+  const [getUser, { isSuccess: isLoggedIn }] = useAuthenticateMutation();
 
   const sendRequest = async () => {
     try {

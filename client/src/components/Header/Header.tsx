@@ -3,17 +3,12 @@ import Options from "./Options";
 import AuthButton from "./AuthButton";
 import style from "./style.module.scss";
 
-interface IHeaderOptions {
-  id: number;
-  item: string;
-}
-
 interface HeaderProps {
-  options?: IHeaderOptions[];
-  setCurrentOption?: (param: number) => void;
+  options?: string[];
+  setCurOption?: (param: string) => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ options, setCurrentOption }) => {
+const Header: React.FC<HeaderProps> = ({ options, setCurOption }) => {
   return (
     <div className={style.wrapper}>
       <div className={style.content}>
@@ -21,13 +16,13 @@ const Header: React.FC<HeaderProps> = ({ options, setCurrentOption }) => {
           <h1> Hschool</h1>
         </Link>
 
-        {options && setCurrentOption ? (
+        {options && setCurOption ? (
           <div className={style.options}>
             {options.map((el, index) => (
               <Options
                 key={index}
                 option={el}
-                setCurrentOption={setCurrentOption}
+                setCurOption={setCurOption}
               />
             ))}
           </div>
