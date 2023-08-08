@@ -13,7 +13,7 @@ const Header: React.FC<HeaderProps> = ({ options, setCurOption }) => {
     <div className={style.wrapper}>
       <div className={style.content}>
         <Link to="/">
-          <h1> Hschool</h1>
+          <h1>Hschool.</h1>
         </Link>
 
         {options && setCurOption ? (

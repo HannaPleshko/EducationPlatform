@@ -1,171 +1,159 @@
 @import "../../styles/index.scss";
 
-.preview {
-  @include section(7% auto, 0);
+.wrapper {
+  width: 100%;
+  background: $primary-white;
+}
+
+.default {
   @include flexbox(space-between, center, row);
 
-  &Content {
+  .content {
     @include flexbox(space-between, flex-start, column);
-    max-width: 600px;
-    gap: 20px;
+    max-width: 500px;
+    gap: 40px;
+  }
 
-    .textPlatform {
-      @include text($primary-cyan-dark, 700, 16px, Montserrat);
-    }
+  h1 {
+    @include text($primary-black, 600, 46px, Dela Gothic One);
+  }
 
-    h1 {
-      @include text($primary-black, 600, 56px, Dela Gothic One);
-    }
+  h2 {
+    @include text($primary-black, 600, 48px, Dela Gothic One);
+  }
 
-    .textAdditional {
-      @include text($primary-grey-dark, 600, 18px, Montserrat);
-    }
+  h4 {
+    @include text($primary-cyan-dark, 700, 16px, Montserrat);
+  }
 
-    .btn {
-      @include primary-button(
-        14px 17px,
-        100px,
-        $primary-cyan-dark,
-        $primary-cyan-light,
-        $primary-white,
-        $primary-golden-yellow
-      );
-    }
+  p {
+    @include text($primary-grey-dark, 600, 16px, Montserrat);
+  }
+}
 
-    .statictics {
-      max-width: 175px;
+.btn {
+  @include text($primary-white, 700, 16px, Montserrat);
+  @include primary-button(
+    14px 17px,
+    100px,
+    $primary-cyan-dark,
+    $primary-cyan-light,
+    $primary-white,
+    $primary-golden-yellow
+  );
+}
 
-      .studentsCount {
+.preview {
+  @include section(7% auto, 0);
+
+  .statictics {
+    max-width: 175px;
+
+    .studentsCount {
+      @include flexbox(space-between, center, row);
+      gap: 10px;
+
+      .lightning {
+        @include preview-img(url(./assets/lightning.svg), 24px, 30px);
+      }
+
+      p {
         @include text($primary-black, 600, 40px, Dela Gothic One);
-        text-align: center;
-      }
 
-      p span {
-        color: rgba(43, 120, 139, 1);
+        span {
+          @include text($primary-cyan-dark, 600, 40px, Dela Gothic One);
+        }
       }
+    }
 
-      .students {
-        @include text(#585858, 600, 16px, Montserrat);
-        text-align: center;
-      }
+    .students {
+      @include text(#585858, 600, 16px, Montserrat);
+      text-align: center;
     }
   }
 
-  .manImg {
+  .img {
     @include preview-img(url(./assets/man.png), 550px, 400px);
   }
 }
 
-.learnBlock {
-  width: 100%;
-  background: $primary-white;
+.learn {
+  @include section(auto, 7% 0);
 
-  &Width {
-    @include section(auto, 7% 0);
-    @include flexbox(space-between, center, row);
-
-    .learnImg {
-      @include preview-img(url(./assets/learn.svg), 680px, 430px);
-    }
-
-    .learnBlockContent {
-      @include flexbox(space-between, flex-start, column);
-      gap: 20px;
-      max-width: 500px;
-
-      h2 {
-        @include text($primary-black, 600, 48px, Dela Gothic One);
-      }
-
-      p {
-        @include text($primary-grey-dark, 600, 18px, Montserrat);
-      }
-
-      .wrapperIcons {
-        display: flex;
-        gap: 5%;
-
-        .sprint {
-          @include preview-img(url(./assets/img11.svg), 130px, 145px);
-        }
-
-        .tasks {
-          @include preview-img(url(./assets/ing10.svg), 172px, 145px);
-        }
-      }
-    }
-  }
-}
-
-.knowledgeBlock {
-  @include section(7% auto, 0);
-  @include flexbox(space-between, flex-start, row);
-
-  &Content {
-    @include flexbox(space-between, flex-start, column);
-    max-width: 470px;
-    gap: 20px;
-
-    h2 {
-      @include text($primary-black, 600, 48px, Dela Gothic One);
-    }
+  .icons {
+    display: flex;
+    gap: 5%;
 
     p {
-      @include text($primary-grey-dark, 600, 18px, Montserrat);
+      text-align: center;
+      position: relative;
+      bottom: 22px;
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.1);
+        cursor: pointer;
+      }
     }
 
-    .bookBtn {
-      @include primary-button(
-        14px 17px,
-        100px,
-        $primary-cyan-dark,
-        $primary-cyan-light,
-        $primary-white,
-        $primary-golden-yellow
-      );
-    }
-  }
+    .sprint,
+    .task {
+      border-radius: 14px;
+      height: 112px;
 
-  .knowledgeImg {
-    @include preview-img(url(./assets/book.svg), 580px, 480px);
-  }
-}
-
-.watchStatisticsBlock {
-  width: 100%;
-  background: $primary-white;
-
-  &Width {
-    @include flexbox(space-between, center, row);
-    @include section(auto, 7% 0);
-
-    .staticticsImg {
-      @include preview-img(url(./assets/manaNDGIRL.svg), 580px, 410px);
+      div {
+        position: relative;
+        bottom: 25px;
+      }
     }
 
-    .watchStatisticsBlockContent {
-      @include flexbox(space-between, flex-start, column);
-      max-width: 470px;
-      gap: 20px;
+    .sprint {
+      background: #f2d4dc;
+      width: 129px;
 
-      h2 {
-        @include text($primary-black, 600, 48px, Dela Gothic One);
+      div {
+        @include preview-img(url(./assets/img11.svg), 131px, 106px);
       }
 
       p {
-        @include text($primary-grey-dark, 600, 18px, Montserrat);
-      }
-
-      .bookBtn {
-        @include primary-button(
-          14px 17px,
-          100px,
-          $primary-cyan-dark,
-          $primary-cyan-light,
-          $primary-white,
-          $primary-golden-yellow
-        );
+        color: #945069;
       }
     }
+
+    .task {
+      background: #c3dce3;
+      width: 172px;
+
+      div {
+        @include preview-img(url(./assets/ing10.svg), 91px, 106px);
+        left: 20%;
+      }
+
+      p {
+        color: #2b788b;
+      }
+    }
+  }
+
+  .img {
+    @include preview-img(url(./assets/learn.svg), 560px, 430px);
+  }
+}
+
+.knowledge {
+  @include section(7% auto 0, 0);
+  @include flexbox(space-between, flex-start, row);
+
+  .img {
+    @include preview-img(url(./assets/book.svg), 550px, 450px);
+  }
+}
+
+.statistic {
+  @include flexbox(space-between, center, row);
+  @include section(auto, 7% 0);
+
+  .img {
+    @include preview-img(url(./assets/manaNDGIRL.svg), 580px, 350px);
   }
 }

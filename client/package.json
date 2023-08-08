@@ -15,6 +15,7 @@
     "@types/node": "^16.18.39",
     "@types/react": "^18.2.18",
     "@types/react-dom": "^18.2.7",
+    "classnames": "^2.3.2",
     "cookies-ts": "^1.0.5",
     "framer-motion": "^10.15.0",
     "jwt-decode": "^3.1.2",
