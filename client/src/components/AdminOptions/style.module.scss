@@ -1,5 +1,5 @@
 // @import "@assets/styles";
-@import "@assets/styles";
+@import '@assets/styles';
 
 .wrapper {
   @include section(7% auto, 0);
@@ -11,7 +11,7 @@
     margin-bottom: 20px;
 
     h1 {
-      font: 400 25px "Roboto";
+      font: 400 25px 'Roboto';
       color: #1667b8;
     }
 
@@ -21,7 +21,7 @@
       transition: all 0.2s linear;
 
       &::before {
-        content: "CREATE   ";
+        content: 'CREATE   ';
       }
 
       &:hover {

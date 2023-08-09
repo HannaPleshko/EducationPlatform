@@ -39,14 +39,7 @@
   flex-direction: $direction;
 }
 
-@mixin primary-button(
-  $paddingSize,
-  $radius,
-  $defaultColor,
-  $defaultBckgColor,
-  $hoverColor,
-  $hoverBckgColor
-) {
+@mixin primary-button($paddingSize, $radius, $defaultColor, $defaultBckgColor, $hoverColor, $hoverBckgColor) {
   width: max-content;
   padding: $paddingSize;
   border-radius: $radius;

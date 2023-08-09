@@ -1,7 +1,8 @@
-import React from "react";
+import React from 'react';
+import { AdminNavigation } from '@Interfaces';
 
 interface HeaderProps {
-  option: string;
+  option: AdminNavigation;
   setCurOption: (param: string) => void;
 }
 

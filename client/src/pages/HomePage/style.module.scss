@@ -1,4 +1,4 @@
-@import "@assets/styles";
+@import '@assets/styles';
 
 .wrapper {
   width: 100%;
@@ -33,14 +33,7 @@
 
 .btn {
   @include text($primary-white, 700, 16px, Montserrat);
-  @include primary-button(
-    14px 17px,
-    100px,
-    $primary-cyan-dark,
-    $primary-cyan-light,
-    $primary-white,
-    $primary-golden-yellow
-  );
+  @include primary-button(14px 17px, 100px, $primary-cyan-dark, $primary-cyan-light, $primary-white, $primary-golden-yellow);
 }
 
 .preview {

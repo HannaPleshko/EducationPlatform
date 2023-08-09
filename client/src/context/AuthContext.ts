@@ -1,5 +1,5 @@
-import React, { createContext } from "react";
-import { IAuthContext } from "@Interfaces/AppInterfaces";
+import React, { createContext } from 'react';
+import { IAuthContext } from '@Interfaces';
 
 const defaultValue: IAuthContext = {
   token: null,

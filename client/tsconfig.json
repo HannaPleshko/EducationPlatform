@@ -11,7 +11,8 @@
       "@Routes/*": ["Routes/*"],
       "@services/*": ["services/*"],
       "@store/*": ["store/*"],
-      "@Interfaces/*": ["Interfaces/*"]
+      "@Interfaces/*": ["Interfaces/*"],
+      "@constants/*": ["constants/*"]
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],

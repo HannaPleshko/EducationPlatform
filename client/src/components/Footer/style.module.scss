@@ -1,4 +1,4 @@
-@import "@assets/styles";
+@import '@assets/styles';
 
 .wrapper {
   width: 100%;
@@ -29,33 +29,15 @@
         gap: 10px;
 
         .logoGit {
-          @include icon-decorator(
-            url(./assets/git.svg),
-            28px,
-            24px,
-            $primary-grey-light,
-            #24292fcf
-          );
+          @include icon-decorator(url(./assets/git.svg), 28px, 24px, $primary-grey-light, #24292fcf);
         }
 
         .logoGT {
-          @include icon-decorator(
-            url(./assets/GT.svg),
-            28px,
-            24px,
-            $primary-grey-light,
-            #f6ad0189
-          );
+          @include icon-decorator(url(./assets/GT.svg), 28px, 24px, $primary-grey-light, #f6ad0189);
         }
 
         .logoYouTube {
-          @include icon-decorator(
-            url(./assets/yt.svg),
-            28px,
-            24px,
-            $primary-grey-light,
-            #ec1b1b9c
-          );
+          @include icon-decorator(url(./assets/yt.svg), 28px, 24px, $primary-grey-light, #ec1b1b9c);
         }
       }
     }

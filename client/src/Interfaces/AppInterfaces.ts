@@ -1,3 +1,16 @@
+export enum Role {
+  STUDENT = 1,
+  TEACHER = 2,
+  ADMIN = 3,
+}
+
+export enum AdminNavigationContent {
+  USERS = 'Users',
+  COURSES = 'Courses',
+}
+
+export type AdminNavigation = (typeof AdminNavigationContent)[keyof typeof AdminNavigationContent];
+
 export interface User {
   user_id?: string;
   name: string;

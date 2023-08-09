@@ -1,4 +1,4 @@
-@import "@assets/styles";
+@import '@assets/styles';
 
 .wrapper {
   @include flexbox(space-between, center, row);
@@ -24,14 +24,7 @@
     }
 
     .btn {
-      @include primary-button(
-        14px,
-        14px,
-        $primary-white,
-        $primary-cyan-dark,
-        $primary-white,
-        $primary-golden-yellow
-      );
+      @include primary-button(14px, 14px, $primary-white, $primary-cyan-dark, $primary-white, $primary-golden-yellow);
     }
   }
 

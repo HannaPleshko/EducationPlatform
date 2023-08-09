@@ -1,13 +1,14 @@
-import React from "react";
+import React from 'react';
 
-import { Link } from "react-router-dom";
-import Options from "./Options";
-import AuthButton from "./AuthButton";
+import { Link } from 'react-router-dom';
+import Options from './Options';
+import AuthButton from './AuthButton';
+import { AdminNavigation } from '@Interfaces';
 
-import style from "./style.module.scss";
+import style from './style.module.scss';
 
 interface HeaderProps {
-  options?: string[];
+  options?: AdminNavigation[];
   setCurOption?: (param: string) => void;
 }
 

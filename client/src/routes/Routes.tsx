@@ -1,9 +1,9 @@
-import { Routes, Route } from "react-router-dom";
-import AuthPage from "@Pages/AuthPage/AuthPage";
-import RegistrationPage from "@Pages/RegistrationPage/RegistrationPage";
-import HomePage from "@Pages/HomePage/HomePage";
-import CoursesPage from "@Pages/CoursesPage/CoursesPage";
-import AdminPage from "@Pages/AdminPage/AdminPage";
+import { Routes, Route } from 'react-router-dom';
+import AuthPage from '@Pages/AuthPage/AuthPage';
+import RegistrationPage from '@Pages/RegistrationPage/RegistrationPage';
+import HomePage from '@Pages/HomePage/HomePage';
+import CoursesPage from '@Pages/CoursesPage/CoursesPage';
+import AdminPage from '@Pages/AdminPage/AdminPage';
 
 const RoutesProvider = (isAuthenticated: boolean) => {
   if (isAuthenticated) {

@@ -1,23 +1,14 @@
-import React, { useEffect, useState } from "react";
-import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Paper,
-  IconButton,
-} from "@mui/material";
+import React, { useEffect, useState } from 'react';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, IconButton } from '@mui/material';
 
-import { useGetUsersQuery, useGetCoursesQuery } from "@services";
-import Navigation from "./Navigation";
-import ModalTab from "@Components/ModalTab/ModalTab";
-import { User, Course } from "@Interfaces/AppInterfaces";
-import { UserGridApiResponse } from "@Interfaces/APIResponses";
+import { useGetUsersQuery, useGetCoursesQuery } from '@services';
+import Navigation from './Navigation';
+import ModalTab from '@Components/ModalTab/ModalTab';
+import { User, Course, UserGridApiResponse, AdminNavigationContent } from '@Interfaces';
+import { ExceptionType } from '@constants/message';
 
-import style from "./style.module.scss";
+import style from './style.module.scss';
 
 interface ContentProps {
   curOption: string;
@@ -37,13 +28,13 @@ const Content: React.FC<ContentProps> = ({ curOption }) => {
 
   const getSomeData = async () => {
     try {
-      if (curOption === "user") {
+      if (curOption === AdminNavigationContent.USERS) {
         if (!users) return;
 
         const { fields, rows } = users;
         setFields(fields);
         setRows(rows);
-      } else if (curOption === "course") {
+      } else if (curOption === AdminNavigationContent.COURSES) {
         if (!courses) return;
 
         const { fields, rows } = courses;
@@ -51,18 +42,15 @@ const Content: React.FC<ContentProps> = ({ curOption }) => {
         setRows(rows);
       }
     } catch (e: any) {
-      alert("Network error. Please refresh the page");
+      alert(ExceptionType.DB_CONNECT_NOT_CONNECTED);
       console.error(e.message);
     }
   };
 
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    rowIndex: number,
-  ) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>, rowIndex: number) => {
     const { name, value } = e.target;
 
-    setRows((prevState) => {
+    setRows(prevState => {
       const updatedInp: any = [...prevState];
       updatedInp[rowIndex] = { ...updatedInp[rowIndex], [name]: value };
       return updatedInp;
@@ -74,36 +62,29 @@ const Content: React.FC<ContentProps> = ({ curOption }) => {
   }, [curOption]);
 
   return (
-    <div className={style["wrapper"]}>
-      <div className={style["content-head"]}>
+    <div className={style['wrapper']}>
+      <div className={style['content-head']}>
         <h1>Notes</h1>
 
-        <div className={style["icon"]}>
-          <IconButton
-            color="primary"
-            onClick={handleOpen}
-            aria-label="add to shopping cart"
-          >
+        <div className={style['icon']}>
+          <IconButton color="primary" onClick={handleOpen} aria-label="add to shopping cart">
             <AddShoppingCartIcon />
           </IconButton>
         </div>
       </div>
 
       {fields.length ? (
-        <TableContainer className={style["content-body"]} component={Paper}>
+        <TableContainer className={style['content-body']} component={Paper}>
           <Table stickyHeader>
             <TableHead>
               <TableRow>
                 {fields.map((el, keyIndex) => (
-                  <TableCell className={style["table-cell"]} key={keyIndex}>
+                  <TableCell className={style['table-cell']} key={keyIndex}>
                     {el}
                   </TableCell>
                 ))}
 
-                <TableCell
-                  style={{ textAlign: "end" }}
-                  className={style["table-cell"]}
-                >
+                <TableCell style={{ textAlign: 'end' }} className={style['table-cell']}>
                   Navigation
                 </TableCell>
               </TableRow>
@@ -111,19 +92,13 @@ const Content: React.FC<ContentProps> = ({ curOption }) => {
 
             <TableBody>
               {rows.map((item, itemIndex) => (
-                <TableRow className={style["table-row"]} key={itemIndex}>
+                <TableRow className={style['table-row']} key={itemIndex}>
                   {fields.map((key, keyIndex) => (
                     <TableCell key={keyIndex} component="th" scope="row">
                       <input
-                        onChange={(e) => handleInputChange(e, itemIndex)}
-                        className={
-                          style[
-                            itemIndex !== selectedRow || key === "id"
-                              ? "off-inp"
-                              : "on-inp"
-                          ]
-                        }
-                        disabled={itemIndex !== selectedRow || key === "id"}
+                        onChange={e => handleInputChange(e, itemIndex)}
+                        className={style[itemIndex !== selectedRow || key === 'id' ? 'off-inp' : 'on-inp']}
+                        disabled={itemIndex !== selectedRow || key === 'id'}
                         value={(rows[itemIndex] as any)[key]}
                         name={key}
                       />
@@ -148,14 +123,7 @@ const Content: React.FC<ContentProps> = ({ curOption }) => {
         <p>Network error. Please refresh the page</p>
       )}
 
-      {open ? (
-        <ModalTab
-          fields={fields}
-          content={curOption}
-          open={open}
-          handleClose={handleClose}
-        />
-      ) : null}
+      {open ? <ModalTab fields={fields} content={curOption} open={open} handleClose={handleClose} /> : null}
     </div>
   );
 };

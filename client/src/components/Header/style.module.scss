@@ -1,4 +1,4 @@
-@import "@assets/styles";
+@import '@assets/styles';
 
 .wrapper {
   background: #f6f5f4;
@@ -44,14 +44,7 @@
 
     .sign {
       @include text($primary-white, 700, 16px, Montserrat);
-      @include primary-button(
-        14px,
-        14px,
-        $primary-white,
-        $primary-cyan-dark,
-        $primary-white,
-        $primary-golden-yellow
-      );
+      @include primary-button(14px, 14px, $primary-white, $primary-cyan-dark, $primary-white, $primary-golden-yellow);
     }
   }
 }

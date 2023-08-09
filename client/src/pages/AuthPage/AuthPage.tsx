@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-import Footer from "@Components/Footer/Footer";
-import Header from "@Components/Header/Header";
-import AuthForm from "@Components/AuthForm/AuthForm";
+import Footer from '@Components/Footer/Footer';
+import Header from '@Components/Header/Header';
+import AuthForm from '@Components/AuthForm/AuthForm';
 
 const AuthPage = () => {
   return (
