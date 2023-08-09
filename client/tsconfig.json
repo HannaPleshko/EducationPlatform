@@ -10,7 +10,8 @@
       "@Pages/*": ["Pages/*"],
       "@Routes/*": ["Routes/*"],
       "@services/*": ["services/*"],
-      "@store/*": ["store/*"]
+      "@store/*": ["store/*"],
+      "@Interfaces/*": ["Interfaces/*"]
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],

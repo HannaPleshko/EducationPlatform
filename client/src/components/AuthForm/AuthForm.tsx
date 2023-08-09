@@ -1,14 +1,11 @@
 import { useState, useContext, useEffect } from "react";
 
-import {
-  useCreateUserMutation,
-  useAuthenticateMutation,
-} from "../../services/user";
 import { AuthContext } from "@context/AuthContext";
 import useRedirect from "@hooks/useRedirect";
-
 import Input from "@Components/Input/Input";
 import SelectRole from "./SelectRole";
+import { User } from "@Interfaces/AppInterfaces";
+import { useCreateUserMutation, useAuthenticateMutation } from "@services";
 
 import style from "./style.module.scss";
 
@@ -16,21 +13,13 @@ interface AuthFormProps {
   isRegistration: boolean;
 }
 
-interface FormValues {
-  email: string;
-  pwd: string;
-  name: string;
-  surname: string;
-  role: string;
-}
-
 const AuthForm: React.FC<AuthFormProps> = ({ isRegistration }) => {
-  const [form, setForm] = useState<FormValues>({
+  const [form, setForm] = useState<User>({
     email: "",
     pwd: "",
     name: "",
     surname: "",
-    role: "1",
+    role: 1,
   });
 
   const redirect = useRedirect();
@@ -82,7 +71,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ isRegistration }) => {
 
               <SelectRole
                 name="role"
-                value={form["role"]}
+                value={String(form["role"])}
                 handleChange={handleChange}
               />
             </>

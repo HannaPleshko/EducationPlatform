@@ -1,8 +1,4 @@
 import React, { useEffect, useState } from "react";
-
-import { useGetUsersQuery } from "@services/user";
-import { useGetCoursesQuery } from "@services/course";
-
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import {
   Table,
@@ -15,8 +11,11 @@ import {
   IconButton,
 } from "@mui/material";
 
+import { useGetUsersQuery, useGetCoursesQuery } from "@services";
 import Navigation from "./Navigation";
 import ModalTab from "@Components/ModalTab/ModalTab";
+import { User, Course } from "@Interfaces/AppInterfaces";
+import { UserGridApiResponse } from "@Interfaces/APIResponses";
 
 import style from "./style.module.scss";
 
@@ -24,32 +23,12 @@ interface ContentProps {
   curOption: string;
 }
 
-interface IUser {
-  user_id: string;
-  name: string;
-  surname: string;
-  email: string;
-  pwd: string;
-  prevPwd?: string;
-  role: number;
-}
-
-interface ICourse {
-  course_id: string;
-  title: string;
-}
-
-interface TabPreview {
-  fields: string[];
-  rows: ICourse[] | IUser[];
-}
-
 const Content: React.FC<ContentProps> = ({ curOption }) => {
-  const { data: users } = useGetUsersQuery({});
-  const { data: courses } = useGetCoursesQuery({});
+  const { data: users } = useGetUsersQuery<UserGridApiResponse>({});
+  const { data: courses } = useGetCoursesQuery<UserGridApiResponse>({});
 
   const [fields, setFields] = useState<string[]>([]);
-  const [rows, setRows] = useState<ICourse[] | IUser[]>([]);
+  const [rows, setRows] = useState<Course[] | User[]>([]);
   const [selectedRow, setSelectedRow] = useState<number | null>(null);
   const [open, setOpen] = useState(false);
 
@@ -61,15 +40,15 @@ const Content: React.FC<ContentProps> = ({ curOption }) => {
       if (curOption === "user") {
         if (!users) return;
 
-        const { fields, rows } = users as TabPreview;
+        const { fields, rows } = users;
         setFields(fields);
-        setRows(rows as IUser[]);
+        setRows(rows);
       } else if (curOption === "course") {
         if (!courses) return;
 
-        const { fields, rows } = courses as TabPreview;
+        const { fields, rows } = courses;
         setFields(fields);
-        setRows(rows as ICourse[]);
+        setRows(rows);
       }
     } catch (e: any) {
       alert("Network error. Please refresh the page");
@@ -153,7 +132,7 @@ const Content: React.FC<ContentProps> = ({ curOption }) => {
 
                   <Navigation
                     key={itemIndex}
-                    id={(item as IUser).user_id || (item as ICourse).course_id}
+                    id={(item as User).user_id || (item as Course).course_id}
                     itemIndex={itemIndex}
                     content={curOption}
                     setSelectedRow={setSelectedRow}

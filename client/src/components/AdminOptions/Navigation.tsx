@@ -1,14 +1,13 @@
 import React from "react";
 import { TableCell, IconButton } from "@mui/material";
 import { RestartAlt, Create, Save, Delete } from "@mui/icons-material";
-import {
-  useDeleteUserMutation,
-  useUpdateUserMutation,
-} from "../../services/user";
+import { UserApiResponse, CourseApiResponse } from "@Interfaces/APIResponses";
 import {
   useDeleteCourseMutation,
   useUpdateCourseMutation,
-} from "../../services/course";
+  useDeleteUserMutation,
+  useUpdateUserMutation,
+} from "@services";
 
 import style from "./style.module.scss";
 
@@ -29,15 +28,13 @@ const Navigation: React.FC<NavigationProps> = ({
   selectedRow,
   rows,
 }) => {
-  const [updateUser] = useUpdateUserMutation();
-  const [deleteUser] = useDeleteUserMutation();
+  const [updateUser] = useUpdateUserMutation<UserApiResponse>();
+  const [deleteUser] = useDeleteUserMutation<UserApiResponse>();
 
-  const [updateCourse] = useUpdateCourseMutation();
-  const [deleteCourse] = useDeleteCourseMutation();
+  const [updateCourse] = useUpdateCourseMutation<CourseApiResponse>();
+  const [deleteCourse] = useDeleteCourseMutation<CourseApiResponse>();
 
-  const handleClick = () => {
-    setSelectedRow(itemIndex);
-  };
+  const handleClick = () => setSelectedRow(itemIndex);
 
   const deleteSomeData = async () => {
     try {
@@ -68,9 +65,7 @@ const Navigation: React.FC<NavigationProps> = ({
     }
   };
 
-  const revert = () => {
-    setSelectedRow(null);
-  };
+  const revert = () => setSelectedRow(null);
 
   return (
     <TableCell align="right" className={style.navigation}>

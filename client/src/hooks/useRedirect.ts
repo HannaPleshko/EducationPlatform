@@ -3,15 +3,9 @@ import { useNavigate } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import Cookies from "cookies-ts";
 
-const cookies = new Cookies();
+import { User } from "@Interfaces/AppInterfaces";
 
-interface FormValues {
-  email: string;
-  pwd: string;
-  name: string;
-  surname: string;
-  role: string | number;
-}
+const cookies = new Cookies();
 
 const useRedirect = () => {
   const navigate = useNavigate();
@@ -25,7 +19,7 @@ const useRedirect = () => {
     const token = cookies.get("access_token");
 
     if (token) {
-      const user: FormValues = jwt_decode(token);
+      const user: User = jwt_decode(token);
       if (user.role === 3) {
         navigate("/admin");
       } else {

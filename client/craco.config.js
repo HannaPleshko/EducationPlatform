@@ -12,6 +12,7 @@ module.exports = {
       "@Routes": path.resolve(__dirname, "src/Routes"),
       "@services": path.resolve(__dirname, "src/services"),
       "@store": path.resolve(__dirname, "src/store"),
+      "@Interfaces": path.resolve(__dirname, "src/Interfaces"),
     },
   },
 };

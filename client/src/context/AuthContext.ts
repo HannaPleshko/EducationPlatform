@@ -1,11 +1,5 @@
 import React, { createContext } from "react";
-
-interface IAuthContext {
-  token: null | string;
-  login: () => void;
-  logout: () => void;
-  isAuthenticated: boolean;
-}
+import { IAuthContext } from "@Interfaces/AppInterfaces";
 
 const defaultValue: IAuthContext = {
   token: null,
