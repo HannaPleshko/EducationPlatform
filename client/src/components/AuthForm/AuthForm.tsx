@@ -4,10 +4,10 @@ import {
   useCreateUserMutation,
   useAuthenticateMutation,
 } from "../../services/user";
-import { AuthContext } from "../../context/AuthContext";
-import useRedirect from "../../hooks/useRedirect";
+import { AuthContext } from "@context/AuthContext";
+import useRedirect from "@hooks/useRedirect";
 
-import Input from "../Input/Input";
+import Input from "@Components/Input/Input";
 import SelectRole from "./SelectRole";
 
 import style from "./style.module.scss";

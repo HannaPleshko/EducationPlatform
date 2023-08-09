@@ -1,4 +1,4 @@
-@import "../../styles/index.scss";
+@import "@assets/styles";
 
 .wrapper {
   width: 100%;
@@ -150,7 +150,6 @@
 }
 
 .statistic {
-  @include flexbox(space-between, center, row);
   @include section(auto, 7% 0);
 
   .img {

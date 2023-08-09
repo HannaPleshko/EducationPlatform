@@ -1,6 +1,7 @@
+import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../context/AuthContext";
-import { useContext } from "react";
+import { AuthContext } from "@context/AuthContext";
+
 import style from "./style.module.scss";
 
 const AuthButton = () => {

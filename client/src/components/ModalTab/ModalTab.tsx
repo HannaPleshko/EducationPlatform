@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { Button, Modal, TextField } from "@mui/material";
+
+import { useCreateUserMutation } from "@services/user";
+import { useCreateCourseMutation } from "@services/course";
+
 import style from "./style.module.scss";
-import { useCreateUserMutation } from "../../services/user";
-import { useCreateCourseMutation } from "../../services/course";
+
 interface ModalTabProps {
   open: any;
   handleClose: () => void;

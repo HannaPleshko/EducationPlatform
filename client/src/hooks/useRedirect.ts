@@ -1,3 +1,4 @@
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import Cookies from "cookies-ts";
@@ -12,7 +13,7 @@ interface FormValues {
   role: string | number;
 }
 
-export default function useRedirect() {
+const useRedirect = () => {
   const navigate = useNavigate();
 
   return (isRegistration: boolean) => {
@@ -32,4 +33,6 @@ export default function useRedirect() {
       }
     }
   };
-}
+};
+
+export default useRedirect;

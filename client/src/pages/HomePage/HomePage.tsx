@@ -1,11 +1,10 @@
 import React from "react";
 import classNames from "classnames";
-
-import Footer from "../../components/Footer/Footer";
-import Header from "../../components/Header/Header";
-
 import { motion } from "framer-motion";
-import { animation } from "../../motion";
+
+import Footer from "@Components/Footer/Footer";
+import Header from "@Components/Header/Header";
+import { animation } from "@assets/motion";
 
 import style from "./style.module.scss";
 

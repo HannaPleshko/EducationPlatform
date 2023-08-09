@@ -1,11 +1,11 @@
 import { Routes, Route } from "react-router-dom";
-import AuthPage from "../pages/AuthPage/AuthPage";
-import RegistrationPage from "../pages/RegistrationPage/RegistrationPage";
-import HomePage from "../pages/HomePage/HomePage";
-import CoursesPage from "../pages/CoursesPage/CoursesPage";
-import AdminPage from "../pages/AdminPage/AdminPage";
+import AuthPage from "@Pages/AuthPage/AuthPage";
+import RegistrationPage from "@Pages/RegistrationPage/RegistrationPage";
+import HomePage from "@Pages/HomePage/HomePage";
+import CoursesPage from "@Pages/CoursesPage/CoursesPage";
+import AdminPage from "@Pages/AdminPage/AdminPage";
 
-function RoutesProvider(isAuthenticated: boolean) {
+const RoutesProvider = (isAuthenticated: boolean) => {
   if (isAuthenticated) {
     return (
       <Routes>
@@ -21,6 +21,6 @@ function RoutesProvider(isAuthenticated: boolean) {
       <Route path="/reg" element={<RegistrationPage />} />
     </Routes>
   );
-}
+};
 
 export default RoutesProvider;

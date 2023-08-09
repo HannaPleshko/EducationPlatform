@@ -1,14 +1,14 @@
 import React from "react";
 
-import Header from "../../components/Header/Header";
+import Header from "@Components/Header/Header";
 
-function CoursesPage() {
+const CoursesPage = () => {
   return (
     <>
       <Header />
       <h1>hello</h1>
     </>
   );
-}
+};
 
 export default CoursesPage;

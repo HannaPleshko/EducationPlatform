@@ -1,3 +1,5 @@
+import React from "react";
+
 interface HeaderProps {
   option: string;
   setCurOption: (param: string) => void;

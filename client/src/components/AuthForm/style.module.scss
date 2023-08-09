@@ -1,4 +1,4 @@
-@import "../../styles/index.scss";
+@import "@assets/styles";
 
 .wrapper {
   @include flexbox(space-between, center, row);

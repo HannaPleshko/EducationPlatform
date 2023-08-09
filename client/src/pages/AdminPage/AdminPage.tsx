@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 
-import Header from "../../components/Header/Header";
-import Content from "../../components/AdminOptions/Content";
+import Header from "@Components/Header/Header";
+import Content from "@Components/AdminOptions/Content";
 
 import style from "./style.module.scss";
 
-function AdminPage() {
+const AdminPage = () => {
   const [curOption, setCurOption] = useState("user");
 
   return (
@@ -15,6 +15,6 @@ function AdminPage() {
       <Content curOption={curOption} />
     </>
   );
-}
+};
 
 export default AdminPage;

@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 
-import { useGetUsersQuery } from "../../services/user";
-import { useGetCoursesQuery } from "../../services/course";
+import { useGetUsersQuery } from "@services/user";
+import { useGetCoursesQuery } from "@services/course";
+
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import {
   Table,
   TableBody,
@@ -12,9 +14,9 @@ import {
   Paper,
   IconButton,
 } from "@mui/material";
-import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+
 import Navigation from "./Navigation";
-import ModalTab from "../ModalTab/ModalTab";
+import ModalTab from "@Components/ModalTab/ModalTab";
 
 import style from "./style.module.scss";
 

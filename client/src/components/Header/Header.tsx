@@ -1,6 +1,9 @@
+import React from "react";
+
 import { Link } from "react-router-dom";
 import Options from "./Options";
 import AuthButton from "./AuthButton";
+
 import style from "./style.module.scss";
 
 interface HeaderProps {

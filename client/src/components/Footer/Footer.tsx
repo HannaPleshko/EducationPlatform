@@ -1,6 +1,6 @@
 import style from "./style.module.scss";
 
-function Footer() {
+const Footer = () => {
   return (
     <div className={style.wrapper}>
       <div className={style.content}>
@@ -29,6 +29,6 @@ function Footer() {
       </div>
     </div>
   );
-}
+};
 
 export default Footer;
