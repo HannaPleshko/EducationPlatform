@@ -1,4 +1,4 @@
-@import "../../styles/index.scss";
+@import '@assets/styles';
 
 .wrapper {
   background: #f6f5f4;
@@ -7,6 +7,10 @@
   .content {
     @include flexbox(space-between, center, row);
     @include section(auto, 2% 0);
+
+    h1 {
+      @include text($primary-black, 400, 20px, Dela Gothic One);
+    }
 
     .options {
       @include flexbox(flex-start, center, row);
@@ -39,14 +43,8 @@
     }
 
     .sign {
-      @include primary-button(
-        14px,
-        14px,
-        $primary-white,
-        $primary-cyan-dark,
-        $primary-white,
-        $primary-golden-yellow
-      );
+      @include text($primary-white, 700, 16px, Montserrat);
+      @include primary-button(14px, 14px, $primary-white, $primary-cyan-dark, $primary-white, $primary-golden-yellow);
     }
   }
 }

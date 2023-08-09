@@ -1,8 +1,8 @@
-import RoutesProvider from "./routes/Routes";
-import { useAuth } from "./hooks/auth.hook";
-import { AuthContext } from "./context/AuthContext";
+import RoutesProvider from './Routes/Routes';
+import { useAuth } from '@hooks/auth.hook';
+import { AuthContext } from '@context/AuthContext';
 
-function App() {
+const App = () => {
   const { token, login, logout } = useAuth();
   const isAuthenticated = !!token;
 
@@ -20,6 +20,6 @@ function App() {
       {routes}
     </AuthContext.Provider>
   );
-}
+};
 
 export default App;

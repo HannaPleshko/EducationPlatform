@@ -4,9 +4,9 @@ import { SuccessfullyType } from '@exceptions/exceptions.type';
 
 type message = IUser | IUser[] | ICourse | ICourse[] | TabPreview | (typeof SuccessfullyType)[keyof typeof SuccessfullyType];
 
-function buildResponse(res: Response, status: number, message: message) {
+const buildResponse = (res: Response, status: number, message: message) => {
   res.status(status);
   res.send(message);
-}
+};
 
 export { buildResponse };

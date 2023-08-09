@@ -1,45 +1,41 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+console.log(process.env.REACT_APP_API_URL);
 
 export const courseApi = createApi({
-  reducerPath: "courseApi",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3001/api/v1/course" }),
+  reducerPath: 'courseApi',
+  baseQuery: fetchBaseQuery({ baseUrl: process.env.REACT_APP_API_URL }),
 
   endpoints: (builder: any) => ({
     getCourses: builder.query({
       query: () => ({
-        url: "/",
-        method: "GET",
+        url: '/course',
+        method: 'GET',
       }),
     }),
 
     createCourse: builder.mutation({
       query: (data: any) => ({
-        url: `/`,
-        method: "POST",
+        url: `/course`,
+        method: 'POST',
         body: data,
       }),
     }),
 
     updateCourse: builder.mutation({
       query: (data: any) => ({
-        url: `/${data.id}`,
-        method: "PUT",
+        url: `/course/${data.id}`,
+        method: 'PUT',
         body: data,
       }),
     }),
 
     deleteCourse: builder.mutation({
       query: (id: string) => ({
-        url: `/${id}`,
-        method: "DELETE",
+        url: `/course/${id}`,
+        method: 'DELETE',
       }),
     }),
   }),
 });
 
-export const {
-  useCreateCourseMutation,
-  useGetCoursesQuery,
-  useDeleteCourseMutation,
-  useUpdateCourseMutation,
-} = courseApi;
+export const { useCreateCourseMutation, useGetCoursesQuery, useDeleteCourseMutation, useUpdateCourseMutation } = courseApi;

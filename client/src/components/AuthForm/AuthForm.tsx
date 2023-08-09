@@ -1,36 +1,25 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext, useEffect } from 'react';
 
-import {
-  useCreateUserMutation,
-  useAuthenticateMutation,
-} from "../../services/user";
-import { AuthContext } from "../../context/AuthContext";
-import useRedirect from "../../hooks/useRedirect";
+import { AuthContext } from '@context/AuthContext';
+import useRedirect from '@hooks/useRedirect';
+import Input from '@Components/Input/Input';
+import SelectRole from './SelectRole';
+import { User } from '@Interfaces';
+import { useCreateUserMutation, useAuthenticateMutation } from '@services';
 
-import Input from "../Input/Input";
-import SelectRole from "./SelectRole";
-
-import style from "./style.module.scss";
+import style from './style.module.scss';
 
 interface AuthFormProps {
   isRegistration: boolean;
 }
 
-interface FormValues {
-  email: string;
-  pwd: string;
-  name: string;
-  surname: string;
-  role: string;
-}
-
 const AuthForm: React.FC<AuthFormProps> = ({ isRegistration }) => {
-  const [form, setForm] = useState<FormValues>({
-    email: "",
-    pwd: "",
-    name: "",
-    surname: "",
-    role: "1",
+  const [form, setForm] = useState<User>({
+    email: '',
+    pwd: '',
+    name: '',
+    surname: '',
+    role: 1,
   });
 
   const redirect = useRedirect();
@@ -49,7 +38,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ isRegistration }) => {
   };
 
   const handleChange = (e: any) => {
-    setForm((prev) => {
+    setForm(prev => {
       return {
         ...prev,
         [e.target.name]: e.target.value,
@@ -67,30 +56,26 @@ const AuthForm: React.FC<AuthFormProps> = ({ isRegistration }) => {
   return (
     <div className={style.wrapper}>
       <div className={style.loginForm}>
-        {isRegistration ? <h1>Sign Up</h1> : <h1>Login</h1>}
+        <h1> {isRegistration ? 'Sign Up' : 'Login'}</h1>
 
         <div className={style.inps}>
-          {["email", "pwd"].map((el, index) => (
+          {['email', 'pwd'].map((el, index) => (
             <Input key={index} name={el} handleChange={handleChange} />
           ))}
 
           {isRegistration && (
             <>
-              {["name", "surname"].map((el, index) => (
+              {['name', 'surname'].map((el, index) => (
                 <Input key={index} name={el} handleChange={handleChange} />
               ))}
 
-              <SelectRole
-                name="role"
-                value={form["role"]}
-                handleChange={handleChange}
-              />
+              <SelectRole name="role" value={String(form['role'])} handleChange={handleChange} />
             </>
           )}
         </div>
 
         <div onClick={sendRequest} className={style.btn}>
-          {isRegistration ? "Create User" : "Login"}
+          {isRegistration ? 'Create User' : 'Login'}
         </div>
       </div>
 

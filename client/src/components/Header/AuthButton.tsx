@@ -1,7 +1,8 @@
-import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../context/AuthContext";
-import { useContext } from "react";
-import style from "./style.module.scss";
+import React, { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '@context/AuthContext';
+
+import style from './style.module.scss';
 
 const AuthButton = () => {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ const AuthButton = () => {
       <div
         onClick={() => {
           logout();
-          navigate("/");
+          navigate('/');
         }}
       >
         <div className={style.sign}>Sign Out</div>

@@ -1,9 +1,10 @@
-import React from "react";
-import Footer from "../../components/Footer/Footer";
-import Header from "../../components/Header/Header";
-import AuthForm from "../../components/AuthForm/AuthForm";
+import React from 'react';
 
-function RegistrationPage() {
+import Footer from '@Components/Footer/Footer';
+import Header from '@Components/Header/Header';
+import AuthForm from '@Components/AuthForm/AuthForm';
+
+const RegistrationPage = () => {
   return (
     <>
       <Header />
@@ -11,6 +12,6 @@ function RegistrationPage() {
       <Footer />
     </>
   );
-}
+};
 
 export default RegistrationPage;

@@ -1,20 +1,22 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import Header from "../../components/Header/Header";
-import Content from "../../components/AdminOptions/Content";
+import Header from '@Components/Header/Header';
+import Content from '@Components/AdminOptions/Content';
+import { AdminNavigationContent } from '@Interfaces';
+import { AdminNavigation } from '@constants/options';
 
-import style from "./style.module.scss";
+import style from './style.module.scss';
 
-function AdminPage() {
-  const [curOption, setCurOption] = useState("user");
+const AdminPage = () => {
+  const [curOption, setCurOption] = useState<string>(AdminNavigationContent.USERS);
 
   return (
     <>
-      <Header setCurOption={setCurOption} options={["user", "course"]} />
+      <Header setCurOption={setCurOption} options={AdminNavigation} />
 
       <Content curOption={curOption} />
     </>
   );
-}
+};
 
 export default AdminPage;

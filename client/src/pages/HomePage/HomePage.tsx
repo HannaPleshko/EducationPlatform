@@ -1,14 +1,14 @@
-import React from "react";
+import React from 'react';
+import classNames from 'classnames';
+import { motion } from 'framer-motion';
 
-import Footer from "../../components/Footer/Footer";
-import Header from "../../components/Header/Header";
+import Footer from '@Components/Footer/Footer';
+import Header from '@Components/Header/Header';
+import { animation } from '@assets/motion';
 
-import { motion } from "framer-motion";
-import { animation } from "../../motion";
+import style from './style.module.scss';
 
-import style from "./style.module.scss";
-
-function HomePage() {
+const HomePage = () => {
   return (
     <>
       <Header />
@@ -17,73 +17,64 @@ function HomePage() {
         initial="hiddenHorizontal"
         whileInView="visibleHorizontal"
         viewport={{ once: true }}
-        className={style.preview}
+        className={classNames(style.preview, style.default)}
       >
-        <div className={style.previewContent}>
-          <motion.p
-            custom={1}
-            variants={animation}
-            className={style.textPlatform}
-          >
+        <div className={style.content}>
+          <motion.h4 custom={1} variants={animation}>
             E-COURSE PLATFORM
-          </motion.p>
+          </motion.h4>
+
           <motion.h1 custom={2} variants={animation}>
             Learning and teaching online, made easy.
           </motion.h1>
-          <motion.p
-            custom={3}
-            variants={animation}
-            className={style.textAdditional}
-          >
+
+          <motion.p custom={3} variants={animation}>
             Any subject, in any language, on any device, for all ages!
           </motion.p>
-          <motion.div
-            custom={4}
-            variants={animation}
-            className={`${style.btn} ${style.button}`}
-          >
+
+          <motion.div custom={4} variants={animation} className={style.btn}>
             About platform
           </motion.div>
+
           <div className={style.statictics}>
-            <p className={style.studentsCount}>
-              <span className={style.lightning}></span>600 <span>+</span>
-            </p>
-            <p className={style.students}>Students</p>
+            <motion.p custom={5} variants={animation} className={style.studentsCount}>
+              <div className={style.lightning}></div>
+              <p>
+                600<span>+</span>
+              </p>
+            </motion.p>
+            <motion.p custom={6} variants={animation} className={style.students}>
+              Students
+            </motion.p>
           </div>
         </div>
-        <div className={style.manImg}></div>
+
+        <div className={style.img}></div>
       </motion.div>
 
-      <motion.div
-        initial="hiddenVertical"
-        whileInView="visibleVertical"
-        viewport={{ amount: 0.2, once: true }}
-        className={style.learnBlock}
-      >
-        <div className={style.learnBlockWidth}>
-          <motion.div
-            custom={1}
-            variants={animation}
-            className={style.learnImg}
-          ></motion.div>
-          <div className={style.learnBlockContent}>
+      <motion.div initial="hiddenVertical" whileInView="visibleVertical" viewport={{ amount: 0.2, once: true }} className={style.wrapper}>
+        <div className={classNames(style.learn, style.default)}>
+          <motion.div custom={1} variants={animation} className={style.img}></motion.div>
+
+          <div className={style.content}>
             <motion.h2 custom={2} variants={animation}>
               Learn a language in a playful way
             </motion.h2>
+
             <motion.p custom={3} variants={animation}>
-              Make learning programming languages more fun with mini-games
+              Make the process of learning programming languages more engaging by incorporating mini-games.
             </motion.p>
-            <div className={style.wrapperIcons}>
-              <motion.div
-                custom={4}
-                variants={animation}
-                className={style.sprint}
-              ></motion.div>
-              <motion.div
-                custom={5}
-                variants={animation}
-                className={style.tasks}
-              ></motion.div>
+
+            <div className={style.icons}>
+              <motion.div custom={4} variants={animation} className={style.sprint}>
+                <div></div>
+                <p>Sprint →</p>
+              </motion.div>
+
+              <motion.div custom={5} variants={animation} className={style.task}>
+                <div></div>
+                <p>Tasks →</p>
+              </motion.div>
             </div>
           </div>
         </div>
@@ -93,54 +84,37 @@ function HomePage() {
         initial="hiddenVertical"
         whileInView="visibleVertical"
         viewport={{ amount: 0.2, once: true }}
-        className={style.knowledgeBlock}
+        className={classNames(style.knowledge, style.default)}
       >
-        <div className={style.knowledgeBlockContent}>
+        <div className={style.content}>
           <motion.h2 custom={2} variants={animation}>
-            Increase your knowledge
+            Elevate your learning journey
           </motion.h2>
           <motion.p custom={3} variants={animation}>
-            Traditional and new effective approaches to learning languages
+            Uncover the World of Language Learning Through Time-Honored and Modern Approaches{' '}
           </motion.p>
-          <motion.div
-            custom={4}
-            variants={animation}
-            className={`${style.bookBtn} ${style.button}`}
-          >
+          <motion.div custom={4} variants={animation} className={style.btn}>
             Textbook →
           </motion.div>
         </div>
-        <motion.div
-          custom={1}
-          variants={animation}
-          className={style.knowledgeImg}
-        ></motion.div>
+
+        <motion.div custom={1} variants={animation} className={style.img}></motion.div>
       </motion.div>
 
-      <motion.div
-        initial="hiddenVertical"
-        whileInView="visibleVertical"
-        viewport={{ amount: 0.2, once: true }}
-        className={style.watchStatisticsBlock}
-      >
-        <div className={style.watchStatisticsBlockWidth}>
-          <motion.div
-            custom={1}
-            variants={animation}
-            className={style.staticticsImg}
-          ></motion.div>
-          <div className={style.watchStatisticsBlockContent}>
+      <motion.div initial="hiddenVertical" whileInView="visibleVertical" viewport={{ amount: 0.2, once: true }} className={style.wrapper}>
+        <div className={classNames(style.statistic, style.default)}>
+          <motion.div custom={1} variants={animation} className={style.img}></motion.div>
+
+          <div className={style.content}>
             <motion.h2 custom={2} variants={animation}>
               Watch your progress every day
             </motion.h2>
+
             <motion.p custom={3} variants={animation}>
               Save statistics on your achievements and mistakes
             </motion.p>
-            <motion.div
-              custom={4}
-              variants={animation}
-              className={`${style.bookBtn} ${style.button}`}
-            >
+
+            <motion.div custom={4} variants={animation} className={style.btn}>
               Statistics →
             </motion.div>
           </div>
@@ -150,6 +124,6 @@ function HomePage() {
       <Footer />
     </>
   );
-}
+};
 
 export default HomePage;

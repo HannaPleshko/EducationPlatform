@@ -1,5 +1,6 @@
-import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
-import { SelectChangeEvent } from "@mui/material";
+import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
+import { SelectChangeEvent } from '@mui/material';
+import { UserRoles } from '@constants/options';
 
 interface SelectRoleProps {
   name: string;
@@ -7,21 +8,12 @@ interface SelectRoleProps {
   handleChange: (event: SelectChangeEvent<string>) => void;
 }
 
-const SelectRole: React.FC<SelectRoleProps> = ({
-  name,
-  value,
-  handleChange,
-}) => {
-  const roles = [
-    { value: "1", label: "Student" },
-    { value: "2", label: "Teacher" },
-  ];
-
+const SelectRole: React.FC<SelectRoleProps> = ({ name, value, handleChange }) => {
   return (
     <FormControl>
       <InputLabel>Role</InputLabel>
       <Select name={name} value={value} label={name} onChange={handleChange}>
-        {roles.map(({ value, label }) => (
+        {UserRoles.map(({ value, label }) => (
           <MenuItem key={value} value={value}>
             {label}
           </MenuItem>

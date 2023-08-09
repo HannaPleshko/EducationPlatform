@@ -1,18 +1,10 @@
-import { createContext } from "react";
-
-function noop() {}
-
-interface IAuthContext {
-  token: null | string;
-  login: () => void;
-  logout: () => void;
-  isAuthenticated: boolean;
-}
+import React, { createContext } from 'react';
+import { IAuthContext } from '@Interfaces';
 
 const defaultValue: IAuthContext = {
   token: null,
-  login: noop,
-  logout: noop,
+  login: () => {},
+  logout: () => {},
   isAuthenticated: false,
 };
 
