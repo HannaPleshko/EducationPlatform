@@ -55,5 +55,13 @@
       "last 1 safari version"
     ]
   },
-  "cracoConfig": "craco.config.js"
+  "cracoConfig": "craco.config.js",
+  "devDependencies": {
+    "husky": "^8.0.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run format"
+    }
+  }
 }

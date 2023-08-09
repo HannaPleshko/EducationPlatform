@@ -1,0 +1,14 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+cd client
+echo \”[Husky] pre-commit on client\”
+
+npm run format && git add -A
+
+cd ..
+
+cd server
+echo \”[Husky] pre-commit on server\”
+
+npm run format && git add -A
