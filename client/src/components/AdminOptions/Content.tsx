@@ -59,12 +59,12 @@ const Content: React.FC<ContentProps> = ({ curOption }) => {
 
   useEffect(() => {
     getSomeData();
-  }, [curOption]);
+  }, [curOption, users, courses]);
 
   return (
     <div className={style['wrapper']}>
       <div className={style['content-head']}>
-        <h1>Notes</h1>
+        <h3>Administration</h3>
 
         <div className={style['icon']}>
           <IconButton color="primary" onClick={handleOpen} aria-label="add to shopping cart">
@@ -119,9 +119,7 @@ const Content: React.FC<ContentProps> = ({ curOption }) => {
             </TableBody>
           </Table>
         </TableContainer>
-      ) : (
-        <p>Network error. Please refresh the page</p>
-      )}
+      ) : null}
 
       {open ? <ModalTab fields={fields} content={curOption} open={open} handleClose={handleClose} /> : null}
     </div>

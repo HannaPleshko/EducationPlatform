@@ -1,0 +1,22 @@
+@import '@assets/styles';
+
+.wrapper {
+  @include section(7% auto, 0);
+}
+
+.header {
+  @include flexbox(center, center, row);
+  width: 100%;
+  height: 70px;
+  border-radius: 14px;
+  background: #fff;
+  gap: 10px;
+
+  .img {
+    @include preview-img(url(./assets/fluent_hat-graduation-24-filled.svg), 32px, 32px);
+  }
+
+  h1 {
+    @include text($primary-black, 400, 26px, Dela Gothic One);
+  }
+}

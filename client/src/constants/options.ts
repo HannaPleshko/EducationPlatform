@@ -1,9 +1,9 @@
-import { AdminNavigationContent, Role } from '@Interfaces';
+import { AdminNavigationContent, RoleContent, Role } from '@Interfaces';
 
 export const AdminNavigation = [AdminNavigationContent.USERS, AdminNavigationContent.COURSES];
 
 export const UserRoles = [
-  { value: 1, label: Role.STUDENT },
-  { value: 2, label: Role.TEACHER },
-  { value: 3, label: Role.ADMIN },
+  { value: Role.STUDENT, label: RoleContent.STUDENT },
+  { value: Role.TEACHER, label: RoleContent.TEACHER },
+  { value: Role.ADMIN, label: RoleContent.ADMIN },
 ];

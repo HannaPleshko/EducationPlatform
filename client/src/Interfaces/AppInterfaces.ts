@@ -4,6 +4,12 @@ export enum Role {
   ADMIN = 3,
 }
 
+export enum RoleContent {
+  STUDENT = 'Student',
+  TEACHER = 'Teacher',
+  ADMIN = 'Admin',
+}
+
 export enum AdminNavigationContent {
   USERS = 'Users',
   COURSES = 'Courses',

@@ -1,4 +1,5 @@
-import { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
+import { motion } from 'framer-motion';
 
 import { AuthContext } from '@context/AuthContext';
 import useRedirect from '@hooks/useRedirect';
@@ -6,6 +7,7 @@ import Input from '@Components/Input/Input';
 import SelectRole from './SelectRole';
 import { User } from '@Interfaces';
 import { useCreateUserMutation, useAuthenticateMutation } from '@services';
+import { animation } from '@assets/motion';
 
 import style from './style.module.scss';
 
@@ -54,9 +56,12 @@ const AuthForm: React.FC<AuthFormProps> = ({ isRegistration }) => {
   }, [isRegistered, isLoggedIn]);
 
   return (
-    <div className={style.wrapper}>
+    <motion.div initial="hiddenHorizontal" whileInView="visibleHorizontal" viewport={{ once: true }} className={style.wrapper}>
       <div className={style.loginForm}>
-        <h1> {isRegistration ? 'Sign Up' : 'Login'}</h1>
+        <motion.h1 custom={1} variants={animation}>
+          {' '}
+          {isRegistration ? 'Sign Up' : 'Login'}
+        </motion.h1>
 
         <div className={style.inps}>
           {['email', 'pwd'].map((el, index) => (
@@ -80,7 +85,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ isRegistration }) => {
       </div>
 
       <div className={style.image}></div>
-    </div>
+    </motion.div>
   );
 };
 

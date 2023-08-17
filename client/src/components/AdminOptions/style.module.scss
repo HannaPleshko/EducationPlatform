@@ -10,9 +10,8 @@
     justify-content: space-between;
     margin-bottom: 20px;
 
-    h1 {
-      font: 400 25px 'Roboto';
-      color: #1667b8;
+    h3 {
+      @include text($primary-black, 600, 36px, Dela Gothic One);
     }
 
     .icon {
@@ -38,7 +37,7 @@
     }
 
     .table-cell {
-      background-color: #f5faff;
+      background-color: #e4eef0;
     }
 
     .off-inp {

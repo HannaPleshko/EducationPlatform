@@ -1,5 +1,4 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-console.log(process.env.REACT_APP_API_URL);
 
 export const courseApi = createApi({
   reducerPath: 'courseApi',
