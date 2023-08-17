@@ -11,6 +11,7 @@
   border-radius: 14px;
   background: #fff;
   gap: 10px;
+  border: 1px dashed #e0e0e0;
 
   .img {
     @include preview-img(url(./assets/fluent_hat-graduation-24-filled.svg), 32px, 32px);
@@ -18,5 +19,42 @@
 
   h1 {
     @include text($primary-black, 400, 26px, Dela Gothic One);
+  }
+}
+
+.list {
+  @include flexbox(center, center, column);
+  gap: 40px;
+  margin-top: 3%;
+
+  .item {
+    @include flexbox(space-between, center, row);
+    width: 926px;
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0px 22.898128509521484px 45.79625701904297px -11.449064254760742px rgba(52, 41, 39, 0.08);
+
+    .img {
+      @include preview-img(url(./assets/learnc.jpg), 337px, 216px);
+      border-radius: 14px 0 0 14px;
+    }
+
+    .info {
+      @include flexbox(center, flex-start, column);
+      gap: 12px;
+      max-width: 540px;
+      padding: 20px 40px;
+
+      h2 {
+        @include text($primary-black, 400, 26px, Dela Gothic One);
+        width: 100%;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #e0e0e0;
+      }
+
+      p {
+        @include text($primary-grey-dark, 500, 16px, Montserrat);
+      }
+    }
   }
 }

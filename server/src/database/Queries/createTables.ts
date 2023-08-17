@@ -26,7 +26,8 @@ export const createTables = async (pool: Pool = defaultPool): Promise<void> => {
           
           CREATE TABLE IF NOT EXISTS COURSES (
             course_id             UUID  DEFAULT MD5(RANDOM()::TEXT || CLOCK_TIMESTAMP()::TEXT)::UUID PRIMARY KEY,
-            title                 VARCHAR(30) NOT NULL
+            title                 VARCHAR(30) NOT NULL,
+            description           VARCHAR(400) NOT NULL
           );
 `,
     );

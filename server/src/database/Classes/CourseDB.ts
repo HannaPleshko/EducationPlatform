@@ -9,11 +9,11 @@ export class CourseDB extends Database {
     try {
       await this.pool.query('BEGIN');
 
-      const { title } = data;
+      const { title, description } = data;
 
       const query = {
-        text: 'INSERT INTO courses (title) VALUES ($1) RETURNING *',
-        values: [title],
+        text: 'INSERT INTO courses (title, description) VALUES ($1, $2) RETURNING *',
+        values: [title, description],
       };
 
       const {
@@ -100,11 +100,11 @@ export class CourseDB extends Database {
     try {
       await this.pool.query('BEGIN');
 
-      const { title } = data;
+      const { title, description } = data;
 
       const query = {
-        text: `UPDATE courses SET title = COALESCE($1, title) WHERE course_id = $2 RETURNING *`,
-        values: [title, course_id],
+        text: `UPDATE courses SET title = COALESCE($1, title), description = COALESCE($2, description) WHERE course_id = $3 RETURNING *`,
+        values: [title, description, course_id],
       };
 
       const {

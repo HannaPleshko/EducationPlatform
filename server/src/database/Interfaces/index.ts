@@ -16,6 +16,7 @@ export interface IUser {
 export interface ICourse {
   course_id?: string;
   title: string;
+  description: string;
 }
 
 export interface TabPreview {

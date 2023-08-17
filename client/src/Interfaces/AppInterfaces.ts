@@ -30,6 +30,7 @@ export interface User {
 export interface Course {
   course_id: string;
   title: string;
+  description: string;
 }
 
 export interface GridContent {
