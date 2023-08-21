@@ -7,6 +7,9 @@ import Header from '@Components/Header/Header';
 import { animation } from '@assets/motion';
 
 import style from './style.module.scss';
+import { Button } from '@mui/material';
+
+const ButtonMotion = motion(Button);
 
 const HomePage = () => {
   return (
@@ -32,9 +35,9 @@ const HomePage = () => {
             Any subject, in any language, on any device, for all ages!
           </motion.p>
 
-          <motion.div custom={4} variants={animation} className={style.btn}>
+          <ButtonMotion custom={4} variants={animation} className={style.btn} variant="outlined">
             About platform
-          </motion.div>
+          </ButtonMotion>
 
           <div className={style.statictics}>
             <motion.p custom={5} variants={animation} className={style.studentsCount}>

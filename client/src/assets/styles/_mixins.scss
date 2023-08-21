@@ -39,20 +39,23 @@
   flex-direction: $direction;
 }
 
-@mixin primary-button($paddingSize, $radius, $defaultColor, $defaultBckgColor, $hoverColor, $hoverBckgColor) {
+@mixin primary-button($paddingSize, $radius, $defaultBckgColor, $borderColor) {
   width: max-content;
   padding: $paddingSize;
   border-radius: $radius;
+  border-color: $borderColor;
   text-align: center;
-  color: $defaultColor;
   background: $defaultBckgColor;
   transition:
-    background 0.3s ease,
-    color 0.3s ease;
+    background 0.2s ease,
+    color 0.2s ease;
+}
 
+@mixin hover-button($hoverBckgColor, $hoverColor, $borderColor) {
   &:hover {
     background: $hoverBckgColor;
     color: $hoverColor;
+    border-color: $borderColor;
     cursor: pointer;
   }
 }

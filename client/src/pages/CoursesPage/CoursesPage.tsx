@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 
 import Header from '@Components/Header/Header';
 import Footer from '@Components/Footer/Footer';
@@ -8,9 +8,12 @@ import { ExceptionType } from '@constants/message';
 import List from './List';
 
 import style from './style.module.scss';
+import { Pagination } from '@mui/material';
 
 const CoursesPage = () => {
   const { data: courses } = useGetCoursesQuery<UserGridApiResponse>({});
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const pageSizeRef = useRef(3);
 
   const [listCourses, setListCourses] = useState<Course[]>([]);
 
@@ -27,6 +30,8 @@ const CoursesPage = () => {
     }
   };
 
+  const paginatedList = listCourses.slice((currentPage - 1) * pageSizeRef.current, currentPage * pageSizeRef.current);
+
   useEffect(() => {
     getSomeData();
   }, [courses]);
@@ -41,7 +46,14 @@ const CoursesPage = () => {
           <h1>Courses</h1>
         </div>
 
-        {listCourses.length ? <List courses={listCourses} /> : null}
+        {paginatedList.length ? <List courses={paginatedList} /> : null}
+
+        <Pagination
+          count={Math.ceil(listCourses.length / pageSizeRef.current)}
+          page={currentPage}
+          onChange={(_event, page) => setCurrentPage(page)}
+          className={style.pagination}
+        />
       </div>
 
       <Footer />

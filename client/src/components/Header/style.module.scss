@@ -33,18 +33,15 @@
 
       .login {
         @include text($primary-black, 700, 16px, Montserrat);
-        transition: transform 0.3s ease;
-
-        &:hover {
-          transform: scale(1.1);
-          cursor: pointer;
-        }
+        @include primary-button(14px, 4px, transparent, transparent);
+        @include hover-button(transparent, $primary-golden-yellow, transparent);
       }
     }
 
     .sign {
-      @include text($primary-white, 700, 16px, Montserrat);
-      @include primary-button(14px, 14px, $primary-white, $primary-cyan-dark, $primary-white, $primary-golden-yellow);
+      @include text($primary-cyan-dark, 700, 16px, Montserrat);
+      @include primary-button(14px, 4px, transparent, $primary-cyan-dark);
+      @include hover-button(transparent, $primary-golden-yellow, $primary-golden-yellow);
     }
   }
 }

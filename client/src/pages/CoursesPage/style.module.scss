@@ -1,7 +1,7 @@
 @import '@assets/styles';
 
 .wrapper {
-  @include section(7% auto, 0);
+  @include section(4% auto, 0);
 }
 
 .header {
@@ -35,8 +35,12 @@
     box-shadow: 0px 22.898128509521484px 45.79625701904297px -11.449064254760742px rgba(52, 41, 39, 0.08);
 
     .img {
-      @include preview-img(url(./assets/learnc.jpg), 337px, 216px);
+      width: 337px;
+      height: 216px;
+      background-size: cover;
+      background-repeat: no-repeat;
       border-radius: 14px 0 0 14px;
+      border-right: 1px dashed #e0e0e0;
     }
 
     .info {
@@ -57,4 +61,9 @@
       }
     }
   }
+}
+
+.pagination {
+  margin: 4% auto;
+  width: max-content;
 }

@@ -10,6 +10,7 @@ import { useCreateUserMutation, useAuthenticateMutation } from '@services';
 import { animation } from '@assets/motion';
 
 import style from './style.module.scss';
+import { Button } from '@mui/material';
 
 interface AuthFormProps {
   isRegistration: boolean;
@@ -79,8 +80,11 @@ const AuthForm: React.FC<AuthFormProps> = ({ isRegistration }) => {
           )}
         </div>
 
-        <div onClick={sendRequest} className={style.btn}>
-          {isRegistration ? 'Create User' : 'Login'}
+        <div>
+          <Button onClick={sendRequest} className={style.btn} variant="outlined">
+            {' '}
+            {isRegistration ? 'Create User' : 'Login'}
+          </Button>
         </div>
       </div>
 
