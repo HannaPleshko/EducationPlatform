@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '@context/AuthContext';
 
 import style from './style.module.scss';
+import { Button } from '@mui/material';
 
 const AuthButton = () => {
   const navigate = useNavigate();
@@ -16,7 +17,10 @@ const AuthButton = () => {
           navigate('/');
         }}
       >
-        <div className={style.sign}>Sign Out</div>
+        <Button className={style.sign} variant="outlined">
+          Sign Out
+        </Button>
+        {/* <div className={style.sign}>Sign Out</div> */}
       </div>
     );
   }
@@ -24,11 +28,15 @@ const AuthButton = () => {
   return (
     <div className={style.btns}>
       <Link to="/auth">
-        <div className={style.login}>Login →</div>
+        <Button className={style.login} variant="text">
+          Login →
+        </Button>
       </Link>
 
       <Link to="/reg">
-        <div className={style.sign}>Sign Up</div>
+        <Button className={style.sign} variant="outlined">
+          Sign Up
+        </Button>
       </Link>
     </div>
   );
