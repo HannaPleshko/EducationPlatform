@@ -36,6 +36,7 @@ export interface Course {
 export interface GridContent {
   fields: string[];
   rows: Course[] | User[];
+  rowCount: number;
 }
 
 export interface IAuthContext {

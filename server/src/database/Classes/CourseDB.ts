@@ -35,12 +35,13 @@ export class CourseDB extends Database {
     try {
       const query = { text: 'SELECT * FROM courses' };
 
-      const { rows, fields } = await this.pool.query(query);
+      const { rows, fields, rowCount } = await this.pool.query(query);
       if (!rows.length) throw new HttpException(404, ExceptionType.DB_COURSE_NOT_FOUND);
 
       return {
         fields: fields.map(field => field.name),
         rows,
+        rowCount,
       };
     } catch (err) {
       const error: DatabaseError = err;

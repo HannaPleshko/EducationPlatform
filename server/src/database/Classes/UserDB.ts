@@ -32,12 +32,13 @@ export class UserDB extends Database {
     try {
       const query = { text: 'SELECT * FROM users' };
 
-      const { rows, fields } = await this.pool.query(query);
+      const { rows, fields, rowCount } = await this.pool.query(query);
       if (!rows.length) throw new HttpException(404, ExceptionType.DB_USERS_NOT_FOUND);
 
       return {
         fields: fields.map(field => field.name),
         rows,
+        rowCount,
       };
     } catch (err) {
       const error: DatabaseError = err;

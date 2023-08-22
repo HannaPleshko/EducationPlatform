@@ -22,4 +22,5 @@ export interface ICourse {
 export interface TabPreview {
   fields: string[];
   rows: ICourse[] | IUser[];
+  rowCount: number;
 }
