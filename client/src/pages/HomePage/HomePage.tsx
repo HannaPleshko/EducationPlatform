@@ -5,6 +5,8 @@ import { motion } from 'framer-motion';
 import Footer from '@Components/Footer/Footer';
 import Header from '@Components/Header/Header';
 import { animation } from '@assets/motion';
+import { useGetUsersQuery } from '@services';
+import { UserGridApiResponse } from '@Interfaces';
 
 import style from './style.module.scss';
 import { Button } from '@mui/material';
@@ -12,6 +14,8 @@ import { Button } from '@mui/material';
 const ButtonMotion = motion(Button);
 
 const HomePage = () => {
+  const { data } = useGetUsersQuery<UserGridApiResponse>({});
+
   return (
     <>
       <Header />
@@ -43,7 +47,8 @@ const HomePage = () => {
             <motion.p custom={5} variants={animation} className={style.studentsCount}>
               <div className={style.lightning}></div>
               <p>
-                600<span>+</span>
+                {data?.rowCount || 0}
+                <span>+</span>
               </p>
             </motion.p>
             <motion.p custom={6} variants={animation} className={style.students}>
@@ -96,9 +101,9 @@ const HomePage = () => {
           <motion.p custom={3} variants={animation}>
             Uncover the World of Language Learning Through Time-Honored and Modern Approaches{' '}
           </motion.p>
-          <motion.div custom={4} variants={animation} className={style.btn}>
+          <ButtonMotion custom={4} variants={animation} className={style.btn} variant="outlined">
             Textbook →
-          </motion.div>
+          </ButtonMotion>
         </div>
 
         <motion.div custom={1} variants={animation} className={style.img}></motion.div>
@@ -117,9 +122,9 @@ const HomePage = () => {
               Save statistics on your achievements and mistakes
             </motion.p>
 
-            <motion.div custom={4} variants={animation} className={style.btn}>
+            <ButtonMotion custom={4} variants={animation} className={style.btn} variant="outlined">
               Statistics →
-            </motion.div>
+            </ButtonMotion>
           </div>
         </div>
       </motion.div>

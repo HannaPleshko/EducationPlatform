@@ -1,5 +1,6 @@
 import React from 'react';
 import { AdminNavigation } from '@Interfaces';
+import { Button } from '@mui/material';
 
 interface HeaderProps {
   option: AdminNavigation;
@@ -7,7 +8,7 @@ interface HeaderProps {
 }
 
 const Options: React.FC<HeaderProps> = ({ option, setCurOption }) => {
-  return <p onClick={() => setCurOption(option)}>{option}</p>;
+  return <Button onClick={() => setCurOption(option)}>{option}</Button>;
 };
 
 export default Options;

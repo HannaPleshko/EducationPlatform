@@ -16,14 +16,10 @@
       @include flexbox(flex-start, center, row);
       gap: 20px;
 
-      p {
+      button {
         @include text($primary-black, 700, 16px, Montserrat);
-        transition: transform 0.3s ease;
-
-        &:hover {
-          transform: scale(1.1);
-          cursor: pointer;
-        }
+        @include primary-button(14px, 4px, transparent, transparent);
+        @include hover-button(transparent, $primary-golden-yellow, transparent);
       }
     }
 

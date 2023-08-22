@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { AuthContext } from '@context/AuthContext';
-
-import style from './style.module.scss';
 import { Button } from '@mui/material';
+
+import { AuthContext } from '@context/AuthContext';
+import style from './style.module.scss';
 
 const AuthButton = () => {
   const navigate = useNavigate();
@@ -20,7 +20,6 @@ const AuthButton = () => {
         <Button className={style.sign} variant="outlined">
           Sign Out
         </Button>
-        {/* <div className={style.sign}>Sign Out</div> */}
       </div>
     );
   }
