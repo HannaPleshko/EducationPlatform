@@ -4,6 +4,7 @@ import RegistrationPage from '@Pages/RegistrationPage/RegistrationPage';
 import HomePage from '@Pages/HomePage/HomePage';
 import CoursesPage from '@Pages/CoursesPage/CoursesPage';
 import AdminPage from '@Pages/AdminPage/AdminPage';
+import CourseItem from '@Pages/CourseItem/CourseItem';
 
 const RoutesProvider = (isAuthenticated: boolean) => {
   if (isAuthenticated) {
@@ -11,6 +12,7 @@ const RoutesProvider = (isAuthenticated: boolean) => {
       <Routes>
         <Route path="/" element={<CoursesPage />} />
         <Route path="/admin" element={<AdminPage />} />
+        <Route path="/course/:course_id" element={<CourseItem />} />
       </Routes>
     );
   }

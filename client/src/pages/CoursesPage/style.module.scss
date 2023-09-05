@@ -27,6 +27,10 @@
   gap: 40px;
   margin-top: 3%;
 
+  a {
+    display: inline-flex;
+  }
+
   .item {
     @include flexbox(space-between, center, row);
     width: 926px;
@@ -36,7 +40,7 @@
 
     .img {
       width: 337px;
-      height: 216px;
+      height: 100%;
       background-size: cover;
       background-repeat: no-repeat;
       border-radius: 14px 0 0 14px;

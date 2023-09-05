@@ -12,6 +12,13 @@ export const courseApi = createApi({
       }),
     }),
 
+    getCourseById: builder.query({
+      query: (id: string) => ({
+        url: `/course/${id}`,
+        method: 'GET',
+      }),
+    }),
+
     createCourse: builder.mutation({
       query: (data: any) => ({
         url: `/course`,
@@ -37,4 +44,4 @@ export const courseApi = createApi({
   }),
 });
 
-export const { useCreateCourseMutation, useGetCoursesQuery, useDeleteCourseMutation, useUpdateCourseMutation } = courseApi;
+export const { useCreateCourseMutation, useGetCoursesQuery, useDeleteCourseMutation, useUpdateCourseMutation, useGetCourseByIdQuery } = courseApi;

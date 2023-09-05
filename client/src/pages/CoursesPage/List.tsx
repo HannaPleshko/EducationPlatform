@@ -6,6 +6,7 @@ import image4 from './assets/course/image4.png';
 import image5 from './assets/course/image5.png';
 import image6 from './assets/course/image6.png';
 import image7 from './assets/course/image7.png';
+import { Link } from 'react-router-dom';
 
 import style from './style.module.scss';
 
@@ -23,15 +24,17 @@ const List: React.FC<CourseProps> = ({ courses }) => {
 
   return (
     <div className={style.list}>
-      {courses.map(({ title, description }, index) => (
-        <div className={style.item} key={index}>
-          <div className={style.img} style={{ backgroundImage: `url(${getRandomImageUrl()})` }}></div>
+      {courses.map(({ title, description, course_id }, index) => (
+        <Link to={`/course/${course_id}`} key={index}>
+          <div className={style.item}>
+            <div className={style.img} style={{ backgroundImage: `url(${getRandomImageUrl()})` }}></div>
 
-          <div className={style.info}>
-            <h2>{title}</h2>
-            <p>{description}</p>
+            <div className={style.info}>
+              <h2>{title}</h2>
+              <p>{description}</p>
+            </div>
           </div>
-        </div>
+        </Link>
       ))}
     </div>
   );
