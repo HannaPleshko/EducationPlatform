@@ -22,7 +22,6 @@ const CoursesPage = () => {
       if (!courses) return;
 
       const { rows } = courses;
-
       setListCourses(rows as Course[]);
     } catch (e: any) {
       alert(ExceptionType.DB_CONNECT_NOT_CONNECTED);
