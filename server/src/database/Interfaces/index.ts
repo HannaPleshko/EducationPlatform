@@ -19,8 +19,15 @@ export interface ICourse {
   description: string;
 }
 
+export interface ILesson {
+  lesson_id?: string;
+  title: string;
+  description: string;
+  course_id: string;
+}
+
 export interface TabPreview {
   fields: string[];
-  rows: ICourse[] | IUser[];
+  rows: ICourse[] | IUser[] | ILesson[];
   rowCount: number;
 }
