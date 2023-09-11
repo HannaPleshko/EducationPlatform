@@ -10,8 +10,12 @@ export class LessonService {
     return foundLessons;
   }
 
-  async getLessonById(lesson_id: string): Promise<ILesson> {
-    const foundLeeson = await this.lessonDB.getById(lesson_id);
+  async getLessonById(course_id: string): Promise<ILesson> {
+    console.log(course_id);
+
+    const foundLeeson = await this.lessonDB.getById(course_id);
+    console.log(course_id);
+
     return foundLeeson;
   }
 

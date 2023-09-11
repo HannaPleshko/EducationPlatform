@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, IconButton } from '@mui/material';
 
-import { useGetUsersQuery, useGetCoursesQuery } from '@services';
+import { useGetUsersQuery, useGetCoursesQuery, useGetLessonsQuery } from '@services';
 import Navigation from './Navigation';
 import ModalTab from '@Components/ModalTab/ModalTab';
 import { User, Course, UserGridApiResponse, AdminNavigationContent } from '@Interfaces';
@@ -17,6 +17,7 @@ interface ContentProps {
 const Content: React.FC<ContentProps> = ({ curOption }) => {
   const { data: users } = useGetUsersQuery<UserGridApiResponse>({});
   const { data: courses } = useGetCoursesQuery<UserGridApiResponse>({});
+  const { data: lessons } = useGetLessonsQuery<UserGridApiResponse>({});
 
   const [fields, setFields] = useState<string[]>([]);
   const [rows, setRows] = useState<Course[] | User[]>([]);
@@ -40,6 +41,12 @@ const Content: React.FC<ContentProps> = ({ curOption }) => {
         const { fields, rows } = courses;
         setFields(fields);
         setRows(rows);
+      } else if (curOption === AdminNavigationContent.LESSONS) {
+        if (!lessons) return;
+
+        const { fields, rows } = lessons;
+        setFields(fields);
+        setRows(rows);
       }
     } catch (e: any) {
       alert(ExceptionType.DB_CONNECT_NOT_CONNECTED);
@@ -59,7 +66,7 @@ const Content: React.FC<ContentProps> = ({ curOption }) => {
 
   useEffect(() => {
     getSomeData();
-  }, [curOption, users, courses]);
+  }, [curOption, users, courses, lessons]);
 
   return (
     <div className={style['wrapper']}>

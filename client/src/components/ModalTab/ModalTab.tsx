@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Modal, TextField } from '@mui/material';
 
-import { useCreateUserMutation, useCreateCourseMutation } from '@services';
+import { useCreateUserMutation, useCreateCourseMutation, useCreateLessonMutation } from '@services';
 import { AdminNavigationContent } from '@Interfaces';
 import { ExceptionType } from '@constants/message';
 
@@ -17,13 +17,15 @@ interface ModalTabProps {
 const ModalTab: React.FC<ModalTabProps> = ({ open, handleClose, fields, content }) => {
   const [createUser] = useCreateUserMutation();
   const [createCourse] = useCreateCourseMutation();
+  const [createLesson] = useCreateLessonMutation();
 
   const [inp, setInp] = useState<Record<string, string>>({});
 
   const create = async () => {
     try {
       if (content === AdminNavigationContent.USERS) await createUser(inp);
-      else await createCourse(inp);
+      else if (content === AdminNavigationContent.COURSES) await createCourse(inp);
+      else if (content === AdminNavigationContent.LESSONS) await createLesson(inp);
 
       window.location.reload();
     } catch (e: any) {

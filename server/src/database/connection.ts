@@ -3,7 +3,7 @@ import { ExceptionType } from '@exceptions/exceptions.type';
 import { HttpException } from '@exceptions/HttpException';
 import { createTables } from './Queries/createTables';
 import { insertRoles } from './Queries/insertRoles';
-// import { dropTables } from './Queries/dropTables';
+import { dropTables } from './Queries/dropTables';
 
 const credentials = {
   user: process.env.USER_DB,

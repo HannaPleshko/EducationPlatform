@@ -2,16 +2,26 @@
 
 .wrapper {
   @include section(4% auto, 0);
+  display: flex;
+  gap: 20px;
+  justify-content: center;
 }
 
 .left {
   @include flexbox(space-between, flex-start, row);
-  max-width: 700px;
+  max-width: max-content;
   padding: 40px;
   border-radius: 14px;
   background: #fff;
   box-shadow: 0px 22.89813px 45.79626px -11.44906px rgba(52, 41, 39, 0.08);
-  margin: auto;
+}
+.right {
+  @include flexbox(flex-start, flex-start, column);
+  max-width: max-content;
+  padding: 40px;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0px 22.89813px 45.79626px -11.44906px rgba(52, 41, 39, 0.08);
 }
 
 .img {

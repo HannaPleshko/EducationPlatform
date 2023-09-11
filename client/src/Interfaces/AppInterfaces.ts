@@ -13,6 +13,7 @@ export enum RoleContent {
 export enum AdminNavigationContent {
   USERS = 'Users',
   COURSES = 'Courses',
+  LESSONS = 'Lessons',
 }
 
 export type AdminNavigation = (typeof AdminNavigationContent)[keyof typeof AdminNavigationContent];
@@ -33,9 +34,16 @@ export interface Course {
   description: string;
 }
 
+export interface Lesson {
+  lesson_id: string;
+  course_id: string;
+  title: string;
+  description: string;
+}
+
 export interface GridContent {
   fields: string[];
-  rows: Course[] | User[];
+  rows: Course[] | User[] | Lesson[];
   rowCount: number;
 }
 

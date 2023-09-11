@@ -5,8 +5,6 @@ import Content from '@Components/AdminOptions/Content';
 import { AdminNavigationContent } from '@Interfaces';
 import { AdminNavigation } from '@constants/options';
 
-import style from './style.module.scss';
-
 const AdminPage = () => {
   const [curOption, setCurOption] = useState<string>(AdminNavigationContent.USERS);
 

@@ -21,13 +21,22 @@ export const createTables = async (pool: Pool = defaultPool): Promise<void> => {
             pwd                   VARCHAR(100) NOT NULL,
             role                  SMALLINT,
             
-            FOREIGN KEY (role) REFERENCES roles(role_id) ON DELETE CASCADE 
+            FOREIGN KEY (role) REFERENCES ROLES(role_id) ON DELETE CASCADE 
           );
           
           CREATE TABLE IF NOT EXISTS COURSES (
             course_id             UUID  DEFAULT MD5(RANDOM()::TEXT || CLOCK_TIMESTAMP()::TEXT)::UUID PRIMARY KEY,
             title                 VARCHAR(30) NOT NULL,
             description           VARCHAR(400) NOT NULL
+          );
+          
+          CREATE TABLE IF NOT EXISTS LESSONS (
+            lesson_id             UUID  DEFAULT MD5(RANDOM()::TEXT || CLOCK_TIMESTAMP()::TEXT)::UUID PRIMARY KEY,
+            course_id             UUID  DEFAULT MD5(RANDOM()::TEXT || CLOCK_TIMESTAMP()::TEXT)::UUID,
+            title                 VARCHAR(30) NOT NULL,
+            description           VARCHAR(400) NOT NULL,
+
+            FOREIGN KEY (course_id) REFERENCES COURSES(course_id) ON DELETE CASCADE 
           );
 `,
     );

@@ -13,6 +13,8 @@ export const dropTables = async (pool: Pool = defaultPool): Promise<void> => {
     DROP TABLE IF EXISTS USERS CASCADE; 
      
     DROP TABLE IF EXISTS COURSES CASCADE;
+    
+    DROP TABLE IF EXISTS LESSONS CASCADE;
     `,
     );
   } catch (error) {

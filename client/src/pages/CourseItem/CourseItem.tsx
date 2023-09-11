@@ -1,14 +1,15 @@
 import Footer from '@Components/Footer/Footer';
 import Header from '@Components/Header/Header';
 import { useParams } from 'react-router-dom';
-import { useGetCourseByIdQuery } from '@services';
+import { useGetCourseByIdQuery, useGetLessonByIdQuery } from '@services';
 import style from './style.module.scss';
 import { Button } from '@mui/material';
 
 const CourseItem = () => {
   const { course_id } = useParams();
 
-  const { data } = useGetCourseByIdQuery<any>(course_id);
+  const { data: course } = useGetCourseByIdQuery<any>(course_id);
+  const { data: lesson } = useGetLessonByIdQuery<any>(course_id);
 
   return (
     <>
@@ -18,18 +19,32 @@ const CourseItem = () => {
         <div className={style.left}>
           <div className={style.img}></div>
           <div className={style.info}>
-            <h2>{data?.title}</h2>
-            <p>{data?.description}</p>
+            <h2>{course?.title}</h2>
+            <p>{course?.description}</p>
             <div>
-              {' '}
-              <Button className={style.btn} variant="outlined">
-                Go to course
-              </Button>
+              {lesson?.length ? (
+                <Button className={style.btn} variant="outlined">
+                  Go to course
+                </Button>
+              ) : null}
             </div>
           </div>
         </div>
 
-        <div></div>
+        <div>
+          <div className={style.right}>
+            {lesson?.length ? (
+              lesson.map((el: any, index: number) => (
+                <div key={index}>
+                  <h2>{el?.title}</h2>
+                  <p>{el?.description}</p>
+                </div>
+              ))
+            ) : (
+              <p>В курсе еще не добавлены уроки!</p>
+            )}
+          </div>
+        </div>
       </div>
 
       <Footer />

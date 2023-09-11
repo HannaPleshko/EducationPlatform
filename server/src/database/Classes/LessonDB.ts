@@ -13,7 +13,7 @@ export class LessonDB extends Database {
 
       const query = {
         text: 'INSERT INTO lessons (title, description, course_id) VALUES ($1, $2, $3) RETURNING *',
-        values: [title, description],
+        values: [title, description, course_id],
       };
 
       const { rows } = await this.pool.query(query);
@@ -35,7 +35,7 @@ export class LessonDB extends Database {
       const query = { text: 'SELECT * FROM lessons' };
 
       const { rows, fields, rowCount } = await this.pool.query(query);
-      if (!rows.length) throw new HttpException(404, ExceptionType.DB_COURSE_NOT_FOUND);
+      console.log(fields);
 
       return {
         fields: fields.map(field => field.name),
@@ -50,15 +50,15 @@ export class LessonDB extends Database {
     }
   }
 
-  async getById(lesson_id: string): Promise<ILesson> {
+  async getById(course_id: string): Promise<ILesson> {
     try {
       const query = {
-        text: 'SELECT * FROM lessons WHERE lesson_id = $1',
-        values: [lesson_id],
+        text: 'SELECT * FROM lessons WHERE course_id = $1',
+        values: [course_id],
       };
 
       const { rows } = await this.pool.query(query);
-      if (!rows) throw new HttpException(404, ExceptionType.DB_COURSE_NOT_FOUND);
+      if (!rows.length) throw new HttpException(404, ExceptionType.DB_COURSE_NOT_FOUND);
 
       return rows;
     } catch (err) {

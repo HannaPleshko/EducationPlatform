@@ -15,8 +15,8 @@ class LessonController {
 
   getLessonById = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
-      const { lesson_id } = req.params;
-      buildResponse(res, 200, await this.lessonService.getLessonById(lesson_id));
+      const { course_id } = req.params;
+      buildResponse(res, 200, await this.lessonService.getLessonById(course_id));
     } catch (error) {
       next(error);
     }
