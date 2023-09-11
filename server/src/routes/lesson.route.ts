@@ -14,7 +14,7 @@ class LessonRoute implements IRoutes {
 
   private initializeRoutes(): void {
     this.router.get(`${this.path}`, this.lessonController.getLessons);
-    this.router.get(`${this.path}/:lesson_id`, this.lessonController.getLessonById);
+    this.router.get(`${this.path}/:course_id`, this.lessonController.getLessonById);
     this.router.post(`${this.path}`, this.lessonController.createLesson);
     this.router.put(`${this.path}/:lesson_id`, this.lessonController.updateLesson);
     this.router.delete(`${this.path}/:lesson_id`, this.lessonController.deleteLesson);
