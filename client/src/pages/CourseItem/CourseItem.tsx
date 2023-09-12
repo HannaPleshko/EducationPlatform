@@ -33,11 +33,13 @@ const CourseItem = () => {
 
         <div>
           <div className={style.right}>
+            <h2>Lessons:</h2>
             {lesson?.length ? (
               lesson.map((el: any, index: number) => (
                 <div key={index}>
-                  <h2>{el?.title}</h2>
-                  <p>{el?.description}</p>
+                  <p>
+                    {index}. {el?.title}
+                  </p>
                 </div>
               ))
             ) : (

@@ -15,8 +15,10 @@
   background: #fff;
   box-shadow: 0px 22.89813px 45.79626px -11.44906px rgba(52, 41, 39, 0.08);
 }
+
 .right {
   @include flexbox(flex-start, flex-start, column);
+  gap: 30px;
   max-width: max-content;
   padding: 40px;
   border-radius: 14px;
