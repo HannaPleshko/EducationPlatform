@@ -4,7 +4,7 @@ import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper
 
 import { useGetUsersQuery, useGetCoursesQuery, useGetLessonsQuery } from '@services';
 import Navigation from './Navigation';
-import ModalTab from '@Components/ModalTab/ModalTab';
+import ModalTab from '@components/ModalTab/ModalTab';
 import { User, Course, UserGridApiResponse, AdminNavigationContent } from '@Interfaces';
 import { ExceptionType } from '@constants/message';
 
@@ -27,26 +27,27 @@ const Content: React.FC<ContentProps> = ({ curOption }) => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  const handleOptionData = (data: any) => {
+    if (!data) return;
+
+    const { fields, rows } = data;
+
+    setFields(fields);
+    setRows(rows);
+  };
+
   const getSomeData = async () => {
     try {
-      if (curOption === AdminNavigationContent.USERS) {
-        if (!users) return;
-
-        const { fields, rows } = users;
-        setFields(fields);
-        setRows(rows);
-      } else if (curOption === AdminNavigationContent.COURSES) {
-        if (!courses) return;
-
-        const { fields, rows } = courses;
-        setFields(fields);
-        setRows(rows);
-      } else if (curOption === AdminNavigationContent.LESSONS) {
-        if (!lessons) return;
-
-        const { fields, rows } = lessons;
-        setFields(fields);
-        setRows(rows);
+      switch (curOption) {
+        case AdminNavigationContent.USERS:
+          handleOptionData(users);
+          break;
+        case AdminNavigationContent.COURSES:
+          handleOptionData(courses);
+          break;
+        case AdminNavigationContent.LESSONS:
+          handleOptionData(lessons);
+          break;
       }
     } catch (e: any) {
       alert(ExceptionType.DB_CONNECT_NOT_CONNECTED);

@@ -4,7 +4,7 @@
     "paths": {
       "@*": ["*"],
       "@assets/*": ["assets/*"],
-      "@Components/*": ["Components/*"],
+      "@components/*": ["components/*"],
       "@context/*": ["context/*"],
       "@hooks/*": ["hooks/*"],
       "@Pages/*": ["Pages/*"],
@@ -12,7 +12,8 @@
       "@services/*": ["services/*"],
       "@store/*": ["store/*"],
       "@Interfaces/*": ["Interfaces/*"],
-      "@constants/*": ["constants/*"]
+      "@constants/*": ["constants/*"],
+      "@layout/*": ["layout/*"]
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],

@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 
-import Header from '@Components/Header/Header';
-import Footer from '@Components/Footer/Footer';
+import Header from '@layout/Header/Header';
+import Footer from '@layout/Footer/Footer';
 import { useGetCoursesQuery } from '@services';
 import { Course, UserGridApiResponse } from '@Interfaces';
 import { ExceptionType } from '@constants/message';
@@ -10,7 +10,7 @@ import List from './List';
 import style from './style.module.scss';
 import { Pagination } from '@mui/material';
 
-const CoursesPage = () => {
+const CoursesPage: React.FC = () => {
   const { data: courses } = useGetCoursesQuery<UserGridApiResponse>({});
   const [currentPage, setCurrentPage] = useState<number>(1);
   const pageSizeRef = useRef(3);

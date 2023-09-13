@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 import { AuthContext } from '@context/AuthContext';
 import useRedirect from '@hooks/useRedirect';
-import Input from '@Components/Input/Input';
+import Input from '@components/Input/Input';
 import SelectRole from './SelectRole';
 import { User } from '@Interfaces';
 import { useCreateUserMutation, useAuthenticateMutation } from '@services';

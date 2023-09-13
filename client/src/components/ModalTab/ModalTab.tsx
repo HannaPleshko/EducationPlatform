@@ -23,9 +23,17 @@ const ModalTab: React.FC<ModalTabProps> = ({ open, handleClose, fields, content 
 
   const create = async () => {
     try {
-      if (content === AdminNavigationContent.USERS) await createUser(inp);
-      else if (content === AdminNavigationContent.COURSES) await createCourse(inp);
-      else if (content === AdminNavigationContent.LESSONS) await createLesson(inp);
+      switch (content) {
+        case AdminNavigationContent.USERS:
+          await createUser(inp);
+          break;
+        case AdminNavigationContent.COURSES:
+          await createCourse(inp);
+          break;
+        case AdminNavigationContent.LESSONS:
+          await createLesson(inp);
+          break;
+      }
 
       window.location.reload();
     } catch (e: any) {

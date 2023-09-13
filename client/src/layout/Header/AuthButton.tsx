@@ -5,7 +5,7 @@ import { Button } from '@mui/material';
 import { AuthContext } from '@context/AuthContext';
 import style from './style.module.scss';
 
-const AuthButton = () => {
+const AuthButton: React.FC = () => {
   const navigate = useNavigate();
   const { isAuthenticated, logout } = useContext(AuthContext);
 

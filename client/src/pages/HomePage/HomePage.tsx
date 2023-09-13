@@ -2,8 +2,8 @@ import React from 'react';
 import classNames from 'classnames';
 import { motion } from 'framer-motion';
 
-import Footer from '@Components/Footer/Footer';
-import Header from '@Components/Header/Header';
+import Footer from '@layout/Footer/Footer';
+import Header from '@layout/Header/Header';
 import { animation } from '@assets/motion';
 import { useGetUsersQuery } from '@services';
 import { UserGridApiResponse } from '@Interfaces';
@@ -13,7 +13,7 @@ import { Button } from '@mui/material';
 
 const ButtonMotion = motion(Button);
 
-const HomePage = () => {
+const HomePage: React.FC = () => {
   const { data } = useGetUsersQuery<UserGridApiResponse>({});
 
   return (

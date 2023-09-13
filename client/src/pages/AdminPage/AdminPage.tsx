@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
 
-import Header from '@Components/Header/Header';
-import Content from '@Components/AdminOptions/Content';
+import Header from '@layout/Header/Header';
+import Content from '@components/AdminOptions/Content';
 import { AdminNavigationContent } from '@Interfaces';
 import { AdminNavigation } from '@constants/options';
 
-const AdminPage = () => {
+const AdminPage: React.FC = () => {
   const [curOption, setCurOption] = useState<string>(AdminNavigationContent.USERS);
 
   return (
     <>
       <Header setCurOption={setCurOption} options={AdminNavigation} />
-
       <Content curOption={curOption} />
     </>
   );

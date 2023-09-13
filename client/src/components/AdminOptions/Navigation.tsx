@@ -1,9 +1,16 @@
 import React from 'react';
 import { TableCell, IconButton } from '@mui/material';
 import { RestartAlt, Create, Save, Delete } from '@mui/icons-material';
-import { UserApiResponse, CourseApiResponse, AdminNavigationContent } from '@Interfaces';
+import { UserApiResponse, CourseApiResponse, AdminNavigationContent, LessonApiResponse } from '@Interfaces';
 import { ExceptionType } from '@constants/message';
-import { useDeleteCourseMutation, useUpdateCourseMutation, useDeleteUserMutation, useUpdateUserMutation } from '@services';
+import {
+  useDeleteCourseMutation,
+  useUpdateCourseMutation,
+  useDeleteUserMutation,
+  useUpdateUserMutation,
+  useUpdateLessonMutation,
+  useDeleteLessonMutation,
+} from '@services';
 
 import style from './style.module.scss';
 
@@ -23,12 +30,24 @@ const Navigation: React.FC<NavigationProps> = ({ id, content, setSelectedRow, it
   const [updateCourse] = useUpdateCourseMutation<CourseApiResponse>();
   const [deleteCourse] = useDeleteCourseMutation<CourseApiResponse>();
 
+  const [deleteLesson] = useDeleteLessonMutation<LessonApiResponse>();
+  const [updateLesson] = useUpdateLessonMutation<LessonApiResponse>();
+
   const handleClick = () => setSelectedRow(itemIndex);
 
   const deleteSomeData = async () => {
     try {
-      if (content === AdminNavigationContent.USERS) await deleteUser(id);
-      else await deleteCourse(id);
+      switch (content) {
+        case AdminNavigationContent.USERS:
+          await deleteUser(id);
+          break;
+        case AdminNavigationContent.COURSES:
+          await deleteCourse(id);
+          break;
+        case AdminNavigationContent.LESSONS:
+          await deleteLesson(id);
+          break;
+      }
 
       window.location.reload();
     } catch (error: any) {
@@ -41,8 +60,17 @@ const Navigation: React.FC<NavigationProps> = ({ id, content, setSelectedRow, it
     try {
       const item = rows.find((el: any) => el.user_id === id || el.course_id === id);
 
-      if (content === AdminNavigationContent.USERS) await updateUser({ id, ...item });
-      else await updateCourse({ id, ...item });
+      switch (content) {
+        case AdminNavigationContent.USERS:
+          await updateUser({ id, ...item });
+          break;
+        case AdminNavigationContent.COURSES:
+          await updateCourse({ id, ...item });
+          break;
+        case AdminNavigationContent.LESSONS:
+          await updateLesson({ id, ...item });
+          break;
+      }
 
       window.location.reload();
       setSelectedRow(null);

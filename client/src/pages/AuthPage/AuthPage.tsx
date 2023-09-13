@@ -1,10 +1,10 @@
 import React from 'react';
 
-import Footer from '@Components/Footer/Footer';
-import Header from '@Components/Header/Header';
-import AuthForm from '@Components/AuthForm/AuthForm';
+import Footer from '@layout/Footer/Footer';
+import Header from '@layout/Header/Header';
+import AuthForm from '@layout/AuthForm/AuthForm';
 
-const AuthPage = () => {
+const AuthPage: React.FC = () => {
   return (
     <>
       <Header />

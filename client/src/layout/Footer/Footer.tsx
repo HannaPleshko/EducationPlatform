@@ -1,6 +1,6 @@
 import style from './style.module.scss';
 
-const Footer = () => {
+const Footer: React.FC = () => {
   return (
     <div className={style.wrapper}>
       <div className={style.content}>
