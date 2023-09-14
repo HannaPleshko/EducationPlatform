@@ -35,7 +35,6 @@ export class LessonDB extends Database {
       const query = { text: 'SELECT * FROM lessons' };
 
       const { rows, fields, rowCount } = await this.pool.query(query);
-      console.log(fields);
 
       return {
         fields: fields.map(field => field.name),

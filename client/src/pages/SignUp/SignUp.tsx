@@ -4,14 +4,14 @@ import Footer from '@layout/Footer/Footer';
 import Header from '@layout/Header/Header';
 import AuthForm from '@layout/AuthForm/AuthForm';
 
-const AuthPage: React.FC = () => {
+const SignUp: React.FC = () => {
   return (
     <>
       <Header />
-      <AuthForm isRegistration={false} />
+      <AuthForm isRegistration={true} />
       <Footer />
     </>
   );
 };
 
-export default AuthPage;
+export default SignUp;

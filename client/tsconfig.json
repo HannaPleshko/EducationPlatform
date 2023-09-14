@@ -7,7 +7,7 @@
       "@components/*": ["components/*"],
       "@context/*": ["context/*"],
       "@hooks/*": ["hooks/*"],
-      "@Pages/*": ["Pages/*"],
+      "@pages/*": ["pages/*"],
       "@Routes/*": ["Routes/*"],
       "@services/*": ["services/*"],
       "@store/*": ["store/*"],

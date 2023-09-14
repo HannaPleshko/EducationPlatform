@@ -5,7 +5,7 @@ import Content from '@components/AdminOptions/Content';
 import { AdminNavigationContent } from '@Interfaces';
 import { AdminNavigation } from '@constants/options';
 
-const AdminPage: React.FC = () => {
+const AdminControlCenter: React.FC = () => {
   const [curOption, setCurOption] = useState<string>(AdminNavigationContent.USERS);
 
   return (
@@ -16,4 +16,4 @@ const AdminPage: React.FC = () => {
   );
 };
 
-export default AdminPage;
+export default AdminControlCenter;

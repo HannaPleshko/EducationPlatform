@@ -10,7 +10,7 @@ import List from './List';
 import style from './style.module.scss';
 import { Pagination } from '@mui/material';
 
-const CoursesPage: React.FC = () => {
+const Courses: React.FC = () => {
   const { data: courses } = useGetCoursesQuery<UserGridApiResponse>({});
   const [currentPage, setCurrentPage] = useState<number>(1);
   const pageSizeRef = useRef(3);
@@ -60,4 +60,4 @@ const CoursesPage: React.FC = () => {
   );
 };
 
-export default CoursesPage;
+export default Courses;

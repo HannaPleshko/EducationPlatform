@@ -13,7 +13,7 @@ import { Button } from '@mui/material';
 
 const ButtonMotion = motion(Button);
 
-const HomePage: React.FC = () => {
+const Landing: React.FC = () => {
   const { data } = useGetUsersQuery<UserGridApiResponse>({});
 
   return (
@@ -134,4 +134,4 @@ const HomePage: React.FC = () => {
   );
 };
 
-export default HomePage;
+export default Landing;
