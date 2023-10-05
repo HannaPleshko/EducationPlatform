@@ -3,7 +3,7 @@ import Login from '@pages/Login/Login';
 import SignUp from '@pages/SignUp/SignUp';
 import Landing from '@pages/Landing/Landing';
 import Courses from '@pages/Courses/Courses';
-import AdminControlCenter from '@pages/AdminControlCenter/AdminControlCenter';
+import Administartion from '@pages/Administartion/Administartion';
 import CourseItem from '@pages/CourseItem/CourseItem';
 
 const RoutesProvider = (isAuthenticated: boolean) => {
@@ -11,7 +11,7 @@ const RoutesProvider = (isAuthenticated: boolean) => {
     return (
       <Routes>
         <Route path="/" element={<Courses />} />
-        <Route path="/admin" element={<AdminControlCenter />} />
+        <Route path="/admin" element={<Administartion />} />
         <Route path="/course/:course_id" element={<CourseItem />} />
       </Routes>
     );

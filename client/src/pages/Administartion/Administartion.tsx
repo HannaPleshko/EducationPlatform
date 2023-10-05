@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
 import Header from '@layout/Header/Header';
-import Content from '@components/AdminOptions/Content';
+import Content from '@components/Administration/Content';
 import { AdminNavigationContent } from '@Interfaces';
 import { AdminNavigation } from '@constants/options';
 
-const AdminControlCenter: React.FC = () => {
+const Administartion: React.FC = () => {
   const [curOption, setCurOption] = useState<string>(AdminNavigationContent.USERS);
 
   return (
@@ -16,4 +16,4 @@ const AdminControlCenter: React.FC = () => {
   );
 };
 
-export default AdminControlCenter;
+export default Administartion;

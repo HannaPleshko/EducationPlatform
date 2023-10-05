@@ -44,13 +44,13 @@ const Landing: React.FC = () => {
           </ButtonMotion>
 
           <div className={style.statictics}>
-            <motion.p custom={5} variants={animation} className={style.studentsCount}>
+            <motion.div custom={5} variants={animation} className={style.studentsCount}>
               <div className={style.lightning}></div>
               <p>
                 {data?.rowCount || 0}
                 <span>+</span>
               </p>
-            </motion.p>
+            </motion.div>
             <motion.p custom={6} variants={animation} className={style.students}>
               Students
             </motion.p>

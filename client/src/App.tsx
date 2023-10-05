@@ -1,5 +1,5 @@
 import RoutesProvider from './Routes/Routes';
-import { useAuth } from '@hooks/auth.hook';
+import { useAuth } from '@hooks/useAuth';
 import { AuthContext } from '@context/AuthContext';
 
 const App = () => {

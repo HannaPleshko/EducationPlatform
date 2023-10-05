@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
 
 import Header from '@layout/Header/Header';
 import Footer from '@layout/Footer/Footer';
@@ -17,23 +17,23 @@ const Courses: React.FC = () => {
 
   const [listCourses, setListCourses] = useState<Course[]>([]);
 
-  const getSomeData = async () => {
+  const getSomeData = useCallback(async () => {
     try {
       if (!courses) return;
 
       const { rows } = courses;
       setListCourses(rows as Course[]);
     } catch (e: any) {
-      alert(ExceptionType.DB_CONNECT_NOT_CONNECTED);
+      alert(ExceptionType.SERVER_CONNECT_NOT_CONNECTED);
       console.error(e.message);
     }
-  };
+  }, [courses]);
 
   const paginatedList = listCourses.slice((currentPage - 1) * pageSizeRef.current, currentPage * pageSizeRef.current);
 
   useEffect(() => {
     getSomeData();
-  }, [courses]);
+  }, [getSomeData]);
 
   return (
     <>
@@ -55,7 +55,7 @@ const Courses: React.FC = () => {
         />
       </div>
 
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

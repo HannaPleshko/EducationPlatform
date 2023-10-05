@@ -3,8 +3,8 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, IconButton } from '@mui/material';
 
 import { useGetUsersQuery, useGetCoursesQuery, useGetLessonsQuery } from '@services';
-import Navigation from './Navigation';
-import ModalTab from '@components/ModalTab/ModalTab';
+import EntityAction from './EntityAction';
+import ActionModal from '@components/ActionModal/ActionModal';
 import { User, Course, UserGridApiResponse, AdminNavigationContent } from '@Interfaces';
 import { ExceptionType } from '@constants/message';
 
@@ -50,7 +50,7 @@ const Content: React.FC<ContentProps> = ({ curOption }) => {
           break;
       }
     } catch (e: any) {
-      alert(ExceptionType.DB_CONNECT_NOT_CONNECTED);
+      alert(ExceptionType.SERVER_CONNECT_NOT_CONNECTED);
       console.error(e.message);
     }
   };
@@ -113,7 +113,7 @@ const Content: React.FC<ContentProps> = ({ curOption }) => {
                     </TableCell>
                   ))}
 
-                  <Navigation
+                  <EntityAction
                     key={itemIndex}
                     id={(item as User).user_id || (item as Course).course_id}
                     itemIndex={itemIndex}
@@ -129,7 +129,7 @@ const Content: React.FC<ContentProps> = ({ curOption }) => {
         </TableContainer>
       ) : null}
 
-      {open ? <ModalTab fields={fields} content={curOption} open={open} handleClose={handleClose} /> : null}
+      {open ? <ActionModal fields={fields} content={curOption} open={open} handleClose={handleClose} /> : null}
     </div>
   );
 };

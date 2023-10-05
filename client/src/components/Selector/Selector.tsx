@@ -2,13 +2,16 @@ import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 import { SelectChangeEvent } from '@mui/material';
 import { UserRoles } from '@constants/options';
 
-interface SelectRoleProps {
+interface SelectorProps {
   name: string;
   value: string;
   handleChange: (event: SelectChangeEvent<string>) => void;
 }
 
-const SelectRole: React.FC<SelectRoleProps> = ({ name, value, handleChange }) => {
+const Selector: React.FC<SelectorProps> = ({ name, value, handleChange }) => {
+  console.log(name);
+  console.log(value);
+
   return (
     <FormControl>
       <InputLabel>Role</InputLabel>
@@ -23,4 +26,4 @@ const SelectRole: React.FC<SelectRoleProps> = ({ name, value, handleChange }) =>
   );
 };
 
-export default SelectRole;
+export default Selector;

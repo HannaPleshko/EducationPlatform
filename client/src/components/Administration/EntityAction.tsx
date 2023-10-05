@@ -23,7 +23,7 @@ interface NavigationProps {
   rows: any;
 }
 
-const Navigation: React.FC<NavigationProps> = ({ id, content, setSelectedRow, itemIndex, selectedRow, rows }) => {
+const EntityAction: React.FC<NavigationProps> = ({ id, content, setSelectedRow, itemIndex, selectedRow, rows }) => {
   const [updateUser] = useUpdateUserMutation<UserApiResponse>();
   const [deleteUser] = useDeleteUserMutation<UserApiResponse>();
 
@@ -51,7 +51,7 @@ const Navigation: React.FC<NavigationProps> = ({ id, content, setSelectedRow, it
 
       window.location.reload();
     } catch (error: any) {
-      alert(ExceptionType.DB_CONNECT_NOT_CONNECTED);
+      alert(ExceptionType.SERVER_CONNECT_NOT_CONNECTED);
       console.error(error.message);
     }
   };
@@ -75,7 +75,7 @@ const Navigation: React.FC<NavigationProps> = ({ id, content, setSelectedRow, it
       window.location.reload();
       setSelectedRow(null);
     } catch (error: any) {
-      alert(ExceptionType.DB_CONNECT_NOT_CONNECTED);
+      alert(ExceptionType.SERVER_CONNECT_NOT_CONNECTED);
       console.error(error.message);
     }
   };
@@ -107,4 +107,4 @@ const Navigation: React.FC<NavigationProps> = ({ id, content, setSelectedRow, it
   );
 };
 
-export default Navigation;
+export default EntityAction;

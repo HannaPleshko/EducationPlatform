@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { AuthContext } from '@context/AuthContext';
 import useRedirect from '@hooks/useRedirect';
 import Input from '@components/Input/Input';
-import SelectRole from './SelectRole';
+import Selector from '@components/Selector/Selector';
 import { User } from '@Interfaces';
 import { useCreateUserMutation, useAuthenticateMutation } from '@services';
 import { animation } from '@assets/motion';
@@ -60,7 +60,6 @@ const AuthForm: React.FC<AuthFormProps> = ({ isRegistration }) => {
     <motion.div initial="hiddenHorizontal" whileInView="visibleHorizontal" viewport={{ once: true }} className={style.wrapper}>
       <div className={style.loginForm}>
         <motion.h1 custom={1} variants={animation}>
-          {' '}
           {isRegistration ? 'Sign Up' : 'Login'}
         </motion.h1>
 
@@ -75,7 +74,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ isRegistration }) => {
                 <Input key={index} name={el} handleChange={handleChange} />
               ))}
 
-              <SelectRole name="role" value={String(form['role'])} handleChange={handleChange} />
+              <Selector name="role" value={String(form['role'])} handleChange={handleChange} />
             </>
           )}
         </div>

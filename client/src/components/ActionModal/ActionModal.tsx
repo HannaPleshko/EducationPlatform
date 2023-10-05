@@ -7,14 +7,14 @@ import { ExceptionType } from '@constants/message';
 
 import style from './style.module.scss';
 
-interface ModalTabProps {
+interface ActionModalProps {
   open: any;
   handleClose: () => void;
   fields: string[];
   content: string;
 }
 
-const ModalTab: React.FC<ModalTabProps> = ({ open, handleClose, fields, content }) => {
+const ActionModal: React.FC<ActionModalProps> = ({ open, handleClose, fields, content }) => {
   const [createUser] = useCreateUserMutation();
   const [createCourse] = useCreateCourseMutation();
   const [createLesson] = useCreateLessonMutation();
@@ -37,7 +37,7 @@ const ModalTab: React.FC<ModalTabProps> = ({ open, handleClose, fields, content 
 
       window.location.reload();
     } catch (e: any) {
-      alert(ExceptionType.DB_CONNECT_NOT_CONNECTED);
+      alert(ExceptionType.SERVER_CONNECT_NOT_CONNECTED);
       console.error(e.message);
     }
   };
@@ -68,4 +68,4 @@ const ModalTab: React.FC<ModalTabProps> = ({ open, handleClose, fields, content 
   );
 };
 
-export default ModalTab;
+export default ActionModal;

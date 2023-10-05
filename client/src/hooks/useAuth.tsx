@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import Cookies from 'cookies-ts';
 
 const cookies = new Cookies();
@@ -18,7 +18,7 @@ export const useAuth = () => {
 
   useEffect(() => {
     login();
-  }, []);
+  }, [login]);
 
   return { login, logout, token };
 };
