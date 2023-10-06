@@ -2,7 +2,7 @@ import React from 'react';
 
 import Footer from '@layout/Footer/Footer';
 import Header from '@layout/Header/Header';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useGetCourseByIdQuery, useGetLessonByIdQuery } from '@services';
 import style from './style.module.scss';
 import { Button } from '@mui/material';
@@ -26,9 +26,11 @@ const CourseItem: React.FC = () => {
             <p>{course?.description}</p>
             <div>
               {lesson?.length ? (
-                <Button className={style.btn} variant="outlined">
-                  Go to course
-                </Button>
+                <Link to={'*'}>
+                  <Button className={style.btn} variant="outlined">
+                    Go to course
+                  </Button>
+                </Link>
               ) : null}
             </div>
           </div>

@@ -9,9 +9,6 @@ interface SelectorProps {
 }
 
 const Selector: React.FC<SelectorProps> = ({ name, value, handleChange }) => {
-  console.log(name);
-  console.log(value);
-
   return (
     <FormControl>
       <InputLabel>Role</InputLabel>

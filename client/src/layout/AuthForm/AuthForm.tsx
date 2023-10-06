@@ -1,5 +1,4 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { motion } from 'framer-motion';
 
 import { AuthContext } from '@context/AuthContext';
 import useRedirect from '@hooks/useRedirect';
@@ -7,7 +6,7 @@ import Input from '@components/Input/Input';
 import Selector from '@components/Selector/Selector';
 import { User } from '@Interfaces';
 import { useCreateUserMutation, useAuthenticateMutation } from '@services';
-import { animation } from '@assets/motion';
+import Snackbar from '@components/Snackbar/Snackbar';
 
 import style from './style.module.scss';
 import { Button } from '@mui/material';
@@ -29,8 +28,10 @@ const AuthForm: React.FC<AuthFormProps> = ({ isRegistration }) => {
 
   const { login } = useContext(AuthContext);
 
-  const [createUser, { isSuccess: isRegistered }] = useCreateUserMutation();
-  const [getUser, { isSuccess: isLoggedIn }] = useAuthenticateMutation();
+  const [createUser, { isSuccess: isRegistered, isError: isErrorRegistered }] = useCreateUserMutation();
+  const [getUser, { isSuccess: isLoggedIn, isError: isErrorLoggedIn }] = useAuthenticateMutation();
+
+  console.log(isErrorRegistered);
 
   const sendRequest = async () => {
     try {
@@ -54,41 +55,41 @@ const AuthForm: React.FC<AuthFormProps> = ({ isRegistration }) => {
       login();
       redirect(isRegistration);
     }
-  }, [isRegistered, isLoggedIn]);
+  }, [isRegistered, isLoggedIn, login, redirect, isRegistration]);
 
   return (
-    <motion.div initial="hiddenHorizontal" whileInView="visibleHorizontal" viewport={{ once: true }} className={style.wrapper}>
-      <div className={style.loginForm}>
-        <motion.h1 custom={1} variants={animation}>
-          {isRegistration ? 'Sign Up' : 'Login'}
-        </motion.h1>
+    <>
+      <div className={style.wrapper}>
+        <div className={style.loginForm}>
+          <h1>{isRegistration ? 'Sign Up' : 'Login'}</h1>
 
-        <div className={style.inps}>
-          {['email', 'pwd'].map((el, index) => (
-            <Input key={index} name={el} handleChange={handleChange} />
-          ))}
+          <div className={style.inps}>
+            {['email', 'pwd'].map((el, index) => (
+              <Input key={index} name={el} handleChange={handleChange} />
+            ))}
 
-          {isRegistration && (
-            <>
-              {['name', 'surname'].map((el, index) => (
-                <Input key={index} name={el} handleChange={handleChange} />
-              ))}
+            {isRegistration && (
+              <>
+                {['name', 'surname'].map((el, index) => (
+                  <Input key={index} name={el} handleChange={handleChange} />
+                ))}
 
-              <Selector name="role" value={String(form['role'])} handleChange={handleChange} />
-            </>
-          )}
+                <Selector name="role" value={String(form['role'])} handleChange={handleChange} />
+              </>
+            )}
+          </div>
+
+          <div>
+            <Button onClick={sendRequest} className={style.btn} variant="outlined">
+              {isRegistration ? 'Create User' : 'Login'}
+            </Button>
+          </div>
         </div>
 
-        <div>
-          <Button onClick={sendRequest} className={style.btn} variant="outlined">
-            {' '}
-            {isRegistration ? 'Create User' : 'Login'}
-          </Button>
-        </div>
+        <div className={style.image}></div>
       </div>
-
-      <div className={style.image}></div>
-    </motion.div>
+      {isErrorRegistered || isErrorLoggedIn ? <Snackbar /> : null}
+    </>
   );
 };
 

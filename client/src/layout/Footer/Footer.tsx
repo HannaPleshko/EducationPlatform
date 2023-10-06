@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import style from './style.module.scss';
 
 const Footer: React.FC = () => {
@@ -6,10 +7,11 @@ const Footer: React.FC = () => {
       <div className={style.content}>
         <nav>
           <div className={style.navigation}>
-            <p>Home</p>
-            <p>Textbook</p>
-            <p>Statistics</p>
-            <p>Sprint</p>
+            {['Home', 'Textbook', 'Statistics', 'Sprint'].map((el, index) => (
+              <Link to={'*'} key={index}>
+                <p>{el}</p>
+              </Link>
+            ))}
           </div>
 
           <div className={style.navigation}>
@@ -20,9 +22,15 @@ const Footer: React.FC = () => {
 
         <nav>
           <div className={style.logoImgs}>
-            <div className={style.logoGit}></div>
-            <div className={style.logoGT}></div>
-            <div className={style.logoYouTube}></div>
+            <Link to={'https://github.com/HannaPleshko'}>
+              <div className={style.logoGit}></div>
+            </Link>
+            <Link to={'*'}>
+              <div className={style.logoGT}></div>
+            </Link>
+            <Link to={'*'}>
+              <div className={style.logoYouTube}></div>{' '}
+            </Link>
           </div>
           <p>©2023 Hschool. Project for Hschool.</p>
         </nav>

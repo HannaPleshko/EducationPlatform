@@ -8,8 +8,10 @@ import { animation } from '@assets/motion';
 import { useGetUsersQuery } from '@services';
 import { UserGridApiResponse } from '@Interfaces';
 
-import style from './style.module.scss';
 import { Button } from '@mui/material';
+import { Link } from 'react-router-dom';
+import { ChevronRight } from '@mui/icons-material';
+import style from './style.module.scss';
 
 const ButtonMotion = motion(Button);
 
@@ -39,9 +41,11 @@ const Landing: React.FC = () => {
             Any subject, in any language, on any device, for all ages!
           </motion.p>
 
-          <ButtonMotion custom={4} variants={animation} className={style.btn} variant="outlined">
-            About platform
-          </ButtonMotion>
+          <Link to={'*'}>
+            <ButtonMotion custom={4} variants={animation} className={style.btn} variant="outlined">
+              About platform
+            </ButtonMotion>
+          </Link>
 
           <div className={style.statictics}>
             <motion.div custom={5} variants={animation} className={style.studentsCount}>
@@ -101,9 +105,11 @@ const Landing: React.FC = () => {
           <motion.p custom={3} variants={animation}>
             Uncover the World of Language Learning Through Time-Honored and Modern Approaches{' '}
           </motion.p>
-          <ButtonMotion custom={4} variants={animation} className={style.btn} variant="outlined">
-            Textbook →
-          </ButtonMotion>
+          <Link to={'*'}>
+            <ButtonMotion custom={4} variants={animation} className={style.btn} variant="outlined">
+              Textbook <ChevronRight />
+            </ButtonMotion>
+          </Link>
         </div>
 
         <motion.div custom={1} variants={animation} className={style.img}></motion.div>
@@ -122,9 +128,11 @@ const Landing: React.FC = () => {
               Save statistics on your achievements and mistakes
             </motion.p>
 
-            <ButtonMotion custom={4} variants={animation} className={style.btn} variant="outlined">
-              Statistics →
-            </ButtonMotion>
+            <Link to={'*'}>
+              <ButtonMotion custom={4} variants={animation} className={style.btn} variant="outlined">
+                Statistics <ChevronRight />
+              </ButtonMotion>
+            </Link>
           </div>
         </div>
       </motion.div>

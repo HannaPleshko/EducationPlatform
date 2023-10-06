@@ -4,11 +4,6 @@
   padding: $padding-size;
 }
 
-@mixin text($color, $weight, $size, $family) {
-  font: $weight $size $family;
-  color: $color;
-}
-
 @mixin icon-decorator($path, $width, $height, $color, $hover-color) {
   width: $width;
   height: $height;
@@ -39,6 +34,18 @@
   flex-direction: $direction;
 }
 
+@mixin text($color, $weight, $size, $family) {
+  font: $weight $size $family;
+  color: $color;
+}
+
+@mixin text-hover($color) {
+  &:hover {
+    color: $color;
+    cursor: pointer;
+  }
+}
+
 @mixin primary-button($paddingSize, $radius, $defaultBckgColor, $borderColor) {
   width: max-content;
   padding: $paddingSize;
@@ -51,10 +58,9 @@
     color 0.2s ease;
 }
 
-@mixin hover-button($hoverBckgColor, $hoverColor, $borderColor) {
+@mixin hover-button($hoverBckgColor, $borderColor) {
   &:hover {
     background: $hoverBckgColor;
-    color: $hoverColor;
     border-color: $borderColor;
     cursor: pointer;
   }
