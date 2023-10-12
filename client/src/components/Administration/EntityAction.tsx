@@ -62,13 +62,14 @@ const EntityAction: React.FC<NavigationProps> = ({ id, content, setSelectedRow, 
 
       switch (content) {
         case AdminNavigationContent.USERS:
-          await updateUser({ id, ...item });
+          await updateUser(item);
           break;
         case AdminNavigationContent.COURSES:
-          await updateCourse({ id, ...item });
+          await updateCourse(item);
           break;
         case AdminNavigationContent.LESSONS:
-          await updateLesson({ id, ...item });
+          console.log(item);
+          await updateLesson(item);
           break;
       }
 

@@ -29,7 +29,7 @@ export const lessonApi = createApi({
 
     updateLesson: builder.mutation({
       query: (data: any) => ({
-        url: `/lesson/${data.id}`,
+        url: `/lesson/${data.lesson_id}`,
         method: 'PUT',
         body: data,
       }),

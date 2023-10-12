@@ -37,7 +37,7 @@ export const userApi = createApi({
 
     updateUser: builder.mutation({
       query: (data: any) => ({
-        url: `/user/${data.id}`,
+        url: `/user/${data.user_id}`,
         method: 'PUT',
         body: data,
       }),
@@ -45,7 +45,7 @@ export const userApi = createApi({
 
     deleteUser: builder.mutation({
       query: (id: string) => ({
-        url: `/${id}`,
+        url: `/user/${id}`,
         method: 'DELETE',
       }),
     }),

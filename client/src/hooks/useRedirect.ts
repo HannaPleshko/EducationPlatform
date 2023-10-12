@@ -29,8 +29,11 @@ const useRedirect = () => {
         navigate('/teacher');
         break;
 
-      default:
+      case Role.STUDENT:
         navigate('/');
+        break;
+
+      default:
         break;
     }
   };

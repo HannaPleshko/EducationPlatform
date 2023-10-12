@@ -35,6 +35,8 @@ class CourseController {
     try {
       const { course_id } = req.params;
       const course = req.body;
+      console.log(course_id, course);
+
       buildResponse(res, 200, await this.courseService.updateCourse(course_id, course));
     } catch (error) {
       next(error);
