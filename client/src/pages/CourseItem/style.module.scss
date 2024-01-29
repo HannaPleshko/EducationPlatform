@@ -2,43 +2,42 @@
 
 .wrapper {
   @include section(4% auto, 0);
-  display: flex;
+  @include flexbox(center, flex-start, row);
   gap: 20px;
-  justify-content: center;
-}
 
-.left {
-  @include flexbox(space-between, flex-start, row);
-  max-width: max-content;
-  padding: 40px;
-  border-radius: 14px;
-  background: #fff;
-  box-shadow: 0px 22.89813px 45.79626px -11.44906px rgba(52, 41, 39, 0.08);
-}
+  .btn {
+    @include text($primary-cyan-dark, 700, 16px, Montserrat);
+    @include text-hover($primary-golden-yellow);
 
-.right {
-  @include flexbox(flex-start, flex-start, column);
-  gap: 30px;
-  max-width: max-content;
-  padding: 40px;
-  border-radius: 14px;
-  background: #fff;
-  box-shadow: 0px 22.89813px 45.79626px -11.44906px rgba(52, 41, 39, 0.08);
-}
+    @include primary-button(14px, 4px, transparent, $primary-cyan-dark);
+    @include hover-button(transparent, $primary-golden-yellow);
+  }
 
-.img {
-  @include preview-img(url(./assets/image1.png), 256px, 168px);
-  margin: auto 0;
-}
+  .container {
+    max-width: max-content;
+    padding: 40px;
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0px 22.89813px 45.79626px -11.44906px rgba(52, 41, 39, 0.08);
+    gap: 30px;
+  }
 
-.info {
-  max-width: 350px;
-  @include flexbox(space-between, flex-start, column);
-  gap: 30px;
-}
+  .left {
+    @include flexbox(space-between, flex-start, row);
 
-.info .btn {
-  @include text($primary-cyan-dark, 700, 16px, Montserrat);
-  @include primary-button(14px, 4px, transparent, $primary-cyan-dark);
-  @include hover-button(transparent, $primary-golden-yellow, $primary-golden-yellow);
+    .info {
+      @include flexbox(space-between, flex-start, column);
+      max-width: 350px;
+      gap: 30px;
+    }
+
+    .img {
+      @include preview-img(url(./assets/image1.png), 256px, 168px);
+      margin: auto 0;
+    }
+  }
+
+  .right {
+    @include flexbox(flex-start, flex-start, column);
+  }
 }

@@ -46,10 +46,3 @@ export interface GridContent {
   rows: Course[] | User[] | Lesson[];
   rowCount: number;
 }
-
-export interface IAuthContext {
-  token: null | string;
-  login: () => void;
-  logout: () => void;
-  isAuthenticated: boolean;
-}

@@ -11,11 +11,7 @@ export class LessonService {
   }
 
   async getLessonById(course_id: string): Promise<ILesson> {
-    console.log(course_id);
-
     const foundLeeson = await this.lessonDB.getById(course_id);
-    console.log(course_id);
-
     return foundLeeson;
   }
 

@@ -1,23 +1,26 @@
 import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@mui/material';
+import { ChevronRight } from '@mui/icons-material';
 
 import { AuthContext } from '@context/AuthContext';
 import style from './style.module.scss';
 
-const AuthButton = () => {
+const AuthButton: React.FC = () => {
   const navigate = useNavigate();
   const { isAuthenticated, logout } = useContext(AuthContext);
 
   if (isAuthenticated) {
     return (
-      <div
-        onClick={() => {
-          logout();
-          navigate('/');
-        }}
-      >
-        <Button className={style.sign} variant="outlined">
+      <div>
+        <Button
+          onClick={() => {
+            logout();
+            navigate('/');
+          }}
+          className={style.sign}
+          variant="outlined"
+        >
           Sign Out
         </Button>
       </div>
@@ -28,7 +31,7 @@ const AuthButton = () => {
     <div className={style.btns}>
       <Link to="/auth">
         <Button className={style.login} variant="text">
-          Login →
+          Login <ChevronRight />
         </Button>
       </Link>
 

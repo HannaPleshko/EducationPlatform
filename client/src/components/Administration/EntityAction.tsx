@@ -1,9 +1,16 @@
 import React from 'react';
 import { TableCell, IconButton } from '@mui/material';
 import { RestartAlt, Create, Save, Delete } from '@mui/icons-material';
-import { UserApiResponse, CourseApiResponse, AdminNavigationContent } from '@Interfaces';
+import { UserApiResponse, CourseApiResponse, AdminNavigationContent, LessonApiResponse } from '@Interfaces';
 import { ExceptionType } from '@constants/message';
-import { useDeleteCourseMutation, useUpdateCourseMutation, useDeleteUserMutation, useUpdateUserMutation } from '@services';
+import {
+  useDeleteCourseMutation,
+  useUpdateCourseMutation,
+  useDeleteUserMutation,
+  useUpdateUserMutation,
+  useUpdateLessonMutation,
+  useDeleteLessonMutation,
+} from '@services';
 
 import style from './style.module.scss';
 
@@ -16,23 +23,35 @@ interface NavigationProps {
   rows: any;
 }
 
-const Navigation: React.FC<NavigationProps> = ({ id, content, setSelectedRow, itemIndex, selectedRow, rows }) => {
+const EntityAction: React.FC<NavigationProps> = ({ id, content, setSelectedRow, itemIndex, selectedRow, rows }) => {
   const [updateUser] = useUpdateUserMutation<UserApiResponse>();
   const [deleteUser] = useDeleteUserMutation<UserApiResponse>();
 
   const [updateCourse] = useUpdateCourseMutation<CourseApiResponse>();
   const [deleteCourse] = useDeleteCourseMutation<CourseApiResponse>();
 
+  const [deleteLesson] = useDeleteLessonMutation<LessonApiResponse>();
+  const [updateLesson] = useUpdateLessonMutation<LessonApiResponse>();
+
   const handleClick = () => setSelectedRow(itemIndex);
 
   const deleteSomeData = async () => {
     try {
-      if (content === AdminNavigationContent.USERS) await deleteUser(id);
-      else await deleteCourse(id);
+      switch (content) {
+        case AdminNavigationContent.USERS:
+          await deleteUser(id);
+          break;
+        case AdminNavigationContent.COURSES:
+          await deleteCourse(id);
+          break;
+        case AdminNavigationContent.LESSONS:
+          await deleteLesson(id);
+          break;
+      }
 
       window.location.reload();
     } catch (error: any) {
-      alert(ExceptionType.DB_CONNECT_NOT_CONNECTED);
+      alert(ExceptionType.SERVER_CONNECT_NOT_CONNECTED);
       console.error(error.message);
     }
   };
@@ -41,13 +60,23 @@ const Navigation: React.FC<NavigationProps> = ({ id, content, setSelectedRow, it
     try {
       const item = rows.find((el: any) => el.user_id === id || el.course_id === id);
 
-      if (content === AdminNavigationContent.USERS) await updateUser({ id, ...item });
-      else await updateCourse({ id, ...item });
+      switch (content) {
+        case AdminNavigationContent.USERS:
+          await updateUser(item);
+          break;
+        case AdminNavigationContent.COURSES:
+          await updateCourse(item);
+          break;
+        case AdminNavigationContent.LESSONS:
+          console.log(item);
+          await updateLesson(item);
+          break;
+      }
 
       window.location.reload();
       setSelectedRow(null);
     } catch (error: any) {
-      alert(ExceptionType.DB_CONNECT_NOT_CONNECTED);
+      alert(ExceptionType.SERVER_CONNECT_NOT_CONNECTED);
       console.error(error.message);
     }
   };
@@ -79,4 +108,4 @@ const Navigation: React.FC<NavigationProps> = ({ id, content, setSelectedRow, it
   );
 };
 
-export default Navigation;
+export default EntityAction;

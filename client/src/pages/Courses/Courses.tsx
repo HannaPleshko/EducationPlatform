@@ -1,7 +1,7 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
 
-import Header from '@Components/Header/Header';
-import Footer from '@Components/Footer/Footer';
+import Header from '@layout/Header/Header';
+import Footer from '@layout/Footer/Footer';
 import { useGetCoursesQuery } from '@services';
 import { Course, UserGridApiResponse } from '@Interfaces';
 import { ExceptionType } from '@constants/message';
@@ -10,30 +10,30 @@ import List from './List';
 import style from './style.module.scss';
 import { Pagination } from '@mui/material';
 
-const CoursesPage = () => {
+const Courses: React.FC = () => {
   const { data: courses } = useGetCoursesQuery<UserGridApiResponse>({});
   const [currentPage, setCurrentPage] = useState<number>(1);
   const pageSizeRef = useRef(3);
 
   const [listCourses, setListCourses] = useState<Course[]>([]);
 
-  const getSomeData = async () => {
+  const getSomeData = useCallback(async () => {
     try {
       if (!courses) return;
 
       const { rows } = courses;
       setListCourses(rows as Course[]);
     } catch (e: any) {
-      alert(ExceptionType.DB_CONNECT_NOT_CONNECTED);
+      alert(ExceptionType.SERVER_CONNECT_NOT_CONNECTED);
       console.error(e.message);
     }
-  };
+  }, [courses]);
 
   const paginatedList = listCourses.slice((currentPage - 1) * pageSizeRef.current, currentPage * pageSizeRef.current);
 
   useEffect(() => {
     getSomeData();
-  }, [courses]);
+  }, [getSomeData]);
 
   return (
     <>
@@ -55,9 +55,9 @@ const CoursesPage = () => {
         />
       </div>
 
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };
 
-export default CoursesPage;
+export default Courses;

@@ -1,26 +1,29 @@
 import { Routes, Route } from 'react-router-dom';
-import AuthPage from '@Pages/AuthPage/AuthPage';
-import RegistrationPage from '@Pages/RegistrationPage/RegistrationPage';
-import HomePage from '@Pages/HomePage/HomePage';
-import CoursesPage from '@Pages/CoursesPage/CoursesPage';
-import AdminPage from '@Pages/AdminPage/AdminPage';
-import CourseItem from '@Pages/CourseItem/CourseItem';
+import Login from '@pages/Login/Login';
+import SignUp from '@pages/SignUp/SignUp';
+import Landing from '@pages/Landing/Landing';
+import Courses from '@pages/Courses/Courses';
+import Administartion from '@pages/Administartion/Administartion';
+import CourseItem from '@pages/CourseItem/CourseItem';
+import NotFound from '@pages/NotFound/NotFound';
 
 const RoutesProvider = (isAuthenticated: boolean) => {
   if (isAuthenticated) {
     return (
       <Routes>
-        <Route path="/" element={<CoursesPage />} />
-        <Route path="/admin" element={<AdminPage />} />
+        <Route path="/" element={<Courses />} />
+        <Route path="/admin" element={<Administartion />} />
         <Route path="/course/:course_id" element={<CourseItem />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     );
   }
   return (
     <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/auth" element={<AuthPage />} />
-      <Route path="/reg" element={<RegistrationPage />} />
+      <Route path="/" element={<Landing />} />
+      <Route path="/auth" element={<Login />} />
+      <Route path="/reg" element={<SignUp />} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 };
