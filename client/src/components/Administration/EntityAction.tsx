@@ -1,7 +1,7 @@
 import React from 'react';
 import { TableCell, IconButton } from '@mui/material';
 import { RestartAlt, Create, Save, Delete } from '@mui/icons-material';
-import { UserApiResponse, CourseApiResponse, AdminNavigationContent, LessonApiResponse } from '@Interfaces';
+import { UserApiResponse, CourseApiResponse, AdminNavigationContent, LessonApiResponse } from '@interfaces';
 import { ExceptionType } from '@constants/message';
 import {
   useDeleteCourseMutation,
@@ -68,7 +68,6 @@ const EntityAction: React.FC<NavigationProps> = ({ id, content, setSelectedRow, 
           await updateCourse(item);
           break;
         case AdminNavigationContent.LESSONS:
-          console.log(item);
           await updateLesson(item);
           break;
       }

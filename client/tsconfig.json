@@ -8,10 +8,10 @@
       "@context/*": ["context/*"],
       "@hooks/*": ["hooks/*"],
       "@pages/*": ["pages/*"],
-      "@Routes/*": ["Routes/*"],
+      "@routes/*": ["routes/*"],
       "@services/*": ["services/*"],
       "@store/*": ["store/*"],
-      "@Interfaces/*": ["Interfaces/*"],
+      "@interfaces/*": ["interfaces/*"],
       "@constants/*": ["constants/*"],
       "@layout/*": ["layout/*"]
     },

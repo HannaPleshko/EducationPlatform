@@ -62,6 +62,7 @@
 
       p {
         @include text($primary-grey-dark, 500, 16px, Montserrat);
+        word-break: break-all;
       }
     }
   }

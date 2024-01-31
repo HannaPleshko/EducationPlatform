@@ -24,10 +24,11 @@
 
   .left {
     @include flexbox(space-between, flex-start, row);
+    min-width: 50%;
 
     .info {
       @include flexbox(space-between, flex-start, column);
-      max-width: 350px;
+      max-width: 50%;
       gap: 30px;
     }
 
@@ -39,5 +40,6 @@
 
   .right {
     @include flexbox(flex-start, flex-start, column);
+    min-width: 40%;
   }
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { AdminNavigation } from '@Interfaces';
+import { AdminNavigation } from '@interfaces';
 import { Button } from '@mui/material';
 
 interface HeaderProps {

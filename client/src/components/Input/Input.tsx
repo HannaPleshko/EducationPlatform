@@ -8,7 +8,7 @@ interface InputProps {
 }
 
 const Input: React.FC<InputProps> = ({ name, handleChange }) => {
-  return <TextField onChange={handleChange} name={name} label={name} />;
+  return <TextField type={name === 'pwd' ? 'password' : 'text'} onChange={handleChange} name={name} label={name} />;
 };
 
 export default Input;

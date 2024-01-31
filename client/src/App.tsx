@@ -1,4 +1,4 @@
-import RoutesProvider from '@Routes/Routes';
+import RoutesProvider from '@routes/Routes';
 import { useAuth } from '@hooks/useAuth';
 import { AuthContext } from '@context/AuthContext';
 

@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { Button, Modal, TextField } from '@mui/material';
 
 import { useCreateUserMutation, useCreateCourseMutation, useCreateLessonMutation } from '@services';
-import { AdminNavigationContent } from '@Interfaces';
-import { ExceptionType } from '@constants/message';
+import { AdminNavigationContent } from '@interfaces';
 
 import style from './style.module.scss';
 
@@ -21,6 +20,11 @@ const ActionModal: React.FC<ActionModalProps> = ({ open, handleClose, fields, co
 
   const [inp, setInp] = useState<Record<string, string>>({});
 
+  const checkDescription = () => {
+    if (inp.description.length < 150) throw new Error('The description must be at least 150 characters.');
+    if (inp.description.length > 300) throw new Error('The description must not exceed 400 characters.');
+  };
+
   const create = async () => {
     try {
       switch (content) {
@@ -28,16 +32,20 @@ const ActionModal: React.FC<ActionModalProps> = ({ open, handleClose, fields, co
           await createUser(inp);
           break;
         case AdminNavigationContent.COURSES:
+          checkDescription();
+
           await createCourse(inp);
           break;
         case AdminNavigationContent.LESSONS:
+          checkDescription();
+
           await createLesson(inp);
           break;
       }
 
       window.location.reload();
     } catch (e: any) {
-      alert(ExceptionType.SERVER_CONNECT_NOT_CONNECTED);
+      alert(e.message);
       console.error(e.message);
     }
   };

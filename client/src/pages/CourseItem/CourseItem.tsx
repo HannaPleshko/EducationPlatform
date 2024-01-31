@@ -36,21 +36,22 @@ const CourseItem: React.FC = () => {
           </div>
         </div>
 
-        <div>
-          <div className={classNames(style.container, style.right)}>
-            <h2>Lessons:</h2>
-            {lesson?.length ? (
-              lesson.map((el: any, index: number) => (
-                <div key={index}>
-                  <p>
-                    {index}. {el?.title}
-                  </p>
-                </div>
-              ))
-            ) : (
-              <p>В курсе еще не добавлены уроки!</p>
-            )}
-          </div>
+        <div className={classNames(style.container, style.right)}>
+          <h2>Lessons:</h2>
+          {lesson?.length ? (
+            lesson.map((el: any, index: number) => (
+              <div key={index}>
+                <p>
+                  {index}. {el?.title}
+                </p>
+              </div>
+            ))
+          ) : (
+            <p>
+              Unfortunately, the course currently lacks lessons as they have not been added yet. We appreciate your understanding and patience as we
+              work on developing and adding content to enhance your learning experience.
+            </p>
+          )}
         </div>
       </div>
 
