@@ -15,7 +15,7 @@
       "@routes/*": ["routes/*"],
       "@utils/*": ["utils/*"]
     },
-    "target": "es2017",
+    "target": "es2022",
     "esModuleInterop": true,
     "outDir": "dist",
     "module": "commonjs",
