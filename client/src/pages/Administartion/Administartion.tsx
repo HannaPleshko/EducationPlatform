@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import Header from '@layout/Header/Header';
 import Content from '@components/Administration/Content';
-import { AdminNavigationContent } from '@Interfaces';
+import { AdminNavigationContent } from '@interfaces';
 import { AdminNavigation } from '@constants/options';
 import Footer from '@layout/Footer/Footer';
 

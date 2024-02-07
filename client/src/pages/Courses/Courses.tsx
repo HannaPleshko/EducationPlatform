@@ -3,7 +3,7 @@ import React, { useEffect, useState, useRef, useCallback } from 'react';
 import Header from '@layout/Header/Header';
 import Footer from '@layout/Footer/Footer';
 import { useGetCoursesQuery } from '@services';
-import { Course, UserGridApiResponse } from '@Interfaces';
+import { Course, UserGridApiResponse } from '@interfaces';
 import { ExceptionType } from '@constants/message';
 import List from './List';
 

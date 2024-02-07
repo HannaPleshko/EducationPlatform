@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import jwt_decode from 'jwt-decode';
-import { User, Role } from '@Interfaces';
+import { User, Role } from '@interfaces';
 import Login from '@pages/Login/Login';
 import SignUp from '@pages/SignUp/SignUp';
 import Landing from '@pages/Landing/Landing';
