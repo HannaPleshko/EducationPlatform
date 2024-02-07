@@ -1,4 +1,4 @@
-import { User, GridContent, Course, Lesson } from '@interfaces';
+import { User, GridContent, Course, Lesson } from '@Interfaces';
 
 export interface ApiResponse<T> {
   status: number;

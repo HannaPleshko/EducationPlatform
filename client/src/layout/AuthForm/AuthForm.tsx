@@ -4,7 +4,7 @@ import { AuthContext } from '@context/AuthContext';
 import useRedirect from '@hooks/useRedirect';
 import Input from '@components/Input/Input';
 import Selector from '@components/Selector/Selector';
-import { User } from '@interfaces';
+import { User } from '@Interfaces';
 import { useCreateUserMutation, useAuthenticateMutation } from '@services';
 import Snackbar from '@components/Snackbar/Snackbar';
 

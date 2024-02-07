@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Options from './Options';
 import AuthButton from './AuthButton';
-import { AdminNavigation } from '@interfaces';
+import { AdminNavigation } from '@Interfaces';
 
 import style from './style.module.scss';
 

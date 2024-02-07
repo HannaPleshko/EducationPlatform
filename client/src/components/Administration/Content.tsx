@@ -5,7 +5,7 @@ import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper
 import { useGetUsersQuery, useGetCoursesQuery, useGetLessonsQuery } from '@services';
 import EntityAction from './EntityAction';
 import ActionModal from '@components/ActionModal/ActionModal';
-import { User, Course, UserGridApiResponse, AdminNavigationContent } from '@interfaces';
+import { User, Course, UserGridApiResponse, AdminNavigationContent } from '@Interfaces';
 import { ExceptionType } from '@constants/message';
 
 import style from './style.module.scss';

@@ -1,4 +1,4 @@
-import { Course } from '@interfaces';
+import { Course } from '@Interfaces';
 import image1 from './assets/course/image1.png';
 import image2 from './assets/course/image2.png';
 import image3 from './assets/course/image3.png';

@@ -6,7 +6,7 @@ import Footer from '@layout/Footer/Footer';
 import Header from '@layout/Header/Header';
 import { animation } from '@assets/motion';
 import { useGetUsersQuery } from '@services';
-import { UserGridApiResponse } from '@interfaces';
+import { UserGridApiResponse } from '@Interfaces';
 
 import { Button } from '@mui/material';
 import { Link } from 'react-router-dom';
