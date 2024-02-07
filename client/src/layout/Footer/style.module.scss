@@ -21,7 +21,7 @@
       }
 
       p {
-        @include text($primary-grey-dark, 600, 14px, Montserrat);
+        @include text($primary-grey-dark, 600, 1em, Montserrat);
       }
 
       .logoImgs {

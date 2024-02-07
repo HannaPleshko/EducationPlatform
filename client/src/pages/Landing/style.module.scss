@@ -15,23 +15,23 @@
   }
 
   h1 {
-    @include text($primary-black, 600, 46px, Dela Gothic One);
+    @include text($primary-black, 600, 3em, Dela Gothic One);
   }
 
   h2 {
-    @include text($primary-black, 600, 48px, Dela Gothic One);
+    @include text($primary-black, 600, 2em, Dela Gothic One);
   }
 
   h4 {
-    @include text($primary-cyan-dark, 700, 16px, Montserrat);
+    @include text($primary-cyan-dark, 700, 1em, Montserrat);
   }
 
   p {
-    @include text($primary-grey-dark, 600, 16px, Montserrat);
+    @include text($primary-grey-dark, 600, 1em, Montserrat);
   }
 
   .btn {
-    @include text($primary-cyan-dark, 700, 16px, Montserrat);
+    @include text($primary-cyan-dark, 700, 1em, Montserrat);
     @include text-hover($primary-golden-yellow);
 
     @include primary-button(14px, 4px, transparent, $primary-cyan-dark);
@@ -54,16 +54,16 @@
       }
 
       p {
-        @include text($primary-black, 600, 40px, Dela Gothic One);
+        @include text($primary-black, 600, 2.5em, Dela Gothic One);
 
         span {
-          @include text($primary-cyan-dark, 600, 40px, Dela Gothic One);
+          @include text($primary-cyan-dark, 600, inherit, Dela Gothic One);
         }
       }
     }
 
     .students {
-      @include text(#585858, 600, 16px, Montserrat);
+      @include text(#585858, 600, 1em, Montserrat);
       text-align: center;
     }
   }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { TableCell, IconButton } from '@mui/material';
 import { RestartAlt, Create, Save, Delete } from '@mui/icons-material';
-import { UserApiResponse, CourseApiResponse, AdminNavigationContent, LessonApiResponse } from '@interfaces';
+import { AdminNavigationContent } from '@interfaces';
 import { ExceptionType } from '@constants/message';
 import {
   useDeleteCourseMutation,
@@ -13,6 +13,7 @@ import {
 } from '@services';
 
 import style from './style.module.scss';
+import ConsecutiveSnackbars from '@components/Snackbar/Snackbar';
 
 interface NavigationProps {
   id: string;
@@ -24,14 +25,19 @@ interface NavigationProps {
 }
 
 const EntityAction: React.FC<NavigationProps> = ({ id, content, setSelectedRow, itemIndex, selectedRow, rows }) => {
-  const [updateUser] = useUpdateUserMutation<UserApiResponse>();
-  const [deleteUser] = useDeleteUserMutation<UserApiResponse>();
+  const [updateUser, { isSuccess: isUpdateUser, isError: isErrorUpdateUser }] = useUpdateUserMutation();
+  const [deleteUser, { isSuccess: isDeleteUser, isError: isErrorDeleteUser }] = useDeleteUserMutation();
 
-  const [updateCourse] = useUpdateCourseMutation<CourseApiResponse>();
-  const [deleteCourse] = useDeleteCourseMutation<CourseApiResponse>();
+  const [updateCourse, { isSuccess: isUpdateCourse, isError: isErrorUpdateCourse }] = useUpdateCourseMutation();
+  const [deleteCourse, { isSuccess: isDeleteCourse, isError: isErrorDeleteCourse }] = useDeleteCourseMutation();
 
-  const [deleteLesson] = useDeleteLessonMutation<LessonApiResponse>();
-  const [updateLesson] = useUpdateLessonMutation<LessonApiResponse>();
+  const [deleteLesson, { isSuccess: isUpdateLesson, isError: isErrorUpdateLesson }] = useDeleteLessonMutation();
+  const [updateLesson, { isSuccess: isDeleteLesson, isError: isErrorDeleteLesson }] = useUpdateLessonMutation();
+
+  if (isUpdateUser || isDeleteUser || isUpdateCourse || isDeleteCourse || isUpdateLesson || isDeleteLesson) {
+    window.location.reload();
+    setSelectedRow(null);
+  }
 
   const handleClick = () => setSelectedRow(itemIndex);
 
@@ -48,8 +54,6 @@ const EntityAction: React.FC<NavigationProps> = ({ id, content, setSelectedRow, 
           await deleteLesson(id);
           break;
       }
-
-      window.location.reload();
     } catch (error: any) {
       alert(ExceptionType.SERVER_CONNECT_NOT_CONNECTED);
       console.error(error.message);
@@ -71,9 +75,6 @@ const EntityAction: React.FC<NavigationProps> = ({ id, content, setSelectedRow, 
           await updateLesson(item);
           break;
       }
-
-      window.location.reload();
-      setSelectedRow(null);
     } catch (error: any) {
       alert(ExceptionType.SERVER_CONNECT_NOT_CONNECTED);
       console.error(error.message);
@@ -83,27 +84,32 @@ const EntityAction: React.FC<NavigationProps> = ({ id, content, setSelectedRow, 
   const revert = () => setSelectedRow(null);
 
   return (
-    <TableCell align="right" className={style.navigation}>
-      {selectedRow === itemIndex && (
-        <IconButton className={style.actionbtn} onClick={revert} aria-label="revert">
-          <RestartAlt />
-        </IconButton>
-      )}
+    <>
+      <TableCell align="right" className={style.navigation}>
+        {selectedRow === itemIndex && (
+          <IconButton className={style.actionbtn} onClick={revert} aria-label="revert">
+            <RestartAlt />
+          </IconButton>
+        )}
 
-      <IconButton className={style.deletebtn} aria-label="delete" onClick={deleteSomeData}>
-        <Delete />
-      </IconButton>
+        <IconButton className={style.deletebtn} aria-label="delete" onClick={deleteSomeData}>
+          <Delete />
+        </IconButton>
 
-      {selectedRow !== itemIndex ? (
-        <IconButton className={style.actionbtn} aria-label="create" onClick={handleClick}>
-          <Create />
-        </IconButton>
-      ) : (
-        <IconButton className={style.actionbtn} onClick={updateSomeData} aria-label="save">
-          <Save />
-        </IconButton>
-      )}
-    </TableCell>
+        {selectedRow !== itemIndex ? (
+          <IconButton className={style.actionbtn} aria-label="create" onClick={handleClick}>
+            <Create />
+          </IconButton>
+        ) : (
+          <IconButton className={style.actionbtn} onClick={updateSomeData} aria-label="save">
+            <Save />
+          </IconButton>
+        )}
+      </TableCell>
+      {isErrorUpdateUser || isErrorDeleteUser || isErrorUpdateCourse || isErrorDeleteCourse || isErrorUpdateLesson || isErrorDeleteLesson ? (
+        <ConsecutiveSnackbars message={'Something went wrong...'} />
+      ) : null}
+    </>
   );
 };
 

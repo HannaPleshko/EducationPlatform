@@ -1,4 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
+import jwt_decode from 'jwt-decode';
+import { User, Role } from '@interfaces';
 import Login from '@pages/Login/Login';
 import SignUp from '@pages/SignUp/SignUp';
 import Landing from '@pages/Landing/Landing';
@@ -7,16 +9,34 @@ import Administartion from '@pages/Administartion/Administartion';
 import CourseItem from '@pages/CourseItem/CourseItem';
 import NotFound from '@pages/NotFound/NotFound';
 
-const RoutesProvider = (isAuthenticated: boolean) => {
-  if (isAuthenticated) {
-    return (
-      <Routes>
-        <Route path="/" element={<Courses />} />
-        <Route path="/admin" element={<Administartion />} />
-        <Route path="/course/:course_id" element={<CourseItem />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    );
+const RoutesProvider = (token: string | null) => {
+  if (token) {
+    const { role }: User = jwt_decode(token);
+
+    switch (role) {
+      case Role.ADMIN:
+        return (
+          <Routes>
+            <Route path="/admin" element={<Administartion />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        );
+      case Role.TEACHER:
+        return (
+          <Routes>
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        );
+
+      case Role.STUDENT:
+        return (
+          <Routes>
+            <Route path="/" element={<Courses />} />
+            <Route path="/course/:course_id" element={<CourseItem />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        );
+    }
   }
   return (
     <Routes>

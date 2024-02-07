@@ -9,7 +9,7 @@
     @include section(auto, 2% 0);
 
     h1 {
-      @include text($primary-black, 400, 20px, Dela Gothic One);
+      @include text($primary-black, 400, 1em, Dela Gothic One);
     }
 
     .options {
@@ -17,7 +17,7 @@
       gap: 20px;
 
       button {
-        @include text($primary-black, 700, 16px, Montserrat);
+        @include text($primary-black, 700, 1em, Montserrat);
         @include text-hover($primary-golden-yellow);
 
         @include primary-button(14px, 4px, transparent, transparent);
@@ -30,7 +30,7 @@
       gap: 20px;
 
       .login {
-        @include text($primary-black, 700, 16px, Montserrat);
+        @include text($primary-black, 700, 1em, Montserrat);
         @include text-hover($primary-golden-yellow);
 
         @include primary-button(14px, 4px, transparent, transparent);
@@ -39,7 +39,7 @@
     }
 
     .sign {
-      @include text($primary-cyan-dark, 700, 16px, Montserrat);
+      @include text($primary-cyan-dark, 700, 1em, Montserrat);
       @include text-hover($primary-golden-yellow);
 
       @include primary-button(14px, 4px, transparent, $primary-cyan-dark);

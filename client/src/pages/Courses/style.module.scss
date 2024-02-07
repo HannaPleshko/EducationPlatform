@@ -18,7 +18,7 @@
   }
 
   h1 {
-    @include text($primary-black, 400, 26px, Dela Gothic One);
+    @include text($primary-black, 400, 1em, Dela Gothic One);
   }
 }
 
@@ -54,14 +54,14 @@
       padding: 20px 40px;
 
       h2 {
-        @include text($primary-black, 400, 26px, Dela Gothic One);
+        @include text($primary-black, 400, 1em, Dela Gothic One);
         width: 100%;
         padding-bottom: 15px;
         border-bottom: 1px solid #e0e0e0;
       }
 
       p {
-        @include text($primary-grey-dark, 500, 16px, Montserrat);
+        @include text($primary-grey-dark, 500, 1em, Montserrat);
         word-break: break-all;
       }
     }

@@ -31,8 +31,6 @@ const AuthForm: React.FC<AuthFormProps> = ({ isRegistration }) => {
   const [createUser, { isSuccess: isRegistered, isError: isErrorRegistered }] = useCreateUserMutation();
   const [getUser, { isSuccess: isLoggedIn, isError: isErrorLoggedIn }] = useAuthenticateMutation();
 
-  console.log(isErrorRegistered);
-
   const sendRequest = async () => {
     try {
       isRegistration ? await createUser(form) : await getUser(form);
@@ -88,7 +86,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ isRegistration }) => {
 
         <div className={style.image}></div>
       </div>
-      {isErrorRegistered || isErrorLoggedIn ? <Snackbar /> : null}
+      {isErrorRegistered || isErrorLoggedIn ? <Snackbar message={'Something went wrong...'} /> : null}
     </>
   );
 };
