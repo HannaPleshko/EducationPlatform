@@ -1,7 +1,7 @@
 import React from 'react';
 import { TableCell, IconButton } from '@mui/material';
 import { RestartAlt, Create, Save, Delete } from '@mui/icons-material';
-import { AdminNavigationContent } from '@interfaces';
+import { AdminNavigationContent } from '@interface';
 import { ExceptionType } from '@constants/message';
 import {
   useDeleteCourseMutation,

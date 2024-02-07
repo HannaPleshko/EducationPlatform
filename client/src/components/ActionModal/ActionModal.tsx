@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button, Modal, TextField } from '@mui/material';
 
 import { useCreateUserMutation, useCreateCourseMutation, useCreateLessonMutation } from '@services';
-import { AdminNavigationContent } from '@interfaces';
+import { AdminNavigationContent } from '@interface';
 
 import style from './style.module.scss';
 

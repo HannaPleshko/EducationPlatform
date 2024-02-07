@@ -11,7 +11,7 @@
       "@routes/*": ["routes/*"],
       "@services/*": ["services/*"],
       "@store/*": ["store/*"],
-      "@interfaces/*": ["interfaces/*"],
+      "@interface/*": ["interface/*"],
       "@constants/*": ["constants/*"],
       "@layout/*": ["layout/*"]
     },

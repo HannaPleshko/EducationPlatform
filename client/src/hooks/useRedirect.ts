@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import jwt_decode from 'jwt-decode';
 import Cookies from 'cookies-ts';
 
-import { User, Role } from '@interfaces';
+import { User, Role } from '@interface';
 
 const cookies = new Cookies();
 
