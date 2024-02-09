@@ -2,55 +2,52 @@
 
 .wrapper {
   @include section(4% auto, 0);
+
+  .btn {
+    @include text($primary-black, 700, 1em, Montserrat);
+    @include text-hover($primary-golden-yellow);
+
+    @include primary-button(14px, 4px, transparent, transparent);
+    @include hover-button(transparent, transparent);
+  }
 }
 
-.header {
-  @include flexbox(center, center, row);
-  width: 100%;
-  height: 70px;
-  border-radius: 14px;
-  background: #fff;
-  gap: 10px;
-  border: 1px dashed #e0e0e0;
+.content {
+  display: flex;
+  justify-content: space-between;
 
-  .img {
-    @include preview-img(url(./assets/fluent_hat-graduation-24-filled.svg), 32px, 32px);
+  input {
   }
 
-  h1 {
-    @include text($primary-black, 400, 1em, Dela Gothic One);
+  .navigation {
+    width: 15%;
+  }
+
+  .contentCourses {
+    width: 80%;
   }
 }
 
 .list {
-  @include flexbox(center, center, column);
+  @include flexbox(center, center, row);
+  flex-wrap: wrap;
   gap: 40px;
   margin-top: 3%;
 
   a {
-    display: inline-flex;
+    max-width: 40%;
   }
 
   .item {
-    @include flexbox(space-between, center, row);
-    width: 926px;
+    @include flexbox(space-between, flex-start, row);
+    min-height: 230px;
     border-radius: 14px;
     background: #fff;
     box-shadow: 0px 22.898128509521484px 45.79625701904297px -11.449064254760742px rgba(52, 41, 39, 0.08);
 
-    .img {
-      width: 337px;
-      height: 100%;
-      background-size: cover;
-      background-repeat: no-repeat;
-      border-radius: 14px 0 0 14px;
-      border-right: 1px dashed #e0e0e0;
-    }
-
     .info {
       @include flexbox(center, flex-start, column);
       gap: 12px;
-      max-width: 540px;
       padding: 20px 40px;
 
       h2 {

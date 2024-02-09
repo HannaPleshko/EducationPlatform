@@ -61,7 +61,7 @@
 @mixin hover-button($hoverBckgColor, $borderColor) {
   &:hover {
     background: $hoverBckgColor;
-    border-color: $borderColor;
+    border: 1px solid $borderColor;
     cursor: pointer;
   }
 }

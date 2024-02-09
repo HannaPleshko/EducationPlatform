@@ -22,7 +22,7 @@ const ActionModal: React.FC<ActionModalProps> = ({ open, handleClose, fields, co
 
   const checkDescription = () => {
     if (inp.description.length < 150) throw new Error('The description must be at least 150 characters.');
-    if (inp.description.length > 300) throw new Error('The description must not exceed 400 characters.');
+    if (inp.description.length > 300) throw new Error('The description must not exceed 300 characters.');
   };
 
   const create = async () => {
