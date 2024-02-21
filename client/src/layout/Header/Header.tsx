@@ -3,12 +3,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Options from './Options';
 import AuthButton from './AuthButton';
-import { AdminNavigation } from '@interface';
+import { AdminNavigation, LandingNavigation } from '@interface';
 
 import style from './style.module.scss';
 
 interface HeaderProps {
-  options?: AdminNavigation[];
+  options?: AdminNavigation[] | LandingNavigation[];
   setCurOption?: (param: string) => void;
 }
 

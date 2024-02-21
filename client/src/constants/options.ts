@@ -1,4 +1,4 @@
-import { AdminNavigationContent, RoleContent, Role } from '@interface';
+import { AdminNavigationContent, LandingNavigationContent, RoleContent, Role } from '@interface';
 
 export const UserRoles = [
   { value: Role.STUDENT, label: RoleContent.STUDENT },
@@ -7,3 +7,5 @@ export const UserRoles = [
 ];
 
 export const AdminNavigation = [AdminNavigationContent.USERS, AdminNavigationContent.COURSES, AdminNavigationContent.LESSONS];
+
+export const LandingNavigation = [LandingNavigationContent.ABOUT, LandingNavigationContent.BESTSELLERS, LandingNavigationContent.REVIEWS];

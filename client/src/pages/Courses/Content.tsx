@@ -1,5 +1,5 @@
 import style from './style.module.scss';
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
 
 import { useGetCoursesQuery } from '@services';
 import { Course } from '@interface';
@@ -16,11 +16,11 @@ const Content: React.FC = () => {
 
   const pageSizeRef = useRef(10);
 
-  const filterCourses = () => {
+  const filterCourses = useCallback(() => {
     if (!data) return [];
     if (!input) return data.rows;
     return data.rows.filter(({ title }: any) => title.toLowerCase().includes(input.toLowerCase()));
-  };
+  }, [data, input]);
 
   const paginatedList = filterCourses().slice((currentPage - 1) * pageSizeRef.current, currentPage * pageSizeRef.current);
 
@@ -31,7 +31,7 @@ const Content: React.FC = () => {
 
   useEffect(() => {
     setList(filterCourses());
-  }, [input, data]);
+  }, [input, data, filterCourses]);
 
   return (
     <div className={style.contentCourses}>

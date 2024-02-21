@@ -16,7 +16,14 @@ export enum AdminNavigationContent {
   LESSONS = 'Lessons',
 }
 
+export enum LandingNavigationContent {
+  ABOUT = 'About',
+  BESTSELLERS = 'Bestsellers',
+  REVIEWS = 'Reviews',
+}
+
 export type AdminNavigation = (typeof AdminNavigationContent)[keyof typeof AdminNavigationContent];
+export type LandingNavigation = (typeof LandingNavigationContent)[keyof typeof LandingNavigationContent];
 
 export interface User {
   user_id?: string;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { motion } from 'framer-motion';
 
@@ -6,27 +6,34 @@ import Footer from '@layout/Footer/Footer';
 import Header from '@layout/Header/Header';
 import { animation } from '@assets/motion';
 import { useGetUsersQuery } from '@services';
-import { UserGridApiResponse } from '@interface';
+import { LandingNavigationContent, UserGridApiResponse } from '@interface';
 
 import { Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { ChevronRight } from '@mui/icons-material';
 import style from './style.module.scss';
+import { LandingNavigation } from '@constants/options';
 
 const ButtonMotion = motion(Button);
 
 const Landing: React.FC = () => {
   const { data } = useGetUsersQuery<UserGridApiResponse>({});
+  const [curOption, setCurOption] = useState<string>(LandingNavigationContent.ABOUT);
+
+  useEffect(() => {
+    console.log(curOption);
+  }, [curOption]);
 
   return (
     <>
-      <Header />
+      <Header setCurOption={setCurOption} options={LandingNavigation} />
 
       <motion.div
         initial="hiddenHorizontal"
         whileInView="visibleHorizontal"
         viewport={{ once: true }}
         className={classNames(style.preview, style.default)}
+        id={LandingNavigationContent.ABOUT}
       >
         <div className={style.content}>
           <motion.h4 custom={1} variants={animation}>
@@ -97,6 +104,7 @@ const Landing: React.FC = () => {
         whileInView="visibleVertical"
         viewport={{ amount: 0.2, once: true }}
         className={classNames(style.knowledge, style.default)}
+        id={LandingNavigationContent.BESTSELLERS}
       >
         <div className={style.content}>
           <motion.h2 custom={2} variants={animation}>
@@ -115,7 +123,13 @@ const Landing: React.FC = () => {
         <motion.div custom={1} variants={animation} className={style.img}></motion.div>
       </motion.div>
 
-      <motion.div initial="hiddenVertical" whileInView="visibleVertical" viewport={{ amount: 0.2, once: true }} className={style.wrapper}>
+      <motion.div
+        initial="hiddenVertical"
+        whileInView="visibleVertical"
+        viewport={{ amount: 0.2, once: true }}
+        className={style.wrapper}
+        id={LandingNavigationContent.REVIEWS}
+      >
         <div className={classNames(style.statistic, style.default)}>
           <motion.div custom={1} variants={animation} className={style.img}></motion.div>
 
