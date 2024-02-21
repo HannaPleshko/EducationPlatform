@@ -10,7 +10,7 @@
     @include text-hover($primary-golden-yellow);
 
     @include primary-button(14px, 4px, transparent, $primary-cyan-dark);
-    @include hover-button(transparent, $primary-golden-yellow);
+    @include hover-button(transparent, $primary-golden-yellow, 1px);
   }
 
   .container {

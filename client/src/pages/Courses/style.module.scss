@@ -8,16 +8,13 @@
     @include text-hover($primary-golden-yellow);
 
     @include primary-button(14px, 4px, transparent, transparent);
-    @include hover-button(transparent, transparent);
+    @include hover-button(transparent, transparent, 0px);
   }
 }
 
 .content {
   display: flex;
   justify-content: space-between;
-
-  input {
-  }
 
   .navigation {
     width: 15%;
@@ -31,19 +28,21 @@
 .list {
   @include flexbox(center, center, row);
   flex-wrap: wrap;
-  gap: 40px;
+  gap: 40px 4%;
   margin-top: 3%;
 
   a {
-    max-width: 40%;
+    max-width: 48%;
   }
 
   .item {
     @include flexbox(space-between, flex-start, row);
     min-height: 230px;
-    border-radius: 14px;
-    background: #fff;
-    box-shadow: 0px 22.898128509521484px 45.79625701904297px -11.449064254760742px rgba(52, 41, 39, 0.08);
+    border-radius: 4px;
+    // background: #fafafa;
+    background: hsl(193, 24%, 93%);
+    // border: 1px solid #add7e3c8;
+    // box-shadow: 0px 22.898128509521484px 45.79625701904297px -11.449064254760742px rgba(52, 41, 39, 0.08);
 
     .info {
       @include flexbox(center, flex-start, column);

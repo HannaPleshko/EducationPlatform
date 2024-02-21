@@ -58,10 +58,10 @@
     color 0.2s ease;
 }
 
-@mixin hover-button($hoverBckgColor, $borderColor) {
+@mixin hover-button($hoverBckgColor, $borderColor, $borderSize) {
   &:hover {
     background: $hoverBckgColor;
-    border: 1px solid $borderColor;
+    border: $borderSize solid $borderColor;
     cursor: pointer;
   }
 }

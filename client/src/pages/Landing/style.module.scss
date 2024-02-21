@@ -35,7 +35,7 @@
     @include text-hover($primary-golden-yellow);
 
     @include primary-button(14px, 4px, transparent, $primary-cyan-dark);
-    @include hover-button(transparent, $primary-golden-yellow);
+    @include hover-button(transparent, $primary-golden-yellow, 1px);
   }
 }
 
@@ -69,7 +69,9 @@
   }
 
   .img {
-    @include preview-img(url(./assets/man.png), 550px, 400px);
+    @include preview-img(url(./assets/man.png), 630px, 430px);
+    position: relative;
+    left: 10%;
   }
 }
 
@@ -141,7 +143,7 @@
   @include flexbox(space-between, flex-start, row);
 
   .img {
-    @include preview-img(url(./assets/book.svg), 550px, 450px);
+    @include preview-img(url(./assets/book.png), 550px, 450px);
   }
 }
 

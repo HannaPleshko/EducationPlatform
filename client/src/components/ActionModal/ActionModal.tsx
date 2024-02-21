@@ -62,12 +62,12 @@ const ActionModal: React.FC<ActionModalProps> = ({ open, handleClose, fields, co
 
         {fields.slice(1).map((el, index) => (
           <div key={index} className={style['input']}>
-            <TextField name={el} onChange={handleInputChange} variant="standard" label={el} value={inp[el] || ''} />
+            <TextField name={el} onChange={handleInputChange} id="outlined-basic" variant="outlined" label={el} value={inp[el] || ''} />
           </div>
         ))}
 
         <div>
-          <Button onClick={create} variant="outlined">
+          <Button className={style.btn} onClick={create} variant="outlined">
             CREATE
           </Button>
         </div>
