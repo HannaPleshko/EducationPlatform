@@ -27,7 +27,7 @@
   }
 
   p {
-    @include text($primary-grey-dark, 600, 1em, Montserrat);
+    @include text($primary-grey-dark, 500, 1em, Montserrat);
   }
 
   .btn {
@@ -40,117 +40,70 @@
 }
 
 .preview {
-  @include section(7% auto, 0);
+  @include preview-img(url(./assets/preview.svg), 100%, 100%);
+  background-position: center;
+  background-size: cover;
 
-  .statictics {
-    max-width: 175px;
+  .previewContent {
+    @include section(7% auto, 0);
+    width: 1220px;
 
-    .studentsCount {
-      @include flexbox(space-between, center, row);
-      gap: 10px;
-
-      .lightning {
-        @include preview-img(url(./assets/lightning.svg), 24px, 30px);
-      }
-
-      p {
-        @include text($primary-black, 600, 2.5em, Dela Gothic One);
-
-        span {
-          @include text($primary-cyan-dark, 600, inherit, Dela Gothic One);
-        }
-      }
+    .content {
+      @include flexbox(flex-start, start, column);
+      max-width: 530px;
     }
-
-    .students {
-      @include text(#585858, 600, 1em, Montserrat);
-      text-align: center;
-    }
-  }
-
-  .img {
-    @include preview-img(url(./assets/man.png), 630px, 430px);
-    position: relative;
-    left: 10%;
   }
 }
 
 .learn {
   @include section(auto, 7% 0);
 
-  .icons {
-    display: flex;
-    gap: 5%;
-
-    p {
-      text-align: center;
-      position: relative;
-      bottom: 22px;
-      transition: transform 0.3s ease;
-
-      &:hover {
-        transform: scale(1.1);
-        cursor: pointer;
-      }
-    }
-
-    .sprint,
-    .task {
-      border-radius: 14px;
-      height: 112px;
-
-      div {
-        position: relative;
-        bottom: 25px;
-      }
-    }
-
-    .sprint {
-      background: #f2d4dc;
-      width: 129px;
-
-      div {
-        @include preview-img(url(./assets/img11.svg), 131px, 106px);
-      }
-
-      p {
-        color: #945069;
-      }
-    }
-
-    .task {
-      background: #c3dce3;
-      width: 172px;
-
-      div {
-        @include preview-img(url(./assets/ing10.svg), 91px, 106px);
-        left: 20%;
-      }
-
-      p {
-        color: #2b788b;
-      }
-    }
+  li span {
+    @include text(#2b788b, 600, 1.2em, Dela Gothic One);
+    padding-right: 20px;
+    font-style: italic;
   }
 
-  .img {
-    @include preview-img(url(./assets/learn.svg), 560px, 430px);
+  .video {
+    border-radius: 14px;
+    width: 500px;
+    height: 320px;
   }
 }
 
 .knowledge {
-  @include section(7% auto 0, 0);
-  @include flexbox(space-between, flex-start, row);
+  @include section(7% auto, 0);
+  @include flexbox(space-between, flex-start, column);
+  gap: 40px;
 
-  .img {
-    @include preview-img(url(./assets/book.png), 550px, 450px);
+  .content {
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px 5%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    .item {
+      display: flex;
+      gap: 15px;
+      flex-direction: column;
+      max-width: 30%;
+      padding: 20px;
+    }
   }
 }
 
 .statistic {
   @include section(auto, 7% 0);
 
+  .content {
+    gap: 0px;
+  }
+
   .img {
-    @include preview-img(url(./assets/manaNDGIRL.svg), 580px, 350px);
+    position: relative;
+    @include preview-img(url(./assets/faq.svg), 520px, 470px);
   }
 }

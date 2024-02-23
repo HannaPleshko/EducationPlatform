@@ -15,7 +15,7 @@
   }
 
   p {
-    @include text($primary-grey-dark, 600, 1em, Montserrat);
+    @include text($primary-grey-dark, 500, 1em, Montserrat);
   }
 
   .btn {

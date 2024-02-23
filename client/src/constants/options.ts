@@ -6,6 +6,14 @@ export const UserRoles = [
   { value: Role.ADMIN, label: RoleContent.ADMIN },
 ];
 
-export const AdminNavigation = [AdminNavigationContent.USERS, AdminNavigationContent.COURSES, AdminNavigationContent.LESSONS];
-
-export const LandingNavigation = [LandingNavigationContent.ABOUT, LandingNavigationContent.BESTSELLERS, LandingNavigationContent.REVIEWS];
+// Header Options
+export const AdminNavigation = [
+  { url: '#', label: AdminNavigationContent.USERS },
+  { url: '#', label: AdminNavigationContent.COURSES },
+  { url: '#', label: AdminNavigationContent.LESSONS },
+];
+export const LandingNavigation = [
+  { url: `/#${LandingNavigationContent.ABOUT}`, label: LandingNavigationContent.ABOUT },
+  { url: `/#${LandingNavigationContent.BESTSELLERS}`, label: LandingNavigationContent.BESTSELLERS },
+  { url: `/#${LandingNavigationContent.FAQ}`, label: LandingNavigationContent.FAQ },
+];

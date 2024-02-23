@@ -20,6 +20,8 @@ const Footer: React.FC = () => {
           </div>
         </nav>
 
+        <div className={style.lineSeparator}></div>
+
         <nav>
           <div className={style.logoImgs}>
             <Link to={'https://github.com/HannaPleshko'}>

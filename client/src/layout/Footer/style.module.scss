@@ -2,18 +2,17 @@
 
 .wrapper {
   width: 100%;
-  background: #fafdff;
 
   .content {
-    @include section(2% auto, 0);
+    .lineSeparator {
+      width: 100%;
+      height: 1px;
+      box-shadow: 0px -1px 0px 0px #e0e0e0 inset;
+    }
 
     nav {
+      @include section(2% auto, 0);
       @include flexbox(space-between, center, row);
-      padding: 20px 0;
-
-      &:first-child {
-        border-bottom: 1px solid $primary-grey-light;
-      }
 
       .navigation {
         @include flexbox(space-between, center, row);
@@ -21,7 +20,7 @@
       }
 
       p {
-        @include text($primary-grey-dark, 600, 1em, Montserrat);
+        @include text($primary-grey-dark, 500, 1em, Montserrat);
       }
 
       .logoImgs {
